@@ -14,3 +14,14 @@ D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\Students
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.pdb
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\Views\Windows\MainWindow.g.cs
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\Views\Windows\MainWindow.baml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\EntityFramework.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\EntityFramework.Firebird.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\EntityFramework.SqlServer.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\EntityFramework.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\EntityFramework.SqlServer.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.CopyComplete
