@@ -1,7 +1,6 @@
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\StudentsHelpTerminal.exe.config
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\StudentsHelpTerminal.exe
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\StudentsHelpTerminal.pdb
-D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.AssemblyReference.cache
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.SuggestedBindingRedirects.cache
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\App.g.cs
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal_MarkupCompile.cache
@@ -25,3 +24,4 @@ D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\Students
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.CopyComplete
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.AssemblyReference.cache

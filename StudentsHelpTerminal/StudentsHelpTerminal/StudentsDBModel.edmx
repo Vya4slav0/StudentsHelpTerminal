@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище StudentsDBModel" Provider="FirebirdSql.Data.FirebirdClient" ProviderManifestToken="2.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID_STAFF" />
+          </Key>
+          <Property Name="ID_STAFF" Type="int" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+          <Property Name="FIRST_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+          <Property Name="MIDDLE_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+          <Property Name="TABEL_ID" Type="varchar" MaxLength="20" Unicode="true" />
+          <Property Name="PORTRET" Type="blob" />
+          <Property Name="DATE_BEGIN" Type="date" Nullable="false" />
+          <Property Name="DATE_DISMISS" Type="date" />
+          <Property Name="VALID" Type="int" Nullable="false" />
+          <Property Name="TEMPORARY_ACC" Type="int" Nullable="false" />
+          <Property Name="ID_FROM_1C" Type="varchar" MaxLength="38" Unicode="true" />
+          <Property Name="DELETED" Type="int" Nullable="false" />
+          <Property Name="STAFF_STATE" Type="int" Nullable="false" />
+          <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
+          <Property Name="DIN_PAY_SCHEMES_ID" Type="int" Nullable="false" />
+          <Property Name="DIN_GRAPHS_ID" Type="int" Nullable="false" />
+          <Property Name="DIN_GRANT_MEASURE_SPENDED" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DIN_COST_VALUE_SPENDED" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PATH_ACTDIR" Type="varchar" MaxLength="255" Unicode="true" />
+          <Property Name="PATH_ACTDIR_LOGIN" Type="varchar" MaxLength="1024" Unicode="true" />
+          <Property Name="PATH_ACTDIR_DOMAIN" Type="varchar" MaxLength="255" Unicode="true" />
+          <Property Name="SHORT_FIO" Type="varchar" MaxLength="32765" Unicode="true" StoreGeneratedPattern="Computed" />
+          <Property Name="FULL_FIO" Type="varchar" MaxLength="32765" Unicode="true" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="STAFF_CARDS">
+          <Key>
+            <PropertyRef Name="ID_CARD" />
+          </Key>
+          <Property Name="ID_CARD" Type="int" Nullable="false" />
+          <Property Name="SYSTEM_TYPE" Type="int" Nullable="false" />
+          <Property Name="STAFF_ID" Type="int" />
+          <Property Name="DATE_BEGIN" Type="timestamp" Nullable="false" />
+          <Property Name="DATE_END" Type="timestamp" Nullable="false" />
+          <Property Name="VALID" Type="int" Nullable="false" />
+          <Property Name="VALID_TRANSFER" Type="int" Nullable="false" />
+          <Property Name="TEMPORARY_ACC" Type="int" Nullable="false" />
+          <Property Name="DOCUMENTS_ID" Type="int" />
+          <Property Name="HISTORY_DATE" Type="timestamp" Nullable="false" />
+          <Property Name="PROHIBIT" Type="int" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="bigint" />
+          <Property Name="TYPE_IDENTIFIER" Type="int" Nullable="false" />
+          <Property Name="IDENTIFIER_TRANSFORMED" Type="bigint" />
+          <Property Name="WITHDRAW_TO_STOP_LIST" Type="int" Nullable="false" />
+          <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
+          <Property Name="USER_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="STAFF_REF">
+          <Key>
+            <PropertyRef Name="ID_STAFF_REF" />
+          </Key>
+          <Property Name="ID_STAFF_REF" Type="int" Nullable="false" />
+          <Property Name="STAFF_ID" Type="int" Nullable="false" />
+          <Property Name="DATE_ACTION" Type="timestamp" Nullable="false" />
+          <Property Name="SUBDIV_ID" Type="int" Nullable="false" />
+          <Property Name="APPOINT_ID" Type="int" Nullable="false" />
+          <Property Name="GROUP_WT_ID" Type="int" Nullable="false" />
+          <Property Name="DOCUMENTS_ID" Type="int" />
+          <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище StudentsDBModelContainer">
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="Firebird" store:Type="Tables" />
+          <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" Schema="Firebird" store:Type="Tables" />
+          <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" Schema="Firebird" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID_STAFF" />
+          </Key>
+          <Property Name="ID_STAFF" Type="Int32" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MIDDLE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TABEL_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PORTRET" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DATE_BEGIN" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_DISMISS" Type="DateTime" />
+          <Property Name="VALID" Type="Int32" Nullable="false" />
+          <Property Name="TEMPORARY_ACC" Type="Int32" Nullable="false" />
+          <Property Name="ID_FROM_1C" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="DELETED" Type="Int32" Nullable="false" />
+          <Property Name="STAFF_STATE" Type="Int32" Nullable="false" />
+          <Property Name="LAST_TIMESTAMP" Type="DateTime" Nullable="false" />
+          <Property Name="DIN_PAY_SCHEMES_ID" Type="Int32" Nullable="false" />
+          <Property Name="DIN_GRAPHS_ID" Type="Int32" Nullable="false" />
+          <Property Name="DIN_GRANT_MEASURE_SPENDED" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DIN_COST_VALUE_SPENDED" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PATH_ACTDIR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PATH_ACTDIR_LOGIN" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="PATH_ACTDIR_DOMAIN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SHORT_FIO" Type="String" MaxLength="32765" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FULL_FIO" Type="String" MaxLength="32765" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="STAFF_CARDS">
+          <Key>
+            <PropertyRef Name="ID_CARD" />
+          </Key>
+          <Property Name="ID_CARD" Type="Int32" Nullable="false" />
+          <Property Name="SYSTEM_TYPE" Type="Int32" Nullable="false" />
+          <Property Name="STAFF_ID" Type="Int32" />
+          <Property Name="DATE_BEGIN" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_END" Type="DateTime" Nullable="false" />
+          <Property Name="VALID" Type="Int32" Nullable="false" />
+          <Property Name="VALID_TRANSFER" Type="Int32" Nullable="false" />
+          <Property Name="TEMPORARY_ACC" Type="Int32" Nullable="false" />
+          <Property Name="DOCUMENTS_ID" Type="Int32" />
+          <Property Name="HISTORY_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="PROHIBIT" Type="Int32" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="Int64" />
+          <Property Name="TYPE_IDENTIFIER" Type="Int32" Nullable="false" />
+          <Property Name="IDENTIFIER_TRANSFORMED" Type="Int64" />
+          <Property Name="WITHDRAW_TO_STOP_LIST" Type="Int32" Nullable="false" />
+          <Property Name="LAST_TIMESTAMP" Type="DateTime" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="STAFF_REF">
+          <Key>
+            <PropertyRef Name="ID_STAFF_REF" />
+          </Key>
+          <Property Name="ID_STAFF_REF" Type="Int32" Nullable="false" />
+          <Property Name="STAFF_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE_ACTION" Type="DateTime" Nullable="false" />
+          <Property Name="SUBDIV_ID" Type="Int32" Nullable="false" />
+          <Property Name="APPOINT_ID" Type="Int32" Nullable="false" />
+          <Property Name="GROUP_WT_ID" Type="Int32" Nullable="false" />
+          <Property Name="DOCUMENTS_ID" Type="Int32" />
+          <Property Name="LAST_TIMESTAMP" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="StudentsDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
+          <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" />
+          <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище StudentsDBModelContainer" CdmEntityContainer="StudentsDBContext">
+          <EntitySetMapping Name="STAFFs">
+            <EntityTypeMapping TypeName="StudentsDBModel.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="ID_STAFF" ColumnName="ID_STAFF" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="MIDDLE_NAME" ColumnName="MIDDLE_NAME" />
+                <ScalarProperty Name="TABEL_ID" ColumnName="TABEL_ID" />
+                <ScalarProperty Name="PORTRET" ColumnName="PORTRET" />
+                <ScalarProperty Name="DATE_BEGIN" ColumnName="DATE_BEGIN" />
+                <ScalarProperty Name="DATE_DISMISS" ColumnName="DATE_DISMISS" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="TEMPORARY_ACC" ColumnName="TEMPORARY_ACC" />
+                <ScalarProperty Name="ID_FROM_1C" ColumnName="ID_FROM_1C" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="STAFF_STATE" ColumnName="STAFF_STATE" />
+                <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+                <ScalarProperty Name="DIN_PAY_SCHEMES_ID" ColumnName="DIN_PAY_SCHEMES_ID" />
+                <ScalarProperty Name="DIN_GRAPHS_ID" ColumnName="DIN_GRAPHS_ID" />
+                <ScalarProperty Name="DIN_GRANT_MEASURE_SPENDED" ColumnName="DIN_GRANT_MEASURE_SPENDED" />
+                <ScalarProperty Name="DIN_COST_VALUE_SPENDED" ColumnName="DIN_COST_VALUE_SPENDED" />
+                <ScalarProperty Name="PATH_ACTDIR" ColumnName="PATH_ACTDIR" />
+                <ScalarProperty Name="PATH_ACTDIR_LOGIN" ColumnName="PATH_ACTDIR_LOGIN" />
+                <ScalarProperty Name="PATH_ACTDIR_DOMAIN" ColumnName="PATH_ACTDIR_DOMAIN" />
+                <ScalarProperty Name="SHORT_FIO" ColumnName="SHORT_FIO" />
+                <ScalarProperty Name="FULL_FIO" ColumnName="FULL_FIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF_CARDS">
+            <EntityTypeMapping TypeName="StudentsDBModel.STAFF_CARDS">
+              <MappingFragment StoreEntitySet="STAFF_CARDS">
+                <ScalarProperty Name="ID_CARD" ColumnName="ID_CARD" />
+                <ScalarProperty Name="SYSTEM_TYPE" ColumnName="SYSTEM_TYPE" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="DATE_BEGIN" ColumnName="DATE_BEGIN" />
+                <ScalarProperty Name="DATE_END" ColumnName="DATE_END" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="VALID_TRANSFER" ColumnName="VALID_TRANSFER" />
+                <ScalarProperty Name="TEMPORARY_ACC" ColumnName="TEMPORARY_ACC" />
+                <ScalarProperty Name="DOCUMENTS_ID" ColumnName="DOCUMENTS_ID" />
+                <ScalarProperty Name="HISTORY_DATE" ColumnName="HISTORY_DATE" />
+                <ScalarProperty Name="PROHIBIT" ColumnName="PROHIBIT" />
+                <ScalarProperty Name="IDENTIFIER" ColumnName="IDENTIFIER" />
+                <ScalarProperty Name="TYPE_IDENTIFIER" ColumnName="TYPE_IDENTIFIER" />
+                <ScalarProperty Name="IDENTIFIER_TRANSFORMED" ColumnName="IDENTIFIER_TRANSFORMED" />
+                <ScalarProperty Name="WITHDRAW_TO_STOP_LIST" ColumnName="WITHDRAW_TO_STOP_LIST" />
+                <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF_REF">
+            <EntityTypeMapping TypeName="StudentsDBModel.STAFF_REF">
+              <MappingFragment StoreEntitySet="STAFF_REF">
+                <ScalarProperty Name="ID_STAFF_REF" ColumnName="ID_STAFF_REF" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="DATE_ACTION" ColumnName="DATE_ACTION" />
+                <ScalarProperty Name="SUBDIV_ID" ColumnName="SUBDIV_ID" />
+                <ScalarProperty Name="APPOINT_ID" ColumnName="APPOINT_ID" />
+                <ScalarProperty Name="GROUP_WT_ID" ColumnName="GROUP_WT_ID" />
+                <ScalarProperty Name="DOCUMENTS_ID" ColumnName="DOCUMENTS_ID" />
+                <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
