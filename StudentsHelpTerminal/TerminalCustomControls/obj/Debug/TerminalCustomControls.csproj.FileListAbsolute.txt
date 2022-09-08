@@ -1,0 +1,55 @@
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\TerminalCustomControls.dll
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\TerminalCustomControls.pdb
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\BindingConverters.dll
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\BindingConverters.pdb
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.AssemblyReference.cache
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls_MarkupCompile.cache
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls_MarkupCompile.lref
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\Themes\Generic.baml
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.g.resources
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.Properties.Resources.resources
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.GenerateResource.cache
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.CoreCompileInputs.cache
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.CopyComplete
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.dll
+C:\Users\elena\source\repos\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\TerminalCustomControls.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\TerminalCustomControls.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\BindingConverters.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\BindingConverters.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.AssemblyReference.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls_MarkupCompile.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls_MarkupCompile.lref
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\Themes\Generic.baml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.g.resources
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.Properties.Resources.resources
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.GenerateResource.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.CoreCompileInputs.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.CopyComplete
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\WpfApp1\TerminalCustomControls\obj\Debug\TerminalCustomControls.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\bin\Debug\TerminalCustomControls.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\bin\Debug\TerminalCustomControls.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.AssemblyReference.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls_MarkupCompile.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls_MarkupCompile.lref
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\Themes\Generic.baml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.g.resources
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.Properties.Resources.resources
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.GenerateResource.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.CoreCompileInputs.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.csproj.CopyComplete
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\TerminalCustomControls\obj\Debug\TerminalCustomControls.pdb

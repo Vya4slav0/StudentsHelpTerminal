@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="ColorDark" A="255" R="0" G="0" B="139"/>
+    <SolidColorBrush x:Key="BrushDark" Color="{StaticResource ColorDark}"/>
+
+    <Color x:Key="ColorLight" A="255" R="0xE1" G="0xF5" B="0xFE"/>
+    <SolidColorBrush x:Key="BrushLight" Color="{StaticResource ColorLight}"/>
+
+    <Color x:Key="ColorClick" A="255" R="0x02" G="0x77" B="0xBD"/>
+    <SolidColorBrush x:Key="BrushClick" Color="{StaticResource ColorClick}"/>
+
+</ResourceDictionary>

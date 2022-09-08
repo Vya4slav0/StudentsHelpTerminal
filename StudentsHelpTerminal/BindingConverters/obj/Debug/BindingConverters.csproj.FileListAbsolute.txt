@@ -1,0 +1,5 @@
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\BindingConverters\bin\Debug\BindingConverters.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\BindingConverters\bin\Debug\BindingConverters.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\BindingConverters\obj\Debug\BindingConverters.csproj.CoreCompileInputs.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\BindingConverters\obj\Debug\BindingConverters.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\BindingConverters\obj\Debug\BindingConverters.pdb

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище StudentsDBModelContainer" CdmEntityContainer="StudentsDBContext">
+    <EntitySetMapping Name="STAFFs">
+      <EntityTypeMapping TypeName="StudentsDBModel.STAFF">
+        <MappingFragment StoreEntitySet="STAFF">
+          <ScalarProperty Name="ID_STAFF" ColumnName="ID_STAFF" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="MIDDLE_NAME" ColumnName="MIDDLE_NAME" />
+          <ScalarProperty Name="TABEL_ID" ColumnName="TABEL_ID" />
+          <ScalarProperty Name="PORTRET" ColumnName="PORTRET" />
+          <ScalarProperty Name="DATE_BEGIN" ColumnName="DATE_BEGIN" />
+          <ScalarProperty Name="DATE_DISMISS" ColumnName="DATE_DISMISS" />
+          <ScalarProperty Name="VALID" ColumnName="VALID" />
+          <ScalarProperty Name="TEMPORARY_ACC" ColumnName="TEMPORARY_ACC" />
+          <ScalarProperty Name="ID_FROM_1C" ColumnName="ID_FROM_1C" />
+          <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+          <ScalarProperty Name="STAFF_STATE" ColumnName="STAFF_STATE" />
+          <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+          <ScalarProperty Name="DIN_PAY_SCHEMES_ID" ColumnName="DIN_PAY_SCHEMES_ID" />
+          <ScalarProperty Name="DIN_GRAPHS_ID" ColumnName="DIN_GRAPHS_ID" />
+          <ScalarProperty Name="DIN_GRANT_MEASURE_SPENDED" ColumnName="DIN_GRANT_MEASURE_SPENDED" />
+          <ScalarProperty Name="DIN_COST_VALUE_SPENDED" ColumnName="DIN_COST_VALUE_SPENDED" />
+          <ScalarProperty Name="PATH_ACTDIR" ColumnName="PATH_ACTDIR" />
+          <ScalarProperty Name="PATH_ACTDIR_LOGIN" ColumnName="PATH_ACTDIR_LOGIN" />
+          <ScalarProperty Name="PATH_ACTDIR_DOMAIN" ColumnName="PATH_ACTDIR_DOMAIN" />
+          <ScalarProperty Name="SHORT_FIO" ColumnName="SHORT_FIO" />
+          <ScalarProperty Name="FULL_FIO" ColumnName="FULL_FIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STAFF_CARDS">
+      <EntityTypeMapping TypeName="StudentsDBModel.STAFF_CARDS">
+        <MappingFragment StoreEntitySet="STAFF_CARDS">
+          <ScalarProperty Name="ID_CARD" ColumnName="ID_CARD" />
+          <ScalarProperty Name="SYSTEM_TYPE" ColumnName="SYSTEM_TYPE" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="DATE_BEGIN" ColumnName="DATE_BEGIN" />
+          <ScalarProperty Name="DATE_END" ColumnName="DATE_END" />
+          <ScalarProperty Name="VALID" ColumnName="VALID" />
+          <ScalarProperty Name="VALID_TRANSFER" ColumnName="VALID_TRANSFER" />
+          <ScalarProperty Name="TEMPORARY_ACC" ColumnName="TEMPORARY_ACC" />
+          <ScalarProperty Name="DOCUMENTS_ID" ColumnName="DOCUMENTS_ID" />
+          <ScalarProperty Name="HISTORY_DATE" ColumnName="HISTORY_DATE" />
+          <ScalarProperty Name="PROHIBIT" ColumnName="PROHIBIT" />
+          <ScalarProperty Name="IDENTIFIER" ColumnName="IDENTIFIER" />
+          <ScalarProperty Name="TYPE_IDENTIFIER" ColumnName="TYPE_IDENTIFIER" />
+          <ScalarProperty Name="IDENTIFIER_TRANSFORMED" ColumnName="IDENTIFIER_TRANSFORMED" />
+          <ScalarProperty Name="WITHDRAW_TO_STOP_LIST" ColumnName="WITHDRAW_TO_STOP_LIST" />
+          <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STAFF_REF">
+      <EntityTypeMapping TypeName="StudentsDBModel.STAFF_REF">
+        <MappingFragment StoreEntitySet="STAFF_REF">
+          <ScalarProperty Name="ID_STAFF_REF" ColumnName="ID_STAFF_REF" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="DATE_ACTION" ColumnName="DATE_ACTION" />
+          <ScalarProperty Name="SUBDIV_ID" ColumnName="SUBDIV_ID" />
+          <ScalarProperty Name="APPOINT_ID" ColumnName="APPOINT_ID" />
+          <ScalarProperty Name="GROUP_WT_ID" ColumnName="GROUP_WT_ID" />
+          <ScalarProperty Name="DOCUMENTS_ID" ColumnName="DOCUMENTS_ID" />
+          <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

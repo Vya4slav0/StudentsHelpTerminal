@@ -25,3 +25,15 @@ D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\Students
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.CopyComplete
 D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal.csproj.AssemblyReference.cache
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\StudentsHelpTerminal_Content.g.cs
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\BindingConverters.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\TerminalCustomControls.dll
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\BindingConverters.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\TerminalCustomControls.pdb
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\Resources\Themes\BlueTheme.baml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\Resources\Themes\GreenTheme.baml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\Resources\Themes\RedTheme.baml
+D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\obj\Debug\App.baml

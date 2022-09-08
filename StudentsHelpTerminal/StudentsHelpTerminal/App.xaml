@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:StudentsHelpTerminal"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary x:Name="Theme" Source="Resources\Themes\BlueTheme.xaml"/>
     </Application.Resources>
 </Application>

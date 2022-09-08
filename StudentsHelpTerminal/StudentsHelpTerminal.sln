@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsHelpTerminal", "StudentsHelpTerminal\StudentsHelpTerminal.csproj", "{BB853C82-1AD2-48FB-9E33-0E74A6701992}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalCustomControls", "TerminalCustomControls\TerminalCustomControls.csproj", "{3C0B7B2E-DBB6-4EA3-AF0D-EC5F36B58827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingConverters", "BindingConverters\BindingConverters.csproj", "{0664BBCB-5727-4840-9859-040AFDE55B0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{BB853C82-1AD2-48FB-9E33-0E74A6701992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB853C82-1AD2-48FB-9E33-0E74A6701992}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB853C82-1AD2-48FB-9E33-0E74A6701992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C0B7B2E-DBB6-4EA3-AF0D-EC5F36B58827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C0B7B2E-DBB6-4EA3-AF0D-EC5F36B58827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C0B7B2E-DBB6-4EA3-AF0D-EC5F36B58827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C0B7B2E-DBB6-4EA3-AF0D-EC5F36B58827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0664BBCB-5727-4840-9859-040AFDE55B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0664BBCB-5727-4840-9859-040AFDE55B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0664BBCB-5727-4840-9859-040AFDE55B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0664BBCB-5727-4840-9859-040AFDE55B0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

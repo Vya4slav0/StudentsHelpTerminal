@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище StudentsDBModel" Provider="FirebirdSql.Data.FirebirdClient" ProviderManifestToken="2.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="ID_STAFF" />
+    </Key>
+    <Property Name="ID_STAFF" Type="int" Nullable="false" />
+    <Property Name="LAST_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+    <Property Name="FIRST_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+    <Property Name="MIDDLE_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+    <Property Name="TABEL_ID" Type="varchar" MaxLength="20" Unicode="true" />
+    <Property Name="PORTRET" Type="blob" />
+    <Property Name="DATE_BEGIN" Type="date" Nullable="false" />
+    <Property Name="DATE_DISMISS" Type="date" />
+    <Property Name="VALID" Type="int" Nullable="false" />
+    <Property Name="TEMPORARY_ACC" Type="int" Nullable="false" />
+    <Property Name="ID_FROM_1C" Type="varchar" MaxLength="38" Unicode="true" />
+    <Property Name="DELETED" Type="int" Nullable="false" />
+    <Property Name="STAFF_STATE" Type="int" Nullable="false" />
+    <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
+    <Property Name="DIN_PAY_SCHEMES_ID" Type="int" Nullable="false" />
+    <Property Name="DIN_GRAPHS_ID" Type="int" Nullable="false" />
+    <Property Name="DIN_GRANT_MEASURE_SPENDED" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="DIN_COST_VALUE_SPENDED" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="PATH_ACTDIR" Type="varchar" MaxLength="255" Unicode="true" />
+    <Property Name="PATH_ACTDIR_LOGIN" Type="varchar" MaxLength="1024" Unicode="true" />
+    <Property Name="PATH_ACTDIR_DOMAIN" Type="varchar" MaxLength="255" Unicode="true" />
+    <Property Name="SHORT_FIO" Type="varchar" MaxLength="32765" Unicode="true" StoreGeneratedPattern="Computed" />
+    <Property Name="FULL_FIO" Type="varchar" MaxLength="32765" Unicode="true" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="STAFF_CARDS">
+    <Key>
+      <PropertyRef Name="ID_CARD" />
+    </Key>
+    <Property Name="ID_CARD" Type="int" Nullable="false" />
+    <Property Name="SYSTEM_TYPE" Type="int" Nullable="false" />
+    <Property Name="STAFF_ID" Type="int" />
+    <Property Name="DATE_BEGIN" Type="timestamp" Nullable="false" />
+    <Property Name="DATE_END" Type="timestamp" Nullable="false" />
+    <Property Name="VALID" Type="int" Nullable="false" />
+    <Property Name="VALID_TRANSFER" Type="int" Nullable="false" />
+    <Property Name="TEMPORARY_ACC" Type="int" Nullable="false" />
+    <Property Name="DOCUMENTS_ID" Type="int" />
+    <Property Name="HISTORY_DATE" Type="timestamp" Nullable="false" />
+    <Property Name="PROHIBIT" Type="int" Nullable="false" />
+    <Property Name="IDENTIFIER" Type="bigint" />
+    <Property Name="TYPE_IDENTIFIER" Type="int" Nullable="false" />
+    <Property Name="IDENTIFIER_TRANSFORMED" Type="bigint" />
+    <Property Name="WITHDRAW_TO_STOP_LIST" Type="int" Nullable="false" />
+    <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
+    <Property Name="USER_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="STAFF_REF">
+    <Key>
+      <PropertyRef Name="ID_STAFF_REF" />
+    </Key>
+    <Property Name="ID_STAFF_REF" Type="int" Nullable="false" />
+    <Property Name="STAFF_ID" Type="int" Nullable="false" />
+    <Property Name="DATE_ACTION" Type="timestamp" Nullable="false" />
+    <Property Name="SUBDIV_ID" Type="int" Nullable="false" />
+    <Property Name="APPOINT_ID" Type="int" Nullable="false" />
+    <Property Name="GROUP_WT_ID" Type="int" Nullable="false" />
+    <Property Name="DOCUMENTS_ID" Type="int" />
+    <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Хранилище StudentsDBModelContainer">
+    <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="Firebird" store:Type="Tables" />
+    <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" Schema="Firebird" store:Type="Tables" />
+    <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" Schema="Firebird" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
