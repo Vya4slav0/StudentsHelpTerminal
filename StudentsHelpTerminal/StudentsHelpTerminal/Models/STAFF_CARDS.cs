@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StudentsHelpTerminal
+namespace StudentsHelpTerminal.Models
 {
     using System;
     using System.Collections.Generic;
