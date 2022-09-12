@@ -104,30 +104,32 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="STAFF.cs">
+    <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
+    <Compile Include="Models\STAFF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="STAFF_CARDS.cs">
+    <Compile Include="Models\STAFF_CARDS.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="STAFF_REF.cs">
+    <Compile Include="Models\STAFF_REF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentsDBModel.Context.cs">
+    <Compile Include="Models\StudentsDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentsDBModel.cs">
+    <Compile Include="Models\StudentsDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentsDBModel.Designer.cs">
+    <Compile Include="Models\StudentsDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -157,27 +159,25 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="StudentsDBModel.edmx">
+    <EntityDeploy Include="Models\StudentsDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StudentsDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="StudentsDBModel.edmx.diagram">
+    <None Include="Models\StudentsDBModel.edmx.diagram">
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="StudentsDBModel.Context.tt">
+    <Content Include="Models\StudentsDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StudentsDBModel.Context.cs</LastGenOutput>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="StudentsDBModel.tt">
+    <Content Include="Models\StudentsDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
       <LastGenOutput>StudentsDBModel.cs</LastGenOutput>
