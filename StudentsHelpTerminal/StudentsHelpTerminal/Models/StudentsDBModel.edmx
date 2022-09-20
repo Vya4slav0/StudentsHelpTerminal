@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище StudentsDBModel" Provider="FirebirdSql.Data.FirebirdClient" ProviderManifestToken="2.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище StudentsDBModel" Provider="FirebirdSql.Data.FirebirdClient" ProviderManifestToken="2.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="STAFF">
           <Key>
             <PropertyRef Name="ID_STAFF" />
@@ -68,13 +68,34 @@
           <Property Name="DOCUMENTS_ID" Type="int" />
           <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
         </EntityType>
+        <EntityType Name="SUBDIV_REF">
+          <Key>
+            <PropertyRef Name="ID_REF" />
+          </Key>
+          <Property Name="ID_REF" Type="int" Nullable="false" />
+          <Property Name="N_LEFT" Type="int" Nullable="false" />
+          <Property Name="N_RIGHT" Type="int" Nullable="false" />
+          <Property Name="N_LEVEL" Type="int" />
+          <Property Name="DISPLAY_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" Unicode="true" />
+          <Property Name="VISIBLE" Type="int" Nullable="false" />
+          <Property Name="ID_FROM_1C" Type="varchar" MaxLength="38" Unicode="true" />
+          <Property Name="SUBDIV_STATE" Type="int" Nullable="false" />
+          <Property Name="SUBDIV_OFFICIES" Type="clob" Unicode="true" />
+          <Property Name="STAFF_ID_CONTANT_PERSON" Type="int" />
+          <Property Name="STAFF_ID_ACCOMPANY" Type="int" />
+          <Property Name="SUBDIV_DESC" Type="clob" Unicode="true" />
+          <Property Name="PHONES" Type="varchar" MaxLength="70" Unicode="true" />
+          <Property Name="STAFF_ACCESS_PATTERN_ID" Type="int" />
+          <Property Name="GUEST_ACCESS_PATTERN_ID" Type="int" />
+        </EntityType>
         <EntityContainer Name="Хранилище StudentsDBModelContainer">
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" Schema="Firebird" store:Type="Tables" />
+          <EntitySet Name="SUBDIV_REF" EntityType="Self.SUBDIV_REF" Schema="Firebird" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StudentsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -145,7 +166,29 @@
           <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
           <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" />
           <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" />
+          <EntitySet Name="SUBDIV_REF" EntityType="StudentsDBModel.SUBDIV_REF" />
         </EntityContainer>
+        <EntityType Name="SUBDIV_REF">
+          <Key>
+            <PropertyRef Name="ID_REF" />
+          </Key>
+          <Property Name="ID_REF" Type="Int32" Nullable="false" />
+          <Property Name="N_LEFT" Type="Int32" Nullable="false" />
+          <Property Name="N_RIGHT" Type="Int32" Nullable="false" />
+          <Property Name="N_LEVEL" Type="Int32" />
+          <Property Name="DISPLAY_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VISIBLE" Type="Int32" Nullable="false" />
+          <Property Name="ID_FROM_1C" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="SUBDIV_STATE" Type="Int32" Nullable="false" />
+          <Property Name="SUBDIV_OFFICIES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STAFF_ID_CONTANT_PERSON" Type="Int32" />
+          <Property Name="STAFF_ID_ACCOMPANY" Type="Int32" />
+          <Property Name="SUBDIV_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONES" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="STAFF_ACCESS_PATTERN_ID" Type="Int32" />
+          <Property Name="GUEST_ACCESS_PATTERN_ID" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -215,6 +258,28 @@
                 <ScalarProperty Name="GROUP_WT_ID" ColumnName="GROUP_WT_ID" />
                 <ScalarProperty Name="DOCUMENTS_ID" ColumnName="DOCUMENTS_ID" />
                 <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBDIV_REF">
+            <EntityTypeMapping TypeName="StudentsDBModel.SUBDIV_REF">
+              <MappingFragment StoreEntitySet="SUBDIV_REF">
+                <ScalarProperty Name="GUEST_ACCESS_PATTERN_ID" ColumnName="GUEST_ACCESS_PATTERN_ID" />
+                <ScalarProperty Name="STAFF_ACCESS_PATTERN_ID" ColumnName="STAFF_ACCESS_PATTERN_ID" />
+                <ScalarProperty Name="PHONES" ColumnName="PHONES" />
+                <ScalarProperty Name="SUBDIV_DESC" ColumnName="SUBDIV_DESC" />
+                <ScalarProperty Name="STAFF_ID_ACCOMPANY" ColumnName="STAFF_ID_ACCOMPANY" />
+                <ScalarProperty Name="STAFF_ID_CONTANT_PERSON" ColumnName="STAFF_ID_CONTANT_PERSON" />
+                <ScalarProperty Name="SUBDIV_OFFICIES" ColumnName="SUBDIV_OFFICIES" />
+                <ScalarProperty Name="SUBDIV_STATE" ColumnName="SUBDIV_STATE" />
+                <ScalarProperty Name="ID_FROM_1C" ColumnName="ID_FROM_1C" />
+                <ScalarProperty Name="VISIBLE" ColumnName="VISIBLE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+                <ScalarProperty Name="N_LEVEL" ColumnName="N_LEVEL" />
+                <ScalarProperty Name="N_RIGHT" ColumnName="N_RIGHT" />
+                <ScalarProperty Name="N_LEFT" ColumnName="N_LEFT" />
+                <ScalarProperty Name="ID_REF" ColumnName="ID_REF" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

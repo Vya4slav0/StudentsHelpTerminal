@@ -28,5 +28,6 @@ namespace StudentsHelpTerminal.Models
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<STAFF_CARDS> STAFF_CARDS { get; set; }
         public virtual DbSet<STAFF_REF> STAFF_REF { get; set; }
+        public virtual DbSet<SUBDIV_REF> SUBDIV_REF { get; set; }
     }
 }
