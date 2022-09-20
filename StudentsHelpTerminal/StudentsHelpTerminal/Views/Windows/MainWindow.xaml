@@ -51,8 +51,6 @@
 
             <!--PHOTO-->
             <Border BorderBrush="DarkBlue" BorderThickness="3"
-                        Background="AliceBlue"
-                        Opacity="0.7"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Margin="0 0 15 0"
@@ -61,7 +59,10 @@
                                         Converter={StaticResource DivideByConverter}, 
                                         ConverterParameter='1,33'}"
                         Height="auto">
-                <Image Source="{Binding Path=Photo}"/>
+                <Border.Background>
+                    <SolidColorBrush Color="AliceBlue" Opacity="0.7"/>
+                </Border.Background>
+                <Image Source="{Binding Path=Photo}" Stretch="UniformToFill"/>
             </Border>
 
             <!--TEXT INFO-->
@@ -74,7 +75,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="1">
                     <TextBlock Text="{Binding Path=Surname}" FontSize="30" Foreground="DarkBlue" FontWeight="Bold"/>
