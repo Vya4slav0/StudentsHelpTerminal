@@ -5,20 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Media.Imaging;
+using System.IO;
+using StudentsHelpTerminal.Models;
 
 namespace StudentsHelpTerminal.ViewModels
 {
     internal class MainWindowViewModel : Base.ViewModelBase
     {
-        SerialPort CardReaderSerialPort = new SerialPort("COM6", 9600);
+        SerialPort CardReaderSerialPort = new SerialPort("COM4", 9600);
         public MainWindowViewModel()
         {
+            CardReaderSerialPort.Open();
             CardReaderSerialPort.DataReceived += (s, a) =>
             {
-                
+                //Fill view model properties
+                int cardId = Convert.ToInt32(CardReaderSerialPort.ReadLine());
+                using (StudentsDBContext db = new StudentsDBContext())
+                {
+                    int? staffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
+                    if (staffId is null || staffId.Value == 0) return; // mb i need to notify smth about this
+                    STAFF student = db.STAFFs.First(st => st.ID_STAFF == staffId);
+                    Name = student.FIRST_NAME;
+                    Surname = student.MIDDLE_NAME;
+                    #region Converting photo from blob to BitmapImage
+                    BitmapImage image = new BitmapImage();
+                    MemoryStream photoMemoryStream = new MemoryStream(student.PORTRET);
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = photoMemoryStream;
+                    image.EndInit();
+                    image.Freeze();
+                    #endregion
+                    Photo = image;
+                    Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME;
+                    CardNum = cardId.ToString();
+                }
             };
-            Name = "SampleName";
-            Surname = "SampleSurname";
         }
         #region Properties
 
