@@ -10,7 +10,6 @@ namespace StudentsHelpTerminal.Views.Windows
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ViewModels.MainWindowViewModel();
         }
     }
 }
