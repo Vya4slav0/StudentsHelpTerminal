@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <Color x:Key="ColorDark" A="255" R="0" G="0" B="139"/>
+    <!--#00B0FC-->
+    <!--was blue = 139-->
+    <Color x:Key="ColorDark" A="255" R="0" G="0x00" B="139"/>
     <SolidColorBrush x:Key="BrushDark" Color="{StaticResource ColorDark}"/>
 
     <Color x:Key="ColorLight" A="255" R="0xE1" G="0xF5" B="0xFE"/>
