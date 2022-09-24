@@ -7,12 +7,16 @@ using System.IO.Ports;
 using System.Windows.Media.Imaging;
 using System.IO;
 using StudentsHelpTerminal.Models;
+using System.Configuration;
 
 namespace StudentsHelpTerminal.ViewModels
 {
     internal class MainWindowViewModel : Base.ViewModelBase
     {
-        SerialPort CardReaderSerialPort = new SerialPort("COM4", 9600);
+        private static readonly string COMName = Properties.Settings.Default.CardReaderPortName;
+        private static readonly int COMSpeed = Properties.Settings.Default.CardReaderPortBaudRate;
+        private SerialPort CardReaderSerialPort = new SerialPort(COMName, COMSpeed);
+
         public MainWindowViewModel()
         {
             CardReaderSerialPort.Open();

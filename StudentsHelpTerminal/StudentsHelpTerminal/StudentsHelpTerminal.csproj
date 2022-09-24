@@ -105,6 +105,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
+    <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="Models\STAFF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
@@ -128,6 +129,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUBDIV_REF.cs">
+      <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
