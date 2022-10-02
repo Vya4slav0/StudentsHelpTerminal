@@ -96,6 +96,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +114,7 @@
     </Compile>
     <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
+    <Compile Include="Infrastructure\Services\ShowViewAsNewWindow.cs" />
     <Compile Include="Models\STAFF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
@@ -133,8 +142,16 @@
     <Compile Include="Models\SUBDIV_REF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainScreenPage.xaml.cs">
+      <DependentUpon>MainScreenPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

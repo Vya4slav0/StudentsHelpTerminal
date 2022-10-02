@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="StudentsHelpTerminal.Views.AdminWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
+             xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
+             mc:Ignorable="d" 
+             Height="450" Width="400">
+    <UserControl.DataContext>
+        <vm:AdminPageViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="LightBlue" Opacity="1"/>
+        </Grid.Background>
+    </Grid>
+</UserControl>
