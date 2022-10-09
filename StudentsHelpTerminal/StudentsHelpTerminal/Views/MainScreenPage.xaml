@@ -109,48 +109,27 @@
             <!--BUTTONS-->
 
             <StackPanel Grid.Column="2">
-                <custom:ButtonCuttedCorners
-                Command="{Binding Path=AdminWindowOpenCommand}" 
-                VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Height="45"
+                <StackPanel.Resources>
+                    <Style TargetType="custom:ButtonCuttedCorners">
+                        <Setter Property="Height" Value="45"/>
+                        <Setter Property="Background" Value="{StaticResource BrushLight}"/>
+                        <Setter Property="Foreground" Value="{StaticResource BrushDark}"/>
+                        <Setter Property="ClickColor" Value="{StaticResource ColorClick}"/>
+                        <Setter Property="FontFamily" Value="Arial"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DivideByConverter}, ConverterParameter=2}"/>
+                        <Setter Property="Margin" Value="0 0 0 10"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </StackPanel.Resources>
                 
-                Content="HELLO WORLD"
-                Foreground="{StaticResource BrushDark}"
-                Background="{StaticResource BrushLight}"
-                FontSize="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DivideByConverter}, ConverterParameter=2}" 
-                FontWeight="Bold" FontFamily="Arial"
-                Margin="0,0,0,10"
-                ClickColor="{StaticResource ColorClick}"/>
-
-                <custom:ButtonCuttedCorners
-                VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Height="45"
-                Content="HELLO WORLD"
-                Foreground="{StaticResource BrushDark}"
-                Background="{StaticResource BrushLight}"
-                FontSize="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DivideByConverter}, ConverterParameter=2}" 
-                FontWeight="Bold" FontFamily="Arial"
-                Margin="0,0,0,10"
-                ClickColor="{StaticResource ColorClick}">
-                </custom:ButtonCuttedCorners>
-
-                <custom:ButtonCuttedCorners
-                VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Height="45"
-                Content="HELLO WORLD"
-                Foreground="{StaticResource BrushDark}"
-                Background="{StaticResource BrushLight}"
-                FontSize="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DivideByConverter}, ConverterParameter=2}" 
-                FontWeight="Bold" FontFamily="Arial"
-                Margin="0,0,0,10"
-                ClickColor="{StaticResource ColorClick}">
-                </custom:ButtonCuttedCorners>
+                <custom:ButtonCuttedCorners Content="Карта колледжа"/>
+                <custom:ButtonCuttedCorners Content="Очитстить информацию"/>
+                <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding Path=AdminWindowOpenCommand}"
+                />
             </StackPanel>
         </Grid>
-
 
     </Grid>
 </Page>
