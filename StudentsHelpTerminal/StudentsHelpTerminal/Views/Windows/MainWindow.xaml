@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentsHelpTerminal.Views.Windows"
+        xmlns:views="clr-namespace:StudentsHelpTerminal.Views"
         xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
         xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
         xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
@@ -11,8 +12,12 @@
         Title="MainWindow" Height="450" Width="800" Foreground="{x:Null}"
         Content="{Binding CurrentViewModel}"
         >
-    <Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>
-
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:AdminPageViewModel}">
+            <views:AdminWindow/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MainPageViewModel}">
+            <views:MainScreenPage/>
+        </DataTemplate>
+    </Window.Resources>
 </Window>

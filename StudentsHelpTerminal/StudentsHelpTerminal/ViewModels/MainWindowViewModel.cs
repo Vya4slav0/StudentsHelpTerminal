@@ -11,21 +11,25 @@ using System.Configuration;
 using System.Windows;
 using System.Windows.Input;
 using StudentsHelpTerminal.Infrastructure.Commands;
+using System.ComponentModel;
+using StudentsHelpTerminal.Infrastructure.Stores;
 
 namespace StudentsHelpTerminal.ViewModels
 {
     internal class MainWindowViewModel : Base.ViewModelBase
     {
+        private NavigationStore _navigationStore ;
+
         #region CurrentViewModel property
-        private Base.ViewModelBase _CurrentViewModel;
+
         public Base.ViewModelBase CurrentViewModel { 
-            get { return _CurrentViewModel; }
-            set { Set(ref _CurrentViewModel, value); }
+            get { return _navigationStore.CurrentViewModel; }
         }
         #endregion
-        public MainWindowViewModel()
+        public MainWindowViewModel(NavigationStore navigationStore)
         {
-            CurrentViewModel = new MainPageViewModel();
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += () => { OnPropertyChanged(nameof(CurrentViewModel)); };
         }
     }
 }

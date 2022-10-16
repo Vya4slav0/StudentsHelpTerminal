@@ -1,4 +1,5 @@
 ﻿using StudentsHelpTerminal.Infrastructure.Commands;
+using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Models;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ namespace StudentsHelpTerminal.ViewModels
 {
     internal class MainPageViewModel : Base.ViewModelBase
     {
+        private readonly NavigationStore _navigationStore;
         private static readonly string COMName = Properties.Settings.Default.CardReaderPortName;
         private static readonly int COMSpeed = Properties.Settings.Default.CardReaderPortBaudRate;
         private SerialPort CardReaderSerialPort = new SerialPort(COMName, COMSpeed);
 
-        public MainPageViewModel()
+        public MainPageViewModel(NavigationStore navigationStore)
         {
+            _navigationStore = navigationStore;
             //CardReaderSerialPort.Open();
             CardReaderSerialPort.DataReceived += (s, a) =>
             {
@@ -46,7 +49,7 @@ namespace StudentsHelpTerminal.ViewModels
                     CardNum = cardId.ToString();
                 }
             };
-            AdminWindowOpenCommand = new RelayCommand(OnAdminWindowOpenCommandExecute);
+            AdminWindowOpenCommand = new NavigationCommand(_navigationStore, new AdminPageViewModel());
         }
         #region Properties
 
@@ -113,7 +116,6 @@ namespace StudentsHelpTerminal.ViewModels
 
         #region AdminWindowOpen
         public ICommand AdminWindowOpenCommand { get; }
-        private void OnAdminWindowOpenCommandExecute(object p) { }
         #endregion
 
         #endregion

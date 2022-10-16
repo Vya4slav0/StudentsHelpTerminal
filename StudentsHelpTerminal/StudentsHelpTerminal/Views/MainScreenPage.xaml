@@ -12,9 +12,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainScreenPage">
 
-    <Page.DataContext>
-        <vm:MainPageViewModel/>
-    </Page.DataContext>
+    
     
     <Page.Resources>
         <conv:DivideByConverter x:Key="DivideByConverter"/>
