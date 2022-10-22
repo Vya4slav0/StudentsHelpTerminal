@@ -9,13 +9,16 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
 {
     internal class NavigationStore
     {
+        public ViewModelBase PrevViewModel { get; private set; }
+
         private ViewModelBase _CurrentViewModel;
 
         public ViewModelBase CurrentViewModel
         {
             get { return _CurrentViewModel; }
             set 
-            { 
+            {
+                PrevViewModel = _CurrentViewModel;
                 _CurrentViewModel = value;
                 CurrentViewModelChanged?.Invoke();
             }

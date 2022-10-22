@@ -18,39 +18,29 @@ namespace StudentsHelpTerminal.ViewModels
         private readonly NavigationStore _navigationStore;
         private static readonly string COMName = Properties.Settings.Default.CardReaderPortName;
         private static readonly int COMSpeed = Properties.Settings.Default.CardReaderPortBaudRate;
-        private SerialPort CardReaderSerialPort = new SerialPort(COMName, COMSpeed);
+        private readonly SerialPort CardReaderSerialPort = new SerialPort(COMName, COMSpeed);
 
         public MainPageViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
-            //CardReaderSerialPort.Open();
-            CardReaderSerialPort.DataReceived += (s, a) =>
+            try { CardReaderSerialPort.Open(); }
+            catch (IOException)
             {
-                //Fill view model properties
-                int cardId = Convert.ToInt32(CardReaderSerialPort.ReadLine());
-                using (StudentsDBContext db = new StudentsDBContext())
-                {
-                    int? staffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
-                    if (staffId is null || staffId.Value == 0) return; // mb i need to notify smth about this
-                    STAFF student = db.STAFFs.First(st => st.ID_STAFF == staffId);
-                    Name = student.FIRST_NAME;
-                    Surname = student.MIDDLE_NAME;
-                    #region Converting photo from blob to BitmapImage
-                    BitmapImage image = new BitmapImage();
-                    MemoryStream photoMemoryStream = new MemoryStream(student.PORTRET);
-                    image.BeginInit();
-                    image.CacheOption = BitmapCacheOption.OnLoad;
-                    image.StreamSource = photoMemoryStream;
-                    image.EndInit();
-                    image.Freeze();
-                    #endregion
-                    Photo = image;
-                    Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME;
-                    CardNum = cardId.ToString();
-                }
-            };
-            AdminWindowOpenCommand = new NavigationCommand(_navigationStore, new AdminPageViewModel());
+                //TODO: make port is not connected alert
+                #if !DEBUG
+                
+                #endif
+            }
+
+            CardReaderSerialPort.DataReceived += CardReaderSerialPort_DataReceived;
+
+            #region Commands definition
+
+            AdminWindowOpenCommand = new NavigationCommand(_navigationStore, new AdminPageViewModel(_navigationStore));
+
+            #endregion
         }
+
         #region Properties
 
         #region Name
@@ -63,8 +53,8 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Name, value);
             }
         }
-        #endregion
-        #region Surname
+#endregion
+#region Surname
         private string _Surname;
         public string Surname
         {
@@ -74,8 +64,8 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Surname, value);
             }
         }
-        #endregion
-        #region Group
+#endregion
+#region Group
         private string _Group;
         public string Group
         {
@@ -85,8 +75,8 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Group, value);
             }
         }
-        #endregion
-        #region CardNum
+#endregion
+#region CardNum
         private string _CardNum;
         public string CardNum
         {
@@ -96,8 +86,8 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _CardNum, value);
             }
         }
-        #endregion
-        #region Photo
+#endregion
+#region Photo
         private BitmapImage _Photo;
         public BitmapImage Photo
         {
@@ -107,17 +97,40 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Photo, value);
             }
         }
-        #endregion
+#endregion
 
-        #endregion
-
+#endregion
 
         #region Commands
 
-        #region AdminWindowOpen
         public ICommand AdminWindowOpenCommand { get; }
-        #endregion
 
         #endregion
+
+        private void CardReaderSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            //Fill view model properties
+            int cardId = Convert.ToInt32(CardReaderSerialPort.ReadLine());
+            using (StudentsDBContext db = new StudentsDBContext())
+            {
+                int? staffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
+                if (staffId is null || staffId.Value == 0) return; // mb i need to notify smth about this
+                STAFF student = db.STAFFs.First(st => st.ID_STAFF == staffId);
+                Name = student.FIRST_NAME;
+                Surname = student.LAST_NAME;
+                #region Converting photo from blob to BitmapImage
+                BitmapImage image = new BitmapImage();
+                MemoryStream photoMemoryStream = new MemoryStream(student.PORTRET);
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = photoMemoryStream;
+                image.EndInit();
+                image.Freeze();
+                #endregion
+                Photo = image;
+                Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME;
+                CardNum = cardId.ToString();
+            }
+        }
     }
 }

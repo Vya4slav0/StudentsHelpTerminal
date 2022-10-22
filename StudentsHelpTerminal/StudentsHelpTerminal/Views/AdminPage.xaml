@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StudentsHelpTerminal.Views.AdminWindow"
+﻿<Page x:Class="StudentsHelpTerminal.Views.AdminWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,63 @@
              xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
              xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
              mc:Ignorable="d" 
-             Height="450" Width="400">
-    <UserControl.DataContext>
-        <vm:AdminPageViewModel/>
-    </UserControl.DataContext>
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="LightBlue" Opacity="1"/>
-        </Grid.Background>
+        <Grid.Resources>
+            <Style TargetType="GroupBox">
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+        </Grid.Resources>
+
+        <GroupBox Header="База данных">
+            
+        </GroupBox>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="StackPanel">
+                    <Style.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="5 2"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Grid.Resources>
+            
+            <GroupBox Header="Поиск и сортировка" Grid.Column="0">
+                
+            </GroupBox>
+
+            <GroupBox Header="Работа с данными" Grid.Column="1">
+                
+                <StackPanel>
+                    <Button Content=""/>
+                    <Button Content=""/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Работа с приложением" Grid.Column="2">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Button Content="Открыть файл конфигурации"/>
+                        <Button Content="Открыть лог пользователей"/>
+                        <Button Content="Очистить лог пользователей"/>
+                        <Button Content="Завершить работу" Command="{Binding CloseAppCommand}"/>
+                        <Button Content="Назад" Command="{Binding BackToProfilePageCommand}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </GroupBox>
+        </Grid>
     </Grid>
-</UserControl>
+</Page>

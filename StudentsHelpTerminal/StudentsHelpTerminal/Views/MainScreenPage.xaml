@@ -8,12 +8,9 @@
       xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
       mc:Ignorable="d" 
-      
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainScreenPage">
 
-    
-    
     <Page.Resources>
         <conv:DivideByConverter x:Key="DivideByConverter"/>
     </Page.Resources>

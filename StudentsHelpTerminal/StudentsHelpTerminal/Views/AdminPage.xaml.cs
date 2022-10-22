@@ -18,7 +18,7 @@ namespace StudentsHelpTerminal.Views
     /// <summary>
     /// Логика взаимодействия для AdminWindow.xaml
     /// </summary>
-    public partial class AdminWindow : UserControl
+    public partial class AdminWindow : Page
     {
         public AdminWindow()
         {
