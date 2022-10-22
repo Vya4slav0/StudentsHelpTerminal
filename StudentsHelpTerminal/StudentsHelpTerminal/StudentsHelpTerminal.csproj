@@ -145,6 +145,7 @@
     <Compile Include="Models\SUBDIV_REF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table.cs" />
     <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />

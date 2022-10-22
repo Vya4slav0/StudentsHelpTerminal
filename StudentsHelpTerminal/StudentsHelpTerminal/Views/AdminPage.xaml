@@ -20,7 +20,16 @@
         </Grid.Resources>
 
         <GroupBox Header="База данных">
-            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Column="0" ItemsSource="{Binding SelectedTable.Items}"/>
+                <ListBox MinWidth="100" Grid.Column="1" ItemsSource="{Binding DBTables}" SelectedItem="{Binding SelectedTable}" DisplayMemberPath="Name"/>
+
+
+            </Grid>
         </GroupBox>
         
         <Grid Grid.Row="1">

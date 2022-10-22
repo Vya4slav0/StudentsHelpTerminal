@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Infrastructure.Commands;
+using StudentsHelpTerminal.Models;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -18,9 +19,23 @@ namespace StudentsHelpTerminal.ViewModels
             _navigationStore = navigationStore;
             BackToProfilePageCommand = new NavigateBackCommand(_navigationStore);
             CloseAppCommand = new RelayCommand(_closeAppCommandExecute);
+            LoadDBTables();
         }
 
         #region Properties
+        public List<Table> DBTables { get; private set; }
+
+        #region SelectedTable
+
+        private Table _selectedTable;
+
+        public Table SelectedTable
+        {
+            get { return _selectedTable; }
+            set { Set(ref _selectedTable, value); }
+        }
+
+        #endregion
 
         #endregion
 
@@ -34,5 +49,19 @@ namespace StudentsHelpTerminal.ViewModels
         #endregion
 
         #endregion
+
+        private void LoadDBTables()
+        {
+            using (StudentsDBContext db = new StudentsDBContext())
+            {
+                Table staff = new Table() { Name = "STAFF", Items = db.STAFFs.ToArray()};
+                Table staffRef = new Table() { Name = "STAFF_REF", Items = db.STAFF_REF.ToArray()};
+
+                DBTables = new List<Table>()
+                {
+                    staff, staffRef
+                };
+            }
+        }
     }
 }
