@@ -127,6 +127,9 @@
     <Compile Include="Models\STAFF_REF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\STOP_CARDS_DESCRIPTION.cs">
+      <DependentUpon>StudentsDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StudentsDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

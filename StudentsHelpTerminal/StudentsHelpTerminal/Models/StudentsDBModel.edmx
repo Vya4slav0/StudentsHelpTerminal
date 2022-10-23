@@ -68,6 +68,15 @@
           <Property Name="DOCUMENTS_ID" Type="int" />
           <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
         </EntityType>
+        <EntityType Name="STOP_CARDS_DESCRIPTION">
+          <Key>
+            <PropertyRef Name="ID_STOP_CARDS" />
+          </Key>
+          <Property Name="ID_STOP_CARDS" Type="int" Nullable="false" />
+          <Property Name="CARD_ID" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="1024" Unicode="true" />
+          <Property Name="POSSIBLE_RECALL" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="SUBDIV_REF">
           <Key>
             <PropertyRef Name="ID_REF" />
@@ -93,6 +102,7 @@
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" Schema="Firebird" store:Type="Tables" />
+          <EntitySet Name="STOP_CARDS_DESCRIPTION" EntityType="Self.STOP_CARDS_DESCRIPTION" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="SUBDIV_REF" EntityType="Self.SUBDIV_REF" Schema="Firebird" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -167,6 +177,7 @@
           <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" />
           <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" />
           <EntitySet Name="SUBDIV_REF" EntityType="StudentsDBModel.SUBDIV_REF" />
+          <EntitySet Name="STOP_CARDS_DESCRIPTION" EntityType="StudentsDBModel.STOP_CARDS_DESCRIPTION" />
         </EntityContainer>
         <EntityType Name="SUBDIV_REF">
           <Key>
@@ -188,6 +199,15 @@
           <Property Name="PHONES" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="STAFF_ACCESS_PATTERN_ID" Type="Int32" />
           <Property Name="GUEST_ACCESS_PATTERN_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="STOP_CARDS_DESCRIPTION">
+          <Key>
+            <PropertyRef Name="ID_STOP_CARDS" />
+          </Key>
+          <Property Name="ID_STOP_CARDS" Type="Int32" Nullable="false" />
+          <Property Name="CARD_ID" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="POSSIBLE_RECALL" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -280,6 +300,16 @@
                 <ScalarProperty Name="N_RIGHT" ColumnName="N_RIGHT" />
                 <ScalarProperty Name="N_LEFT" ColumnName="N_LEFT" />
                 <ScalarProperty Name="ID_REF" ColumnName="ID_REF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STOP_CARDS_DESCRIPTION">
+            <EntityTypeMapping TypeName="StudentsDBModel.STOP_CARDS_DESCRIPTION">
+              <MappingFragment StoreEntitySet="STOP_CARDS_DESCRIPTION">
+                <ScalarProperty Name="POSSIBLE_RECALL" ColumnName="POSSIBLE_RECALL" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="CARD_ID" ColumnName="CARD_ID" />
+                <ScalarProperty Name="ID_STOP_CARDS" ColumnName="ID_STOP_CARDS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,6 +8,7 @@ using System.Windows.Input;
 using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Infrastructure.Commands;
 using StudentsHelpTerminal.Models;
+using System.Data.Entity;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -17,9 +18,9 @@ namespace StudentsHelpTerminal.ViewModels
         public AdminPageViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
+            navigationStore.CurrentViewModelChanged += OnAdminPageShow;
             BackToProfilePageCommand = new NavigateBackCommand(_navigationStore);
             CloseAppCommand = new RelayCommand(_closeAppCommandExecute);
-            LoadDBTables();
         }
 
         #region Properties
@@ -50,18 +51,30 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
 
-        private void LoadDBTables()
+        private async void OnAdminPageShow(Base.ViewModelBase currentVM)
         {
+            if (currentVM is AdminPageViewModel)
+            {
+                await LoadTablesAsync();
+            }
+        }
+
+        private async Task LoadTablesAsync()
+        {
+            if (DBTables != null) return;
             using (StudentsDBContext db = new StudentsDBContext())
             {
-                Table staff = new Table() { Name = "STAFF", Items = db.STAFFs.ToArray()};
-                Table staffRef = new Table() { Name = "STAFF_REF", Items = db.STAFF_REF.ToArray()};
-
                 DBTables = new List<Table>()
                 {
-                    staff, staffRef
+                    new Table() { Name = "STAFF", Items = await db.STAFFs.AsNoTracking().ToArrayAsync() },
+                    new Table() { Name = "STAFF_REF", Items = await db.STAFF_REF.AsNoTracking().ToArrayAsync() },
+                    new Table() { Name = "STAFF_CARDS", Items = await db.STAFF_CARDS.AsNoTracking().ToArrayAsync() },
+                    new Table() { Name = "SUBDIV_REF", Items = await db.SUBDIV_REF.AsNoTracking().ToArrayAsync() },
+                    new Table() { Name = "STOP_CARDS", Items = await db.STOP_CARDS_DESCRIPTION.AsNoTracking().ToArrayAsync() }
                 };
             }
+            OnPropertyChanged(nameof(DBTables));
+            SelectedTable = DBTables.First();
         }
     }
 }

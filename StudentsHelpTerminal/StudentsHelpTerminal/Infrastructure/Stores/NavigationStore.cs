@@ -20,10 +20,11 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
             {
                 PrevViewModel = _CurrentViewModel;
                 _CurrentViewModel = value;
-                CurrentViewModelChanged?.Invoke();
+                CurrentViewModelChanged?.Invoke(_CurrentViewModel);
             }
         }
 
-        public event Action CurrentViewModelChanged;
+        // Contains new view model
+        public event Action<ViewModelBase> CurrentViewModelChanged;
     }
 }

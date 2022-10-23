@@ -29,7 +29,7 @@ namespace StudentsHelpTerminal.ViewModels
         public MainWindowViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
-            _navigationStore.CurrentViewModelChanged += () => { OnPropertyChanged(nameof(CurrentViewModel)); };
+            _navigationStore.CurrentViewModelChanged += (vm) => { OnPropertyChanged(nameof(CurrentViewModel)); };
         }
     }
 }

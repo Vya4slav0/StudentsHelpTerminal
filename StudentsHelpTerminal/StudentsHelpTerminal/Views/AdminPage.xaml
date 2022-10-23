@@ -21,13 +21,21 @@
 
         <GroupBox Header="База данных">
             <Grid>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" ItemsSource="{Binding SelectedTable.Items}"/>
-                <ListBox MinWidth="100" Grid.Column="1" ItemsSource="{Binding DBTables}" SelectedItem="{Binding SelectedTable}" DisplayMemberPath="Name"/>
+                
+                <DataGrid Grid.Column="0" ItemsSource="{Binding SelectedTable.Items}" Margin="5"/>
 
+                <GroupBox Grid.Column="1" Header="Таблицы">
+                    <ListBox MinWidth="100"
+                         ItemsSource="{Binding DBTables}" 
+                         SelectedItem="{Binding SelectedTable}" 
+                         DisplayMemberPath="Name"
+                         />
+                </GroupBox>
 
             </Grid>
         </GroupBox>
