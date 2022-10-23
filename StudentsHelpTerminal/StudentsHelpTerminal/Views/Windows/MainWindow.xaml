@@ -11,6 +11,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Foreground="{x:Null}"
         Content="{Binding CurrentViewModel}"
+        WindowStyle="None"
+        WindowState="Maximized"
         >
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:AdminPageViewModel}">
