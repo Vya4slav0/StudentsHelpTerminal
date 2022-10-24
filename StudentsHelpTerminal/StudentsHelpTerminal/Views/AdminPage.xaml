@@ -72,9 +72,9 @@
             <GroupBox Header="Работа с приложением" Grid.Column="2">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <Button Content="Открыть файл конфигурации"/>
-                        <Button Content="Открыть лог пользователей"/>
-                        <Button Content="Очистить лог пользователей"/>
+                        <Button Content="Открыть файл конфигурации" Command="{Binding OpenConfigFileCommand}"/>
+                        <Button Content="Открыть лог пользователей" Command="{Binding OpenUsersLogCommand}"/>
+                        <Button Content="Очистить лог пользователей" Command="{Binding ClearUsersLogCommand}"/>
                         <Button Content="Завершить работу" Command="{Binding CloseAppCommand}"/>
                         <Button Content="Назад" Command="{Binding BackToProfilePageCommand}"/>
                     </StackPanel>

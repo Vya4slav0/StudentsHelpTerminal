@@ -9,6 +9,8 @@ using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Infrastructure.Commands;
 using StudentsHelpTerminal.Models;
 using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -19,8 +21,12 @@ namespace StudentsHelpTerminal.ViewModels
         {
             _navigationStore = navigationStore;
             navigationStore.CurrentViewModelChanged += OnAdminPageShow;
+
             BackToProfilePageCommand = new NavigateBackCommand(_navigationStore);
-            CloseAppCommand = new RelayCommand(_closeAppCommandExecute);
+            CloseAppCommand = new RelayCommand(CloseAppCommandExecute);
+            OpenConfigFileCommand = new RelayCommand(OpenConfigFileCommandExecute);
+            OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
+            ClearUsersLogCommand = new RelayCommand(ClearUsersLogCommandExecute, ClearUsersLogCommandCanExecute);
         }
 
         #region Properties
@@ -44,9 +50,42 @@ namespace StudentsHelpTerminal.ViewModels
 
         public ICommand BackToProfilePageCommand { get; }
 
+        #region ClearUsersLogCommand
+
+        public ICommand ClearUsersLogCommand { get; }
+        // TODO: add ability to set path to log in config
+        private void ClearUsersLogCommandExecute(object p)
+        {
+            StreamWriter usersLogFile = new StreamWriter(@".\users.log");
+            usersLogFile.Write(string.Empty);
+            usersLogFile.Close();
+            // TODO: add confirmation
+        }
+        private bool ClearUsersLogCommandCanExecute(object p)
+        {
+            return File.Exists(@".\users.log");
+        }
+
+        #endregion
+
+        #region OpenUsersLogCommand
+
+        public ICommand OpenUsersLogCommand { get; }
+        // TODO: add ability to set path to log in config and check log file exist
+        private void OpenUsersLogCommandExecute(object p) => Process.Start(@".\users.log");
+
+        #endregion
+
+        #region OpenConfigFileCommand
+
+        public ICommand OpenConfigFileCommand { get; }
+        private void OpenConfigFileCommandExecute(object p) => Process.Start(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+        
+        #endregion
+
         #region CloseAppCommand
         public ICommand CloseAppCommand { get; }
-        private void _closeAppCommandExecute(object p) => App.Current.Shutdown();
+        private void CloseAppCommandExecute(object p) => App.Current.Shutdown();
         #endregion
 
         #endregion
