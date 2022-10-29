@@ -100,6 +100,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\IdlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +120,7 @@
     <Compile Include="Infrastructure\Commands\NavigateBackCommand.cs" />
     <Compile Include="Infrastructure\Commands\NavigationCommand.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
+    <Compile Include="Infrastructure\Stores\IOPortsStore.cs" />
     <Compile Include="Infrastructure\Stores\NavigationStore.cs" />
     <Compile Include="Infrastructure\Services\ShowViewAsNewWindow.cs" />
     <Compile Include="Models\STAFF.cs">
@@ -151,10 +156,14 @@
     <Compile Include="Models\Table.cs" />
     <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\IdlePageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdlePage.xaml.cs">
+      <DependentUpon>IdlePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainScreenPage.xaml.cs">
       <DependentUpon>MainScreenPage.xaml</DependentUpon>

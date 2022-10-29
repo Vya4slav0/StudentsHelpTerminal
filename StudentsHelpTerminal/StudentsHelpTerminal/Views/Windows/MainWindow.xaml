@@ -15,11 +15,18 @@
         WindowState="Maximized"
         >
     <Window.Resources>
+        
         <DataTemplate DataType="{x:Type vm:AdminPageViewModel}">
             <views:AdminWindow/>
         </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:MainPageViewModel}">
             <views:MainScreenPage/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:IdlePageViewModel}">
+            <views:IdlePage/>
+        </DataTemplate>
+        
     </Window.Resources>
 </Window>

@@ -120,8 +120,8 @@
                 </StackPanel.Resources>
                 
                 <custom:ButtonCuttedCorners Content="Карта колледжа"/>
-                <custom:ButtonCuttedCorners Content="Очитстить информацию"/>
-                <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding Path=AdminWindowOpenCommand}"
+                <custom:ButtonCuttedCorners Content="Очитстить информацию" Command="{Binding ToIdlePageCommand}"/>
+                <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}"
                 />
             </StackPanel>
         </Grid>

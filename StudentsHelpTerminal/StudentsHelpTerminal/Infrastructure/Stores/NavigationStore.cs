@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudentsHelpTerminal.ViewModels.Base;
+using StudentsHelpTerminal.ViewModels;
 
 namespace StudentsHelpTerminal.Infrastructure.Stores
 {
     internal class NavigationStore
     {
+        public IdlePageViewModel CurrentIdlePageViewModel { get; set; }
         public ViewModelBase PrevViewModel { get; private set; }
 
         private ViewModelBase _CurrentViewModel;

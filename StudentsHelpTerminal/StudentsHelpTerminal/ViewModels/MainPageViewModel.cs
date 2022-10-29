@@ -16,29 +16,20 @@ namespace StudentsHelpTerminal.ViewModels
     internal class MainPageViewModel : Base.ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
-        private static readonly string COMName = Properties.Settings.Default.CardReaderPortName;
-        private static readonly int COMSpeed = Properties.Settings.Default.CardReaderPortBaudRate;
-        private readonly SerialPort CardReaderSerialPort = new SerialPort(COMName, COMSpeed);
 
-        public MainPageViewModel(NavigationStore navigationStore)
+        public MainPageViewModel(NavigationStore navigationStore, int cardId)
         {
             _navigationStore = navigationStore;
-            try { CardReaderSerialPort.Open(); }
-            catch (IOException)
-            {
-                //TODO: make port is not connected alert
-                #if !DEBUG
-                
-                #endif
-            }
-
-            CardReaderSerialPort.DataReceived += CardReaderSerialPort_DataReceived;
 
             #region Commands definition
 
             AdminWindowOpenCommand = new NavigationCommand(_navigationStore, new AdminPageViewModel(_navigationStore));
 
+            ToIdlePageCommand = new NavigationCommand(_navigationStore, _navigationStore.CurrentIdlePageViewModel);
+
             #endregion
+
+            FillPropertiesByCardId(cardId);
         }
 
         #region Properties
@@ -97,20 +88,26 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Photo, value);
             }
         }
-#endregion
 
-#endregion
+        #endregion
+
+        #endregion
 
         #region Commands
 
         public ICommand AdminWindowOpenCommand { get; }
 
+        public ICommand ToIdlePageCommand { get; }
+
         #endregion
 
         private void CardReaderSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            //Fill view model properties
-            int cardId = Convert.ToInt32(CardReaderSerialPort.ReadLine());
+            //FillPropertiesByCardId(Convert.ToInt32(CardReaderSerialPort.ReadLine()));            
+        }
+
+        private void FillPropertiesByCardId(int cardId)
+        {
             using (StudentsDBContext db = new StudentsDBContext())
             {
                 int? staffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
@@ -118,6 +115,7 @@ namespace StudentsHelpTerminal.ViewModels
                 STAFF student = db.STAFFs.First(st => st.ID_STAFF == staffId);
                 Name = student.FIRST_NAME;
                 Surname = student.LAST_NAME;
+
                 #region Converting photo from blob to BitmapImage
                 BitmapImage image = new BitmapImage();
                 MemoryStream photoMemoryStream = new MemoryStream(student.PORTRET);
@@ -127,6 +125,7 @@ namespace StudentsHelpTerminal.ViewModels
                 image.EndInit();
                 image.Freeze();
                 #endregion
+
                 Photo = image;
                 Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME;
                 CardNum = cardId.ToString();
