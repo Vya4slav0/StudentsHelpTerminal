@@ -11,6 +11,9 @@ using StudentsHelpTerminal.Models;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Data;
+using System.Windows.Threading;
+using System.Windows.Controls;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -27,10 +30,61 @@ namespace StudentsHelpTerminal.ViewModels
             OpenConfigFileCommand = new RelayCommand(OpenConfigFileCommandExecute);
             OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
             ClearUsersLogCommand = new RelayCommand(ClearUsersLogCommandExecute, ClearUsersLogCommandCanExecute);
+
+            SearchCommand = new RelayCommand(SearchCommandExecute);
         }
 
         #region Properties
         public List<Table> DBTables { get; private set; }
+
+        #region Sorting
+
+        private DataGridTextColumn _SortBy;
+
+        public DataGridTextColumn SortBy
+        {
+            get { return _SortBy; }
+            set { if(Set(ref _SortBy, value)) EnableSort = EnableSort; }
+        }
+
+        private bool _ReverseSort;
+
+        public bool ReverseSort 
+        { 
+            get { return _ReverseSort; }
+            set { if(Set(ref _ReverseSort, value)) EnableSort = EnableSort; } 
+        }
+
+        private bool _EnableSort;
+        
+        public bool EnableSort 
+        { 
+            get { return _EnableSort; }
+            set
+            {
+                Set(ref _EnableSort, value);
+                SelectedTableView.SortDescriptions.Clear();
+                if (value)
+                SelectedTableView.SortDescriptions.Add(
+                    new SortDescription(SortBy.Header.ToString(), ReverseSort ? ListSortDirection.Descending : ListSortDirection.Ascending));
+            } 
+        }
+
+        #endregion
+
+        public string SearchQuery { get; set; }
+
+        #region SelectedTableView
+
+        private ICollectionView _selectedTableView;
+
+        public ICollectionView SelectedTableView
+        {
+            get { return _selectedTableView; }
+            private set { Set(ref _selectedTableView, value); }
+        }
+
+        #endregion
 
         #region SelectedTable
 
@@ -39,7 +93,14 @@ namespace StudentsHelpTerminal.ViewModels
         public Table SelectedTable
         {
             get { return _selectedTable; }
-            set { Set(ref _selectedTable, value); }
+            set 
+            { 
+                if (Set(ref _selectedTable, value))
+                {
+                    SelectedTableView = CollectionViewSource.GetDefaultView(_selectedTable.Items);
+                    SelectedTableView.SortDescriptions.Clear();
+                }
+            }
         }
 
         #endregion
@@ -49,6 +110,20 @@ namespace StudentsHelpTerminal.ViewModels
         #region Commands
 
         public ICommand BackToProfilePageCommand { get; }
+
+        #region SearchCommand
+
+        public ICommand SearchCommand { get; }
+
+        private void SearchCommandExecute(object p)
+        {
+            SelectedTableView.Filter = (r) =>
+            { 
+               return (r as STAFF).FIRST_NAME.ToString().ToLower().Contains(SearchQuery.ToLower()); 
+            };
+        }
+
+        #endregion
 
         #region ClearUsersLogCommand
 
@@ -95,6 +170,7 @@ namespace StudentsHelpTerminal.ViewModels
             if (currentVM is AdminPageViewModel)
             {
                 await LoadTablesAsync();
+                SelectedTable = DBTables.First();
             }
         }
 
@@ -113,7 +189,6 @@ namespace StudentsHelpTerminal.ViewModels
                 };
             }
             OnPropertyChanged(nameof(DBTables));
-            SelectedTable = DBTables.First();
         }
     }
 }
