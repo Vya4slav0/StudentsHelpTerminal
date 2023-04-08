@@ -25,6 +25,17 @@ namespace StudentsHelpTerminal.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public int CardReaderPortBaudRate {
+            get {
+                return ((int)(this["CardReaderPortBaudRate"]));
+            }
+            set {
+                this["CardReaderPortBaudRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public string CardReaderPortName {
             get {
                 return ((string)(this["CardReaderPortName"]));
@@ -36,12 +47,25 @@ namespace StudentsHelpTerminal.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public int CardReaderPortBaudRate {
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Terminal data")]
+        public string PathToMainFolder {
             get {
-                return ((int)(this["CardReaderPortBaudRate"]));
+                return ((string)(this["PathToMainFolder"]));
             }
             set {
-                this["CardReaderPortBaudRate"] = value;
+                this["PathToMainFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Common")]
+        public string CommonDocsDirectoryName {
+            get {
+                return ((string)(this["CommonDocsDirectoryName"]));
+            }
+            set {
+                this["CommonDocsDirectoryName"] = value;
             }
         }
     }

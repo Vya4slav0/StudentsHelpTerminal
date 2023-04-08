@@ -2,11 +2,17 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="StudentsHelpTerminal.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="CardReaderPortBaudRate" GenerateDefaultValueInCode="false" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9600</Value>
+    </Setting>
     <Setting Name="CardReaderPortName" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
       <Value Profile="(Default)">COM4</Value>
     </Setting>
-    <Setting Name="CardReaderPortBaudRate" GenerateDefaultValueInCode="false" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9600</Value>
+    <Setting Name="PathToMainFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Terminal data</Value>
+    </Setting>
+    <Setting Name="CommonDocsDirectoryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Common</Value>
     </Setting>
   </Settings>
 </SettingsFile>

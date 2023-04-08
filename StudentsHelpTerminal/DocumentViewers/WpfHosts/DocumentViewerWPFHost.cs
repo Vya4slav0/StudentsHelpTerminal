@@ -29,6 +29,9 @@ namespace DocumentViewers
         }
 
         #endregion
+        #region Available file extensions const
+        public static readonly string[] AvailableExtensions = { ".pdf", ".docx", ".doc" };
+        #endregion
 
         private static void FilePathPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -38,16 +41,17 @@ namespace DocumentViewers
 
         private void LoadFile(string fileName)
         {
+            //TODO: if it's no file
             if (!File.Exists(fileName)) throw new FileNotFoundException();
 
             FileInfo docInfo = new FileInfo(fileName);
             switch (docInfo.Extension.ToLower())
             {
-                case "pdf":
+                case ".pdf":
                     Child = new PDFViewer();
                     break;
-                case "doc":
-                case "docx":
+                case ".doc":
+                case ".docx":
                     Child = new DocxViewer();
                     break;
             }

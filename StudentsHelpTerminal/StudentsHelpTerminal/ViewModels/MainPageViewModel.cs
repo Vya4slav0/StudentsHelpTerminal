@@ -90,7 +90,17 @@ namespace StudentsHelpTerminal.ViewModels
         }
 
         #endregion
-
+        #region Available documents
+        private List<FileInfo> _AvailableDocs = new List<FileInfo>();
+        public List<FileInfo> AvailableDocs
+        {
+            get { return _AvailableDocs; }
+            set
+            {
+                Set(ref _AvailableDocs, value);
+            }
+        }
+        #endregion
         #endregion
 
         #region Commands
@@ -110,11 +120,14 @@ namespace StudentsHelpTerminal.ViewModels
         {
             using (StudentsDBContext db = new StudentsDBContext())
             {
+                //Getting student info
                 int? staffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
                 if (staffId is null || staffId.Value == 0) return; // mb i need to notify smth about this
                 STAFF student = db.STAFFs.First(st => st.ID_STAFF == staffId);
-                Name = student.FIRST_NAME;
-                Surname = student.LAST_NAME;
+
+                //Filling properties
+                Name = student.FIRST_NAME.Trim();
+                Surname = student.LAST_NAME.Trim();
 
                 #region Converting photo from blob to BitmapImage
                 BitmapImage image = new BitmapImage();
@@ -127,8 +140,33 @@ namespace StudentsHelpTerminal.ViewModels
                 #endregion
 
                 Photo = image;
-                Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME;
+                Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME.Trim();
                 CardNum = cardId.ToString();
+            }
+            //Searching for available documents
+            string commonDocs = string.Format("{0}\\{1}", 
+                Properties.Settings.Default.PathToMainFolder,
+                Properties.Settings.Default.CommonDocsDirectoryName);
+            string groupDocs = string.Format("{0}\\{1}",
+                Properties.Settings.Default.PathToMainFolder,
+                _Group);
+
+            if (!Directory.Exists(groupDocs)) Directory.CreateDirectory(groupDocs);
+
+            //Searching for documents for all students
+            foreach (string filePath in Directory.GetFiles(commonDocs))
+            {
+                FileInfo file = new FileInfo(filePath);
+                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.Extension))
+                    AvailableDocs.Add(file);
+            }
+            
+            //Searching for this group documents
+            foreach(string filePath in Directory.GetFiles(groupDocs))
+            {
+                FileInfo file = new FileInfo(filePath);
+                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.Extension))
+                    AvailableDocs.Add(file);
             }
         }
     }
