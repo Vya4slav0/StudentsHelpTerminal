@@ -15,17 +15,13 @@ namespace StudentsHelpTerminal.ViewModels
 {
     internal class MainPageViewModel : Base.ViewModelBase
     {
-        private readonly NavigationStore _navigationStore;
-
-        public MainPageViewModel(NavigationStore navigationStore, int cardId)
+        public MainPageViewModel(int cardId)
         {
-            _navigationStore = navigationStore;
-
             #region Commands definition
 
-            AdminWindowOpenCommand = new NavigationCommand(_navigationStore, new AdminPageViewModel(_navigationStore));
+            AdminWindowOpenCommand = new NavigationCommand(new AdminPageViewModel());
 
-            ToIdlePageCommand = new NavigationCommand(_navigationStore, _navigationStore.CurrentIdlePageViewModel);
+            ToIdlePageCommand = new NavigationCommand(NavigationStore.CurrentIdlePageViewModel);
 
             #endregion
 
@@ -91,8 +87,8 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
         #region Available documents
-        private List<FileInfo> _AvailableDocs = new List<FileInfo>();
-        public List<FileInfo> AvailableDocs
+        private List<DocumentsListItem> _AvailableDocs = new List<DocumentsListItem>();
+        public List<DocumentsListItem> AvailableDocs
         {
             get { return _AvailableDocs; }
             set
@@ -156,16 +152,16 @@ namespace StudentsHelpTerminal.ViewModels
             //Searching for documents for all students
             foreach (string filePath in Directory.GetFiles(commonDocs))
             {
-                FileInfo file = new FileInfo(filePath);
-                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.Extension))
+                DocumentsListItem file = new DocumentsListItem(filePath, DocumentsListItem.Type.Common);
+                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.FileInfo.Extension))
                     AvailableDocs.Add(file);
             }
             
             //Searching for this group documents
             foreach(string filePath in Directory.GetFiles(groupDocs))
             {
-                FileInfo file = new FileInfo(filePath);
-                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.Extension))
+                DocumentsListItem file = new DocumentsListItem(filePath, DocumentsListItem.Type.Group);
+                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.FileInfo.Extension))
                     AvailableDocs.Add(file);
             }
         }

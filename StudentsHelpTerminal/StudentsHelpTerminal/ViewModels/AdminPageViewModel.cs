@@ -19,13 +19,11 @@ namespace StudentsHelpTerminal.ViewModels
 {
     internal class AdminPageViewModel : Base.ViewModelBase
     {
-        private readonly NavigationStore _navigationStore;
-        public AdminPageViewModel(NavigationStore navigationStore)
+        public AdminPageViewModel()
         {
-            _navigationStore = navigationStore;
-            navigationStore.CurrentViewModelChanged += OnAdminPageShow;
+            NavigationStore.CurrentViewModelChanged += OnAdminPageShow;
 
-            BackToProfilePageCommand = new NavigateBackCommand(_navigationStore);
+            BackToProfilePageCommand = new NavigateBackCommand();
             CloseAppCommand = new RelayCommand(CloseAppCommandExecute);
             OpenConfigFileCommand = new RelayCommand(OpenConfigFileCommandExecute);
             OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
@@ -63,7 +61,7 @@ namespace StudentsHelpTerminal.ViewModels
             set
             {
                 Set(ref _EnableSort, value);
-                SelectedTableView.SortDescriptions.Clear();
+                if (SelectedTableView != null) SelectedTableView.SortDescriptions.Clear();
                 if (value)
                 SelectedTableView.SortDescriptions.Add(
                     new SortDescription(SortBy.Header.ToString(), ReverseSort ? ListSortDirection.Descending : ListSortDirection.Ascending));
@@ -72,16 +70,23 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
 
+        #region Searching
+
         public string SearchQuery { get; set; }
+
+        #endregion
 
         #region SelectedTableView
 
-        private ICollectionView _selectedTableView;
+        private ICollectionView _SelectedTableView;
 
         public ICollectionView SelectedTableView
         {
-            get { return _selectedTableView; }
-            private set { Set(ref _selectedTableView, value); }
+            get { return _SelectedTableView; }
+            private set 
+            {
+                Set(ref _SelectedTableView, value);
+            }
         }
 
         #endregion
@@ -97,8 +102,10 @@ namespace StudentsHelpTerminal.ViewModels
             { 
                 if (Set(ref _selectedTable, value))
                 {
+                    //if (SelectedTableView != null) SelectedTableView.SortDescriptions.Clear();
+                    EnableSort = false;
+                    ReverseSort = false;
                     SelectedTableView = CollectionViewSource.GetDefaultView(_selectedTable.Items);
-                    SelectedTableView.SortDescriptions.Clear();
                 }
             }
         }

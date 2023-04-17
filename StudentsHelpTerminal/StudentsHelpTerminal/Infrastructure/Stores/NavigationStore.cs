@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StudentsHelpTerminal.ViewModels;
 using StudentsHelpTerminal.ViewModels.Base;
-using StudentsHelpTerminal.ViewModels;
+using System;
 
 namespace StudentsHelpTerminal.Infrastructure.Stores
 {
-    internal class NavigationStore
+    internal static class NavigationStore
     {
-        public IdlePageViewModel CurrentIdlePageViewModel { get; set; }
-        public ViewModelBase PrevViewModel { get; private set; }
+        public static IdlePageViewModel CurrentIdlePageViewModel { get; set; }
+        public static ViewModelBase PrevViewModel { get; private set; }
 
-        private ViewModelBase _CurrentViewModel;
+        private static ViewModelBase _CurrentViewModel;
 
-        public ViewModelBase CurrentViewModel
+        public static ViewModelBase CurrentViewModel
         {
             get { return _CurrentViewModel; }
             set 
@@ -27,6 +23,6 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
         }
 
         // Contains new view model
-        public event Action<ViewModelBase> CurrentViewModelChanged;
+        public static event Action<ViewModelBase> CurrentViewModelChanged;
     }
 }
