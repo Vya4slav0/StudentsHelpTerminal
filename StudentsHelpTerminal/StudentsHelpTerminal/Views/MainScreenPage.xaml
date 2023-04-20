@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
       xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
+      xmlns:m="clr-namespace:StudentsHelpTerminal.Models"
       xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
       xmlns:dv="clr-namespace:DocumentViewers;assembly=DocumentViewers"
@@ -26,7 +27,7 @@
         </Style>
 
         <Style x:Key="TextBlockMedium" BasedOn="{StaticResource ResourceKey=TextBlocks}" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
     </Page.Resources>
 
@@ -92,8 +93,7 @@
                 <StackPanel Grid.Row="0" Margin="5 30 0 0">
                     <TextBlock Text="{Binding Path=Surname}" Style="{StaticResource TextBlockBig}"/>
                     <TextBlock Text="{Binding Path=Name}" Style="{StaticResource TextBlockBig}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Margin="5 10 0 0">
+                    
                     <TextBlock Text="{Binding Path=Group}" Style="{StaticResource TextBlockMedium}"/>
                     <TextBlock Text="{Binding Path=CardNum}" Style="{StaticResource TextBlockMedium}"/>
                 </StackPanel>
@@ -132,7 +132,16 @@
             </Grid.RowDefinitions>
 
             <Border BorderBrush="DarkBlue" BorderThickness="3" Grid.Row="0" Background="White">
-                <ListBox Name="ListBoxDocs" ItemsSource="{Binding AvailableDocs}"/>
+                <ListBox Name="ListBoxDocs" ItemsSource="{Binding AvailableDocs}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type m:DocumentsListItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding DocIcon}" Height="20" Stretch="UniformToFill"/>
+                                <TextBlock Text="{Binding VisibleName}" Margin="5 0 0 0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Border>
             
 

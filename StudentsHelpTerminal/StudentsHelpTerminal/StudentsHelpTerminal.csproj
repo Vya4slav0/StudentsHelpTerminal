@@ -127,6 +127,7 @@
     <Compile Include="Infrastructure\Stores\IOPortsStore.cs" />
     <Compile Include="Infrastructure\Stores\NavigationStore.cs" />
     <Compile Include="Infrastructure\Services\ShowViewAsNewWindow.cs" />
+    <Compile Include="Models\DocumentsListItem.cs" />
     <Compile Include="Models\STAFF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
@@ -139,6 +140,7 @@
     <Compile Include="Models\STOP_CARDS_DESCRIPTION.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentsDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
