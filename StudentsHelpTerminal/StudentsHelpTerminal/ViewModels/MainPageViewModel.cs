@@ -1,13 +1,10 @@
 ﻿using StudentsHelpTerminal.Infrastructure.Commands;
+using StudentsHelpTerminal.Infrastructure.Services;
 using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -107,45 +104,24 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
 
-        private void CardReaderSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            //FillPropertiesByCardId(Convert.ToInt32(CardReaderSerialPort.ReadLine()));            
-        }
-
         private void FillPropertiesByCardId(int cardId)
         {
-            using (StudentsDBContext db = new StudentsDBContext())
-            {
-                //Getting student info
-                int? staffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
-                if (staffId is null || staffId.Value == 0) return; // mb i need to notify smth about this
-                STAFF student = db.STAFFs.First(st => st.ID_STAFF == staffId);
+            Student student = DBHelper.GetStudentByCardId(cardId);
 
-                //Filling properties
-                Name = student.FIRST_NAME.Trim();
-                Surname = student.LAST_NAME.Trim();
-
-                #region Converting photo from blob to BitmapImage
-                BitmapImage image = new BitmapImage();
-                MemoryStream photoMemoryStream = new MemoryStream(student.PORTRET);
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.StreamSource = photoMemoryStream;
-                image.EndInit();
-                image.Freeze();
-                #endregion
-
-                Photo = image;
-                Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == staffId).SUBDIV_ID).DISPLAY_NAME.Trim();
-                CardNum = cardId.ToString();
-            }
+            //Filling properties
+            Name = student.Name;
+            Surname = student.Surname;
+            Photo = student.Photo;
+            Group = student.Group;
+            CardNum = cardId.ToString();
+            
             //Searching for available documents
             string commonDocs = string.Format("{0}\\{1}", 
                 Properties.Settings.Default.PathToMainFolder,
                 Properties.Settings.Default.CommonDocsDirectoryName);
             string groupDocs = string.Format("{0}\\{1}",
                 Properties.Settings.Default.PathToMainFolder,
-                _Group);
+                student.Group);
 
             if (!Directory.Exists(groupDocs)) Directory.CreateDirectory(groupDocs);
 

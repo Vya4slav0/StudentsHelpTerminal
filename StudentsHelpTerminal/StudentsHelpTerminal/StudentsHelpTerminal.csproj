@@ -124,6 +124,7 @@
     <Compile Include="Infrastructure\Commands\NavigateBackCommand.cs" />
     <Compile Include="Infrastructure\Commands\NavigationCommand.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
+    <Compile Include="Infrastructure\Services\DBHelper.cs" />
     <Compile Include="Infrastructure\Stores\IOPortsStore.cs" />
     <Compile Include="Infrastructure\Stores\NavigationStore.cs" />
     <Compile Include="Infrastructure\Services\ShowViewAsNewWindow.cs" />
