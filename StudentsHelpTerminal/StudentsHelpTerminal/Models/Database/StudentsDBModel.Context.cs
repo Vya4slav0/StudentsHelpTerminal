@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StudentsHelpTerminal.Models
+namespace StudentsHelpTerminal.Models.Database
 {
     using System;
     using System.Data.Entity;

@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StudentsHelpTerminal.Models
+namespace StudentsHelpTerminal.Models.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class STOP_CARDS_DESCRIPTION
+    public partial class STAFF_REF
     {
-        public int ID_STOP_CARDS { get; set; }
-        public int CARD_ID { get; set; }
-        public string DESCRIPTION { get; set; }
-        public int POSSIBLE_RECALL { get; set; }
+        public int ID_STAFF_REF { get; set; }
+        public int STAFF_ID { get; set; }
+        public System.DateTime DATE_ACTION { get; set; }
+        public int SUBDIV_ID { get; set; }
+        public int APPOINT_ID { get; set; }
+        public int GROUP_WT_ID { get; set; }
+        public Nullable<int> DOCUMENTS_ID { get; set; }
+        public System.DateTime LAST_TIMESTAMP { get; set; }
     }
 }

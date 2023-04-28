@@ -7,6 +7,11 @@
              xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <Page.DataContext>
+        <vm:AdminPageViewModel/>
+    </Page.DataContext>
+
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -18,18 +23,21 @@
                 <Setter Property="Foreground" Value="Black"/>
             </Style>
         </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="399*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <GroupBox Header="База данных">
+        <GroupBox Header="База данных" Grid.ColumnSpan="2">
             <Grid>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <DataGrid Grid.Column="0" 
-                          ItemsSource="{Binding SelectedTableView}"
-                          CurrentColumn="{Binding SelectedColumn}"
+                          ItemsSource="{Binding SelectedTable.Items}"
                           Margin="5"
                           CanUserAddRows="False" CanUserDeleteRows="False"
                           CanUserReorderColumns="True" CanUserResizeColumns="True"
@@ -40,15 +48,15 @@
                 <GroupBox Grid.Column="1" Header="Таблицы">
                     <ListBox MinWidth="100"
                          ItemsSource="{Binding DBTables}" 
-                         SelectedItem="{Binding SelectedTable}" 
+                         SelectedItem="{Binding SelectedTable}"
                          DisplayMemberPath="Name"
                          />
                 </GroupBox>
 
             </Grid>
         </GroupBox>
-        
-        <Grid Grid.Row="1">
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="*"/>
@@ -59,6 +67,9 @@
                 <Style TargetType="StackPanel">
                     <Style.Resources>
                         <Style TargetType="Button">
+                            <Setter Property="Margin" Value="5 2"/>
+                        </Style>
+                        <Style TargetType="DockPanel">
                             <Setter Property="Margin" Value="5 2"/>
                         </Style>
                     </Style.Resources>
@@ -74,18 +85,34 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+
                     <GroupBox Header="Поиск" Grid.Column="0">
                         <StackPanel>
-                            
-                            <TextBox Text="{Binding SearchQuery}"/>
-                            <Button Content="Поиск" Command="{Binding SearchCommand}"/>
-                            
+                            <DockPanel>
+                                <TextBlock Text="Поле: "/>
+                                <ComboBox ItemsSource="{Binding AvailableColumns}" 
+                                          SelectedItem="{Binding CurrentSearchDescription.ColumnName}"/>
+                            </DockPanel>
+
+                            <DockPanel>
+                                <TextBlock Text="Запрос: "/>
+                                <TextBox Text="{Binding CurrentSearchDescription.Query}"/>
+                            </DockPanel>
+<!--
+                            <CheckBox Content="Неполное значение" 
+                                      IsChecked="{Binding CurrentSearchDescription.Query}"/>
+                            -->
                         </StackPanel>
                     </GroupBox>
 
                     <GroupBox Header="Сортировка" Grid.Column="1">
                         <StackPanel>
-                            
+
                             <StackPanel.Resources>
                                 <Style TargetType="ComboBox">
                                     <Style.Triggers>
@@ -98,31 +125,38 @@
                                 </Style>
                             </StackPanel.Resources>
 
-                            <ComboBox ItemsSource="{Binding ElementName=DataGridTables, Path=Columns}"
-                                      SelectedItem="{Binding SortBy}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type DataGridTextColumn}">
-                                        <TextBlock Text="{Binding Header}"/>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
+                            <ComboBox ItemsSource="{Binding AvailableColumns}"
+                                      SelectedItem="{Binding CurrentSortDescription.ColumnName}">
                             </ComboBox>
 
-                            <CheckBox Content="Обратная сортировка" IsChecked="{Binding ReverseSort}"/>
-                            
-                            <CheckBox Content="Включить сортировку" IsChecked="{Binding EnableSort}"/>
+                            <CheckBox Content="Обратная сортировка" 
+                                      IsChecked="{Binding CurrentSortDescription.IsDescending}"/>
+
+                            <CheckBox Content="Включить сортировку" 
+                                      IsChecked="{Binding CurrentSortDescription.Enable}"/>
 
                         </StackPanel>
                     </GroupBox>
+
+                    <Button Grid.Row="1" Grid.ColumnSpan="2" 
+                            Content="Применить поиск и сортировку" 
+                            Margin="5 2"
+                            Command="{Binding ApplySearchSortCommand}"/>
 
                 </Grid>
             </ScrollViewer>
             <!--#endregion-->
 
             <GroupBox Header="Работа с данными" Grid.Column="1">
-                
+
                 <StackPanel>
-                    <Button Content=""/>
-                    <Button Content=""/>
+                    <DockPanel>
+                        <TextBlock Text="Имя таблицы: "/>
+                        <TextBox Text="{Binding NewTableName, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DockPanel>
+                    <Button Content="Добавить таблицу" Command="{Binding AddTableCommand}"/>
+                    <Button Content="Переименовать текущую таблицу" Command="{Binding RenameTableCommand}"/>
+                    <Button Content="Закрыть текущую таблицу" Command="{Binding RemoveTableCommand}"/>
                 </StackPanel>
             </GroupBox>
 

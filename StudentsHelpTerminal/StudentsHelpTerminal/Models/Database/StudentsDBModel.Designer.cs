@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\Models\StudentsDBModel.edmx" включено. 
+﻿// Создание кода T4 для модели "D:\vya4s\OneDrive\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\Models\Database\StudentsDBModel.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

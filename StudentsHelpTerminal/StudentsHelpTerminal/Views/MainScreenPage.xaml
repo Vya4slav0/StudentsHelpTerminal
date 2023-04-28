@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
       xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
-      xmlns:m="clr-namespace:StudentsHelpTerminal.Models"
+      xmlns:m="clr-namespace:StudentsHelpTerminal.Models.Other"
       xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
       xmlns:dv="clr-namespace:DocumentViewers;assembly=DocumentViewers"

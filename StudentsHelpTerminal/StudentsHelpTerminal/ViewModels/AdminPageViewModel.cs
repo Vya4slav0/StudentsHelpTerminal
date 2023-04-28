@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+//using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Infrastructure.Commands;
-using StudentsHelpTerminal.Models;
+using StudentsHelpTerminal.Models.Other;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Data;
 using System.Windows.Threading;
 using System.Windows.Controls;
+using StudentsHelpTerminal.Infrastructure.Services;
+using System.Collections.ObjectModel;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -21,7 +23,8 @@ namespace StudentsHelpTerminal.ViewModels
     {
         public AdminPageViewModel()
         {
-            NavigationStore.CurrentViewModelChanged += OnAdminPageShow;
+            // NavigationStore.CurrentViewModelChanged += OnAdminPageShow;
+            ApplySearchSortCommand = new RelayCommand(ApplySearchSortCommandCommandExecute, ApplySearchSortCommandCommandCanExecute);
 
             BackToProfilePageCommand = new NavigateBackCommand();
             CloseAppCommand = new RelayCommand(CloseAppCommandExecute);
@@ -29,67 +32,48 @@ namespace StudentsHelpTerminal.ViewModels
             OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
             ClearUsersLogCommand = new RelayCommand(ClearUsersLogCommandExecute, ClearUsersLogCommandCanExecute);
 
-            SearchCommand = new RelayCommand(SearchCommandExecute);
+            AddTableCommand = new RelayCommand(AddTableCommandExecute, AddTableCommandCanExecute);
+            RenameTableCommand = new RelayCommand(RenameTableCommandExecute, RenameTableCommandCanExecute);
+            RemoveTableCommand = new RelayCommand(RemoveTableCommandExecute, RemoveTableCommandCanExecute);
+
+            CurrentSearchDescription = new SearchDescription();
+            CurrentSortDescription = new SortDescription();
+
+            _DBTables.CollectionChanged += (s, a) => { this.OnPropertyChanged(nameof(DBTables)); }; 
         }
 
         #region Properties
-        public List<Table> DBTables { get; private set; }
 
-        #region Sorting
+        #region DBTables
 
-        private DataGridTextColumn _SortBy;
-
-        public DataGridTextColumn SortBy
+        private ObservableCollection<Table> _DBTables = new ObservableCollection<Table>();
+        public ObservableCollection<Table> DBTables 
         {
-            get { return _SortBy; }
-            set { if(Set(ref _SortBy, value)) EnableSort = EnableSort; }
-        }
-
-        private bool _ReverseSort;
-
-        public bool ReverseSort 
-        { 
-            get { return _ReverseSort; }
-            set { if(Set(ref _ReverseSort, value)) EnableSort = EnableSort; } 
-        }
-
-        private bool _EnableSort;
-        
-        public bool EnableSort 
-        { 
-            get { return _EnableSort; }
-            set
-            {
-                Set(ref _EnableSort, value);
-                if (SelectedTableView != null) SelectedTableView.SortDescriptions.Clear();
-                if (value)
-                SelectedTableView.SortDescriptions.Add(
-                    new SortDescription(SortBy.Header.ToString(), ReverseSort ? ListSortDirection.Descending : ListSortDirection.Ascending));
-            } 
+            get { return _DBTables; }
+            private set { Set(ref _DBTables, value); }
         }
 
         #endregion
 
-        #region Searching
+        public string[] AvailableColumns
+        {
+            get { return (string[])DBHelper.GetAvailableColumnNames(); }
+        }
 
+        #region Sort and search
+
+        public string SearchBy { get; set; }
         public string SearchQuery { get; set; }
+        public string SortBy { get; set; }
+        public bool IsDescending { get; set; }
+        public bool SortEnabled { get; set; }
+
+        public Models.Other.SearchDescription CurrentSearchDescription { get; set; }
+        public Models.Other.SortDescription CurrentSortDescription { get; set; }
 
         #endregion
 
-        #region SelectedTableView
-
-        private ICollectionView _SelectedTableView;
-
-        public ICollectionView SelectedTableView
-        {
-            get { return _SelectedTableView; }
-            private set 
-            {
-                Set(ref _SelectedTableView, value);
-            }
-        }
-
-        #endregion
+        public string NewTableName { get; set; } = string.Empty;
 
         #region SelectedTable
 
@@ -98,16 +82,7 @@ namespace StudentsHelpTerminal.ViewModels
         public Table SelectedTable
         {
             get { return _selectedTable; }
-            set 
-            { 
-                if (Set(ref _selectedTable, value))
-                {
-                    //if (SelectedTableView != null) SelectedTableView.SortDescriptions.Clear();
-                    EnableSort = false;
-                    ReverseSort = false;
-                    SelectedTableView = CollectionViewSource.GetDefaultView(_selectedTable.Items);
-                }
-            }
+            set { Set(ref _selectedTable, value); }
         }
 
         #endregion
@@ -116,19 +91,79 @@ namespace StudentsHelpTerminal.ViewModels
 
         #region Commands
 
-        public ICommand BackToProfilePageCommand { get; }
+        #region AcceptSearchSortCommand
 
-        #region SearchCommand
+        public ICommand ApplySearchSortCommand { get; }
 
-        public ICommand SearchCommand { get; }
-
-        private void SearchCommandExecute(object p)
+        private bool ApplySearchSortCommandCommandCanExecute(object p)
         {
-            SelectedTableView.Filter = (r) =>
-            { 
-               return (r as STAFF).FIRST_NAME.ToString().ToLower().Contains(SearchQuery.ToLower()); 
-            };
+            return !CurrentSearchDescription.IsEmpty;
         }
+
+        private void ApplySearchSortCommandCommandExecute(object p)
+        {
+            SelectedTable.SortDescription = CurrentSortDescription;
+            SelectedTable.SearchDescription = CurrentSearchDescription;
+        }
+
+        #endregion
+
+        #region AddTableCommand
+
+        public ICommand AddTableCommand { get; }
+
+        private bool AddTableCommandCanExecute(object p)
+        {
+            return !string.IsNullOrEmpty(NewTableName?.Trim());
+        }
+
+        private void AddTableCommandExecute(object p)
+        {
+            SelectedTable = new Table(
+                NewTableName,
+                CurrentSortDescription,
+                CurrentSearchDescription);
+            DBTables.Add(SelectedTable);
+        }
+
+        #endregion
+
+        #region RenameTableCommand
+
+        public ICommand RenameTableCommand { get; }
+
+        private bool RenameTableCommandCanExecute(object p)
+        {
+            return !(SelectedTable is null) && NewTableName.Trim().Length > 0;
+        }
+
+        private void RenameTableCommandExecute(object p)
+        {
+            SelectedTable.Name = NewTableName.Trim();
+        }
+
+        #endregion
+
+        #region RemoveTableCommand
+
+        public ICommand RemoveTableCommand { get; }
+
+        private bool RemoveTableCommandCanExecute(object p)
+        {
+            return !(SelectedTable is null);
+        }
+
+        private void RemoveTableCommandExecute(object p)
+        {
+            DBTables.Remove(SelectedTable);
+            SelectedTable = DBTables.FirstOrDefault();
+        }
+
+        #endregion
+
+        #region BackToProfilePageCommand
+
+        public ICommand BackToProfilePageCommand { get; }
 
         #endregion
 
@@ -171,7 +206,7 @@ namespace StudentsHelpTerminal.ViewModels
         #endregion
 
         #endregion
-
+        /*
         private async void OnAdminPageShow(Base.ViewModelBase currentVM)
         {
             if (currentVM is AdminPageViewModel)
@@ -197,5 +232,6 @@ namespace StudentsHelpTerminal.ViewModels
             }
             OnPropertyChanged(nameof(DBTables));
         }
+        */
     }
 }

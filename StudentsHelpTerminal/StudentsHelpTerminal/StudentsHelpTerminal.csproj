@@ -128,39 +128,41 @@
     <Compile Include="Infrastructure\Stores\IOPortsStore.cs" />
     <Compile Include="Infrastructure\Stores\NavigationStore.cs" />
     <Compile Include="Infrastructure\Services\ShowViewAsNewWindow.cs" />
-    <Compile Include="Models\DocumentsListItem.cs" />
-    <Compile Include="Models\STAFF.cs">
+    <Compile Include="Models\Other\DocumentsListItem.cs" />
+    <Compile Include="Models\Database\STAFF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\STAFF_CARDS.cs">
+    <Compile Include="Models\Database\STAFF_CARDS.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\STAFF_REF.cs">
+    <Compile Include="Models\Database\STAFF_REF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\STOP_CARDS_DESCRIPTION.cs">
+    <Compile Include="Models\Database\STOP_CARDS_DESCRIPTION.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentsDBModel.Context.cs">
+    <Compile Include="Models\Other\SearchDescription.cs" />
+    <Compile Include="Models\Other\SortDescription.cs" />
+    <Compile Include="Models\Other\Student.cs" />
+    <Compile Include="Models\Database\StudentsDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentsDBModel.cs">
+    <Compile Include="Models\Database\StudentsDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentsDBModel.Designer.cs">
+    <Compile Include="Models\Database\StudentsDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\SUBDIV_REF.cs">
+    <Compile Include="Models\Database\SUBDIV_REF.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Table.cs" />
+    <Compile Include="Models\Other\Table.cs" />
     <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\IdlePageViewModel.cs" />
@@ -203,11 +205,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="Models\StudentsDBModel.edmx">
+    <EntityDeploy Include="Models\Database\StudentsDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StudentsDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\StudentsDBModel.edmx.diagram">
+    <None Include="Models\Database\StudentsDBModel.edmx.diagram">
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
@@ -216,16 +218,17 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\StudentsDBModel.Context.tt">
+    <Content Include="Models\Database\StudentsDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StudentsDBModel.Context.cs</LastGenOutput>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\StudentsDBModel.tt">
+    <Content Include="Models\Database\StudentsDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
       <LastGenOutput>StudentsDBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\no_photo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

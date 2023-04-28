@@ -1,7 +1,7 @@
 ﻿using StudentsHelpTerminal.Infrastructure.Commands;
 using StudentsHelpTerminal.Infrastructure.Services;
 using StudentsHelpTerminal.Infrastructure.Stores;
-using StudentsHelpTerminal.Models;
+using StudentsHelpTerminal.Models.Other;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Imaging;
 
-namespace StudentsHelpTerminal.Models
+namespace StudentsHelpTerminal.Models.Other
 {
     internal class Student
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace StudentsHelpTerminal.Models
+namespace StudentsHelpTerminal.Models.Other
 {
     internal class DocumentsListItem
     {
