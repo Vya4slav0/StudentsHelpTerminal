@@ -74,7 +74,8 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                         stuff = db.STAFFs.Where(s => s.MIDDLE_NAME.Contains(value)).ToList();
                         break;
                     case ID:
-                        stuff = db.STAFFs.Where(s => s.ID_STAFF == int.Parse(value)).ToList();
+                        int id = Convert.ToInt32(value);
+                        stuff = db.STAFFs.Where(s => s.ID_STAFF == id).ToList();
                         break;
                     case CARD_ID:
                         break;

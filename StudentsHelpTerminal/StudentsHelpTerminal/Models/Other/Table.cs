@@ -7,11 +7,11 @@ namespace StudentsHelpTerminal.Models.Other
 {
     internal class Table
     {
-        public Table (string name, SortDescription sortDescription, SearchDescription searchDescription)
+        public Table (string name, SearchDescription searchDescription, SortDescription sortDescription)
         {
-            Name = name;
-            SortDescription = sortDescription;
+            Name = name; 
             SearchDescription = searchDescription;
+            SortDescription = sortDescription;
         }
 
         public string Name { get; set; }
@@ -53,9 +53,12 @@ namespace StudentsHelpTerminal.Models.Other
         private IEnumerable<Student> SortItems(IEnumerable<Student> toSort, SortDescription sortDescription)
         {
             if (toSort is null) return null;
+            if (!sortDescription.Enable) return toSort.OrderBy(s => s.Id);
+            
             Func<Func<Student, object>, IOrderedEnumerable<Student>> sortMethod = sortDescription.IsDescending ?
                 (Func<Func<Student, object>, IOrderedEnumerable<Student>>)toSort.OrderByDescending : 
                 toSort.OrderBy;
+            
                 
             switch (sortDescription.ColumnName)
             {
@@ -71,6 +74,11 @@ namespace StudentsHelpTerminal.Models.Other
                     return sortMethod(s => s.CardID);
             }
             return toSort;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

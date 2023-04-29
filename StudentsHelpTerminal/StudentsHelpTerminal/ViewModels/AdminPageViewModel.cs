@@ -23,7 +23,6 @@ namespace StudentsHelpTerminal.ViewModels
     {
         public AdminPageViewModel()
         {
-            // NavigationStore.CurrentViewModelChanged += OnAdminPageShow;
             ApplySearchSortCommand = new RelayCommand(ApplySearchSortCommandCommandExecute, ApplySearchSortCommandCommandCanExecute);
 
             BackToProfilePageCommand = new NavigateBackCommand();
@@ -73,7 +72,17 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
 
-        public string NewTableName { get; set; } = string.Empty;
+        #region NewTableName
+
+        private string _NewTableName = string.Empty;
+
+        public string NewTableName 
+        { 
+            get { return _NewTableName; }
+            set { Set(ref _NewTableName, value); }
+        }
+
+        #endregion
 
         #region SelectedTable
 
@@ -82,7 +91,11 @@ namespace StudentsHelpTerminal.ViewModels
         public Table SelectedTable
         {
             get { return _selectedTable; }
-            set { Set(ref _selectedTable, value); }
+            set 
+            {
+                if (Set(ref _selectedTable, value))
+                    NewTableName = _selectedTable?.Name ?? string.Empty;
+            }
         }
 
         #endregion
@@ -91,19 +104,20 @@ namespace StudentsHelpTerminal.ViewModels
 
         #region Commands
 
-        #region AcceptSearchSortCommand
+        #region ApplySearchSortCommand
 
         public ICommand ApplySearchSortCommand { get; }
 
         private bool ApplySearchSortCommandCommandCanExecute(object p)
         {
-            return !CurrentSearchDescription.IsEmpty;
+            return !CurrentSearchDescription.IsEmpty && !(SelectedTable is null);
         }
 
         private void ApplySearchSortCommandCommandExecute(object p)
         {
-            SelectedTable.SortDescription = CurrentSortDescription;
             SelectedTable.SearchDescription = CurrentSearchDescription;
+            SelectedTable.SortDescription = CurrentSortDescription;  
+            this.OnPropertyChanged(nameof(SelectedTable));
         }
 
         #endregion
@@ -121,15 +135,15 @@ namespace StudentsHelpTerminal.ViewModels
         {
             SelectedTable = new Table(
                 NewTableName,
-                CurrentSortDescription,
-                CurrentSearchDescription);
+                CurrentSearchDescription,
+                CurrentSortDescription);
             DBTables.Add(SelectedTable);
         }
 
         #endregion
 
         #region RenameTableCommand
-
+        //TODO: Fix renaming
         public ICommand RenameTableCommand { get; }
 
         private bool RenameTableCommandCanExecute(object p)
@@ -140,6 +154,8 @@ namespace StudentsHelpTerminal.ViewModels
         private void RenameTableCommandExecute(object p)
         {
             SelectedTable.Name = NewTableName.Trim();
+            this.OnPropertyChanged(nameof(SelectedTable));
+            this.OnPropertyChanged(nameof(DBTables));
         }
 
         #endregion
@@ -206,32 +222,5 @@ namespace StudentsHelpTerminal.ViewModels
         #endregion
 
         #endregion
-        /*
-        private async void OnAdminPageShow(Base.ViewModelBase currentVM)
-        {
-            if (currentVM is AdminPageViewModel)
-            {
-                await LoadTablesAsync();
-                SelectedTable = DBTables.First();
-            }
-        }
-
-        private async Task LoadTablesAsync()
-        {
-            if (DBTables != null) return;
-            using (StudentsDBContext db = new StudentsDBContext())
-            {
-                DBTables = new List<Table>()
-                {
-                    new Table() { Name = "STAFF", Items = await db.STAFFs.AsNoTracking().ToArrayAsync() },
-                    new Table() { Name = "STAFF_REF", Items = await db.STAFF_REF.AsNoTracking().ToArrayAsync() },
-                    new Table() { Name = "STAFF_CARDS", Items = await db.STAFF_CARDS.AsNoTracking().ToArrayAsync() },
-                    new Table() { Name = "SUBDIV_REF", Items = await db.SUBDIV_REF.AsNoTracking().ToArrayAsync() },
-                    new Table() { Name = "STOP_CARDS", Items = await db.STOP_CARDS_DESCRIPTION.AsNoTracking().ToArrayAsync() }
-                };
-            }
-            OnPropertyChanged(nameof(DBTables));
-        }
-        */
     }
 }

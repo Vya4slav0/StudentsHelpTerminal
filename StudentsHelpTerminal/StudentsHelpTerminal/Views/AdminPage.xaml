@@ -41,7 +41,7 @@
                           Margin="5"
                           CanUserAddRows="False" CanUserDeleteRows="False"
                           CanUserReorderColumns="True" CanUserResizeColumns="True"
-                          CanUserSortColumns="True"
+                          CanUserSortColumns="False"
                           x:Name="DataGridTables"
                           />
 
@@ -49,7 +49,7 @@
                     <ListBox MinWidth="100"
                          ItemsSource="{Binding DBTables}" 
                          SelectedItem="{Binding SelectedTable}"
-                         DisplayMemberPath="Name"
+                         
                          />
                 </GroupBox>
 
@@ -90,6 +90,19 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
+                    <Grid.Resources>
+
+                        <Style TargetType="ComboBox">
+                            <Style.Triggers>
+                                <Trigger Property="HasItems" Value="True">
+                                    <Trigger.Setters>
+                                        <Setter Property="SelectedIndex" Value="0"/>
+                                    </Trigger.Setters>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+
+                    </Grid.Resources>
 
                     <GroupBox Header="Поиск" Grid.Column="0">
                         <StackPanel>
@@ -101,7 +114,8 @@
 
                             <DockPanel>
                                 <TextBlock Text="Запрос: "/>
-                                <TextBox Text="{Binding CurrentSearchDescription.Query}"/>
+                                <TextBox Text="{Binding CurrentSearchDescription.Query,
+                                                        UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
 <!--
                             <CheckBox Content="Неполное значение" 
@@ -112,19 +126,6 @@
 
                     <GroupBox Header="Сортировка" Grid.Column="1">
                         <StackPanel>
-
-                            <StackPanel.Resources>
-                                <Style TargetType="ComboBox">
-                                    <Style.Triggers>
-                                        <Trigger Property="HasItems" Value="True">
-                                            <Trigger.Setters>
-                                                <Setter Property="SelectedIndex" Value="0"/>
-                                            </Trigger.Setters>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </StackPanel.Resources>
-
                             <ComboBox ItemsSource="{Binding AvailableColumns}"
                                       SelectedItem="{Binding CurrentSortDescription.ColumnName}">
                             </ComboBox>
