@@ -143,7 +143,7 @@ namespace StudentsHelpTerminal.ViewModels
         #endregion
 
         #region RenameTableCommand
-        //TODO: Fix renaming
+
         public ICommand RenameTableCommand { get; }
 
         private bool RenameTableCommandCanExecute(object p)
@@ -154,8 +154,6 @@ namespace StudentsHelpTerminal.ViewModels
         private void RenameTableCommandExecute(object p)
         {
             SelectedTable.Name = NewTableName.Trim();
-            this.OnPropertyChanged(nameof(SelectedTable));
-            this.OnPropertyChanged(nameof(DBTables));
         }
 
         #endregion

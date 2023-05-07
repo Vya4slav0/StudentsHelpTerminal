@@ -49,7 +49,7 @@
                     <ListBox MinWidth="100"
                          ItemsSource="{Binding DBTables}" 
                          SelectedItem="{Binding SelectedTable}"
-                         
+                         DisplayMemberPath="Name"
                          />
                 </GroupBox>
 

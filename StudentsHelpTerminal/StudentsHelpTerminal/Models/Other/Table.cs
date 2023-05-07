@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Windows;
 
 namespace StudentsHelpTerminal.Models.Other
 {
-    internal class Table
+    internal class Table : DependencyObject
     {
         public Table (string name, SearchDescription searchDescription, SortDescription sortDescription)
         {
@@ -14,7 +15,13 @@ namespace StudentsHelpTerminal.Models.Other
             SortDescription = sortDescription;
         }
 
-        public string Name { get; set; }
+        private static readonly DependencyProperty NameProperty = DependencyProperty.Register ("Name", typeof (string), typeof (Table), new PropertyMetadata ());
+
+        public string Name 
+        { 
+            get { return GetValue(NameProperty).ToString(); }
+            set { SetValue(NameProperty, value); } 
+        }
         public IEnumerable<Student> Items { get; private set; }
 
         #region Sort description
