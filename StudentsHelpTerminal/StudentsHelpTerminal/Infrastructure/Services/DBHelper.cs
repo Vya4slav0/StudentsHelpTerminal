@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Windows.Media.Imaging;
+using System.Text.RegularExpressions;
 
 namespace StudentsHelpTerminal.Infrastructure.Services
 {
@@ -74,14 +75,26 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                         stuff = db.STAFFs.Where(s => s.MIDDLE_NAME.Contains(value)).ToList();
                         break;
                     case ID:
-                        int id = Convert.ToInt32(value);
+                        int id = ForcedConvertToInt(value);
                         stuff = db.STAFFs.Where(s => s.ID_STAFF == id).ToList();
                         break;
                     case CARD_ID:
+                        int idCard = ForcedConvertToInt(value);
+                        int? idStuff = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == idCard)?.STAFF_ID;
+                        if (idStuff is null) break;
+                        stuff = db.STAFFs.Where(s => s.ID_STAFF == idStuff.Value).ToList();
                         break;
                 }
                 return GetStudentsFromStuffList(stuff);
             }
+        }
+        private static int ForcedConvertToInt(string value)
+        {
+            if (!Regex.IsMatch(value, @"^\d+$"))
+            {
+                value = Regex.Replace(value, @"\D", string.Empty);
+            }
+            return Convert.ToInt32(value);
         }
         private static IEnumerable<Student> GetStudentsFromStuffList(List<STAFF> stuff)
         {
