@@ -10,9 +10,9 @@ namespace StudentsHelpTerminal.Infrastructure.Commands
         public NavigateBackCommand(Predicate<object> canExecute = null)
         {
             _canExecute = canExecute;
-        }
+        }  
 
-        public override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true;
+        public override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? NavigationStore.PrevViewModelAvailable;
 
         public override void Execute(object parameter)
         {
