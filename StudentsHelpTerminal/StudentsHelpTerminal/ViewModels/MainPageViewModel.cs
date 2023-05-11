@@ -116,9 +116,7 @@ namespace StudentsHelpTerminal.ViewModels
             CardNum = cardId.ToString();
             
             //Searching for available documents
-            string commonDocs = string.Format("{0}\\{1}", 
-                Properties.Settings.Default.PathToMainFolder,
-                Properties.Settings.Default.CommonDocsDirectoryName);
+            string commonDocs = Properties.Settings.Default.CommonDocsDirectoryName;
             string groupDocs = string.Format("{0}\\{1}",
                 Properties.Settings.Default.PathToMainFolder,
                 student.Group);
