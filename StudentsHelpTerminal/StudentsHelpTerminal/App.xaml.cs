@@ -1,4 +1,5 @@
-﻿using StudentsHelpTerminal.Infrastructure.Stores;
+﻿using StudentsHelpTerminal.Infrastructure.Commands;
+using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.ViewModels;
 using StudentsHelpTerminal.Views.Windows;
 using System;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace StudentsHelpTerminal
 {
@@ -22,9 +24,6 @@ namespace StudentsHelpTerminal
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            IdlePageViewModel idlePageViewModel = new IdlePageViewModel();
-            NavigationStore.CurrentViewModel = idlePageViewModel;
-            NavigationStore.CurrentIdlePageViewModel = idlePageViewModel;
             MainWindow = new MainWindow() { DataContext = new MainWindowViewModel() };
             MainWindow.Show();
             base.OnStartup(e);

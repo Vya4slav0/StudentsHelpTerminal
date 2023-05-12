@@ -25,11 +25,11 @@ namespace StudentsHelpTerminal.ViewModels
         {
             ApplySearchSortCommand = new RelayCommand(ApplySearchSortCommandCommandExecute, ApplySearchSortCommandCommandCanExecute);
 
-            BackToProfilePageCommand = new NavigateBackCommand();
             CloseAppCommand = new RelayCommand(CloseAppCommandExecute);
             OpenConfigFileCommand = new RelayCommand(OpenConfigFileCommandExecute);
             OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
             ClearUsersLogCommand = new RelayCommand(ClearUsersLogCommandExecute, ClearUsersLogCommandCanExecute);
+            OpenSettingsPageCommnd = new RelayCommand(OpenSettingsPageCommandExecute);
 
             AddTableCommand = new RelayCommand(AddTableCommandExecute, AddTableCommandCanExecute);
             RenameTableCommand = new RelayCommand(RenameTableCommandExecute, RenameTableCommandCanExecute);
@@ -175,12 +175,6 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
 
-        #region BackToProfilePageCommand
-
-        public ICommand BackToProfilePageCommand { get; }
-
-        #endregion
-
         #region ClearUsersLogCommand
 
         public ICommand ClearUsersLogCommand { get; }
@@ -204,6 +198,14 @@ namespace StudentsHelpTerminal.ViewModels
         public ICommand OpenUsersLogCommand { get; }
         // TODO: add ability to set path to log in config and check log file exist
         private void OpenUsersLogCommandExecute(object p) => Process.Start(@".\users.log");
+
+        #endregion
+
+        #region OpenSettingsPageCommnd
+
+        public ICommand OpenSettingsPageCommnd { get; }
+        
+        private void OpenSettingsPageCommandExecute(object p) => NavigationStore.CurrentViewModel = new SettingsPageViewModel();
 
         #endregion
 

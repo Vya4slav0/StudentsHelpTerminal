@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:StudentsHelpTerminal"
              xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
+             xmlns:cmd="clr-namespace:StudentsHelpTerminal.Infrastructure.Commands"
              xmlns:views="clr-namespace:StudentsHelpTerminal.Views">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="Theme" Source="Resources\Themes\BlueTheme.xaml"/>
                 <ResourceDictionary>
-                    
+                    <cmd:NavigateBackCommand x:Key="NavigateBackCommand"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

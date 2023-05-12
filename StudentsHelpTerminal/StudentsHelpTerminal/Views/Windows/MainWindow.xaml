@@ -27,6 +27,10 @@
         <DataTemplate DataType="{x:Type vm:IdlePageViewModel}">
             <views:IdlePage/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SettingsPageViewModel}">
+            <views:SettingsPage/>
+        </DataTemplate>
         
     </Window.Resources>
 </Window>

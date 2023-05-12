@@ -7,6 +7,11 @@ namespace StudentsHelpTerminal.Infrastructure.Commands
     {
         private readonly Predicate<object> _canExecute;
 
+        public NavigateBackCommand() 
+        {
+            _canExecute = null;
+        }
+
         public NavigateBackCommand(Predicate<object> canExecute = null)
         {
             _canExecute = canExecute;
