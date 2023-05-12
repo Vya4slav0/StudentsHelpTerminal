@@ -61,12 +61,48 @@ namespace StudentsHelpTerminal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Задаёт скорость последовательного порта, к которому подключено устройство чтения RFID карт. Принимает целочисленные значения..
+        /// </summary>
+        internal static string CardReaderPortBaudRate {
+            get {
+                return ResourceManager.GetString("CardReaderPortBaudRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Задаёт имя последовательного порта, к которому подключено устройство чтения RFID карт. Принимает строковые значения..
+        /// </summary>
+        internal static string CardReaderPortName {
+            get {
+                return ResourceManager.GetString("CardReaderPortName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь к папке содержащей общие документы для всех студентов. Принимает строковые значения..
+        /// </summary>
+        internal static string CommonDocsDirectoryName {
+            get {
+                return ResourceManager.GetString("CommonDocsDirectoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap no_photo {
             get {
                 object obj = ResourceManager.GetObject("no_photo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь к папке содержащей папки групп с документами. Принимает строковые значения..
+        /// </summary>
+        internal static string PathToMainFolder {
+            get {
+                return ResourceManager.GetString("PathToMainFolder", resourceCulture);
             }
         }
     }

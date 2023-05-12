@@ -147,6 +147,7 @@
       <DependentUpon>StudentsDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Other\SearchDescription.cs" />
+    <Compile Include="Models\Other\Setting.cs" />
     <Compile Include="Models\Other\SortDescription.cs" />
     <Compile Include="Models\Other\Student.cs" />
     <Compile Include="Models\Database\StudentsDBModel.Context.cs">

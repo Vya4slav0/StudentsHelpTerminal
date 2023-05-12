@@ -6,16 +6,38 @@
              xmlns:cmd="clr-namespace:StudentsHelpTerminal.Infrastructure.Commands"
              xmlns:views="clr-namespace:StudentsHelpTerminal.Views">
     <Application.Resources>
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="Theme" Source="Resources\Themes\BlueTheme.xaml"/>
+                
                 <ResourceDictionary>
                     <cmd:NavigateBackCommand x:Key="NavigateBackCommand"/>
                     <cmd:NavigateToIdlePageCommand x:Key="NavigateToIdlePageCommand"/>
+
+                    <Style x:Key="DockAndStackStyle">
+                        <Style.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="5 2"/>
+                            </Style>
+                            <Style TargetType="DockPanel">
+                                <Setter Property="Margin" Value="5 2"/>
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+
+                    <Style TargetType="GroupBox">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+
                 </ResourceDictionary>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
-        
+           
     </Application.Resources>
 </Application>

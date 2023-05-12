@@ -15,18 +15,46 @@
 
     <Grid Background="White">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" Margin="10" ItemsSource="{Binding SettingsList}">
-            
+        <DataGrid Grid.Row="0" Grid.Column="0" Margin="10" 
+                  ItemsSource="{Binding SettingsList}"
+                  SelectedItem="{Binding SelectedSetting}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя настройки" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type.Name}"/>
+                <DataGridTextColumn Header="Значение" Binding="{Binding Value}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
-        <WrapPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
-            <Button Content="Save"/>
-            <Button Content="Back" Command="{StaticResource NavigateBackCommand}"/>
-        </WrapPanel>
+        <Grid Grid.Column="1" Margin="5">
+
+            <DockPanel LastChildFill="True">
+                
+                <TextBlock DockPanel.Dock="Top" Text="Описание настройки:"/>
+                
+                <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource DockAndStackStyle}">
+                    <Button Content="Сохранить"/>
+                    <Button Content="Назад" Command="{StaticResource NavigateBackCommand}"/>
+                </StackPanel>
+
+                <TextBox IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         Text="{Binding SelectedSetting.Description, Mode=OneWay}"/>
+                
+            </DockPanel>
+            
+        </Grid>
+
     </Grid>
 </Page>

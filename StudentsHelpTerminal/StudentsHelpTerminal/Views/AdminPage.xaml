@@ -14,16 +14,12 @@
     </Page.DataContext>
 
     <Grid Background="White">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid.Resources>
-            <Style TargetType="GroupBox">
-                <Setter Property="Foreground" Value="Black"/>
-            </Style>
-        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="399*"/>
             <ColumnDefinition/>
@@ -84,19 +80,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid.Resources>
-                <Style TargetType="StackPanel">
-                    <Style.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="Margin" Value="5 2"/>
-                        </Style>
-                        <Style TargetType="DockPanel">
-                            <Setter Property="Margin" Value="5 2"/>
-                        </Style>
-                    </Style.Resources>
-                </Style>
-            </Grid.Resources>
-
             <!--#region Search and sorting-->
             <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0">
                 <Grid>
@@ -126,7 +109,7 @@
                     </Grid.Resources>
 
                     <GroupBox Header="Поиск" Grid.Column="0">
-                        <StackPanel>
+                        <StackPanel Style="{StaticResource DockAndStackStyle}">
                             <DockPanel>
                                 <TextBlock Text="Поле: "/>
                                 <ComboBox ItemsSource="{Binding AvailableColumns}" 
@@ -146,7 +129,7 @@
                     </GroupBox>
 
                     <GroupBox Header="Сортировка" Grid.Column="1">
-                        <StackPanel>
+                        <StackPanel Style="{StaticResource DockAndStackStyle}">
                             <ComboBox ItemsSource="{Binding AvailableColumns}"
                                       SelectedItem="{Binding CurrentSortDescription.ColumnName}">
                             </ComboBox>
@@ -171,7 +154,7 @@
 
             <GroupBox Header="Работа с данными" Grid.Column="1">
 
-                <StackPanel>
+                <StackPanel Style="{StaticResource DockAndStackStyle}">
                     <DockPanel>
                         <TextBlock Text="Имя таблицы: "/>
                         <TextBox Text="{Binding NewTableName, UpdateSourceTrigger=PropertyChanged}"/>
@@ -184,7 +167,7 @@
 
             <GroupBox Header="Работа с приложением" Grid.Column="2">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource DockAndStackStyle}">
                         <Button Content="Открыть окно настроек" Command="{Binding OpenSettingsPageCommnd}"/>
                         <Button Content="Открыть файл конфигурации" Command="{Binding OpenConfigFileCommand}"/>
                         <Button Content="Открыть лог пользователей" Command="{Binding OpenUsersLogCommand}"/>
