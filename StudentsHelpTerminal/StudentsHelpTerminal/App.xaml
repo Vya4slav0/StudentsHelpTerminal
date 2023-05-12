@@ -11,6 +11,7 @@
                 <ResourceDictionary x:Name="Theme" Source="Resources\Themes\BlueTheme.xaml"/>
                 <ResourceDictionary>
                     <cmd:NavigateBackCommand x:Key="NavigateBackCommand"/>
+                    <cmd:NavigateToIdlePageCommand x:Key="NavigateToIdlePageCommand"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

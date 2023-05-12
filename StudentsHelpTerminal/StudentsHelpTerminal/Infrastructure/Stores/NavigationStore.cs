@@ -7,15 +7,6 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
 {
     internal static class NavigationStore
     {
-        static NavigationStore()
-        {
-            //Initialize navigation
-            IdlePageViewModel idlePageViewModel = new IdlePageViewModel();
-            _CurrentViewModel = idlePageViewModel;
-            CurrentIdlePageViewModel = idlePageViewModel;
-        }
-
-        public static IdlePageViewModel CurrentIdlePageViewModel { get; }
 
         #region PrevViewModel
 
@@ -33,16 +24,19 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
 
         #region CurrentViewModel
 
-        private static ViewModelBase _CurrentViewModel;
+        private static ViewModelBase _CurrentViewModel = new IdlePageViewModel();
 
         public static ViewModelBase CurrentViewModel
         {
             get { return _CurrentViewModel; }
             set 
             {
-                if (PrevViewModelAvailable && _NavigationStack.Contains(value)) 
+                if (value is null) return;
+                if (value is IdlePageViewModel)
+                    _NavigationStack.Clear();       
+                else if (PrevViewModelAvailable && _NavigationStack.Contains(value)) 
                     _NavigationStack.Pop();
-                else if (_CurrentViewModel != null)
+                else
                     _NavigationStack.Push(_CurrentViewModel);
 
                 _CurrentViewModel = value;

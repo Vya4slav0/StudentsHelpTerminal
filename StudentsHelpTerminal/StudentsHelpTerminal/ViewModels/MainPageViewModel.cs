@@ -18,8 +18,6 @@ namespace StudentsHelpTerminal.ViewModels
 
             AdminWindowOpenCommand = new NavigationCommand(new AdminPageViewModel());
 
-            ToIdlePageCommand = new NavigationCommand(NavigationStore.CurrentIdlePageViewModel);
-
             #endregion
 
             FillPropertiesByCardId(cardId);
@@ -99,8 +97,6 @@ namespace StudentsHelpTerminal.ViewModels
         #region Commands
 
         public ICommand AdminWindowOpenCommand { get; }
-
-        public ICommand ToIdlePageCommand { get; }
 
         #endregion
 

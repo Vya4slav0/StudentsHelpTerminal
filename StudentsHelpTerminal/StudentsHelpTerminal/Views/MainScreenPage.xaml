@@ -117,7 +117,7 @@
                 </StackPanel.Resources>
 
                 <custom:ButtonCuttedCorners Content="Карта колледжа"/>
-                <custom:ButtonCuttedCorners Content="Очитстить информацию" Command="{Binding ToIdlePageCommand}"/>
+                <custom:ButtonCuttedCorners Content="Очитстить информацию" Command="{StaticResource NavigateToIdlePageCommand}"/>
                 <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}"
                 />
             </StackPanel>

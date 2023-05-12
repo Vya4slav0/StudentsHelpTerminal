@@ -18,7 +18,12 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
 
         #endregion
 
-        public static void IOPortsOpen()
+        static IOPortsStore()
+        {
+            IOPortsOpen();
+        }
+
+        private static void IOPortsOpen()
         {
             try { CardReaderSerialPort.Open(); }
             catch (IOException)
