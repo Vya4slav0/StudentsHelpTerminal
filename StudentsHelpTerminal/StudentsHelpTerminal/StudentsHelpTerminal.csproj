@@ -249,6 +249,10 @@
       <Project>{0664bbcb-5727-4840-9859-040afde55b0e}</Project>
       <Name>BindingConverters</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DialogBoxes\DialogBoxes.csproj">
+      <Project>{dcc31699-25e6-4a0b-86b2-f3b05b3c3c10}</Project>
+      <Name>DialogBoxes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DocumentViewers\DocumentViewers.csproj">
       <Project>{c3609cc9-f437-4dc3-b37d-5f4bb2669758}</Project>
       <Name>DocumentViewers</Name>

@@ -24,7 +24,7 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
 
         #region CurrentViewModel
 
-        private static ViewModelBase _CurrentViewModel = new IdlePageViewModel();
+        private static ViewModelBase _CurrentViewModel;
 
         public static ViewModelBase CurrentViewModel
         {

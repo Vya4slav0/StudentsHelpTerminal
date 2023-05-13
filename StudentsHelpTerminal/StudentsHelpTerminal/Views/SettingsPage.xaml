@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <DataGrid Grid.Row="0" Grid.Column="0" Margin="10" 
-                  ItemsSource="{Binding SettingsList}"
+                  ItemsSource="{Binding SettingsList, UpdateSourceTrigger=LostFocus}"
                   SelectedItem="{Binding SelectedSetting}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False" CanUserDeleteRows="False">
@@ -44,7 +44,7 @@
                 <TextBlock DockPanel.Dock="Top" Text="Описание настройки:"/>
                 
                 <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource DockAndStackStyle}">
-                    <Button Content="Сохранить"/>
+                    <Button Content="Сохранить" Command="{Binding SaveSettingsCommand}"/>
                     <Button Content="Назад" Command="{StaticResource NavigateBackCommand}"/>
                 </StackPanel>
 

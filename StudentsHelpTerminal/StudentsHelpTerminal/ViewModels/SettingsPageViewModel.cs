@@ -1,11 +1,12 @@
-﻿using StudentsHelpTerminal.Models.Other;
-using StudentsHelpTerminal.Properties;
+﻿using StudentsHelpTerminal.Infrastructure.Commands;
+using StudentsHelpTerminal.Models.Other;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -13,26 +14,36 @@ namespace StudentsHelpTerminal.ViewModels
     {
         public SettingsPageViewModel()
         {
-            
+            SaveSettingsCommand = new RelayCommand(SaveSettingsCommandExecute);
         }
 
         #region Properties
 
+        #region SettingsList
+
+        private List<Setting> _SettingsList;
+
         public List<Setting> SettingsList
         {
             get 
-            { 
-                List<Setting> settings = new List<Setting>();
+            {
+                _SettingsList = new List<Setting>();
                 foreach (System.Configuration.SettingsProperty s in Properties.Settings.Default.Properties)
                 {
-                    settings.Add(new Setting { 
+                    _SettingsList.Add(new Setting { 
                         Name = s.Name, 
                         Type = s.PropertyType, 
                         Value = Properties.Settings.Default[s.Name]});
                 }
-                return settings; 
+                return _SettingsList; 
+            }
+            set
+            {
+                _SettingsList = value;
             }
         }
+
+        #endregion
 
         #region SelectedSetting
 
@@ -50,7 +61,20 @@ namespace StudentsHelpTerminal.ViewModels
 
         #region Commands
 
+        #region SaveSettingsCommand
 
+        public ICommand SaveSettingsCommand { get; }
+
+        private void SaveSettingsCommandExecute(object p)
+        {
+            foreach (Setting s in _SettingsList)
+            {
+                Properties.Settings.Default[s.Name] = s.Value;
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        #endregion
 
         #endregion
     }

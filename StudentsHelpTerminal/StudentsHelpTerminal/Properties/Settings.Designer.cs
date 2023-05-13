@@ -23,37 +23,49 @@ namespace StudentsHelpTerminal.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public int CardReaderPortBaudRate {
             get {
                 return ((int)(this["CardReaderPortBaudRate"]));
             }
+            set {
+                this["CardReaderPortBaudRate"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public string CardReaderPortName {
             get {
                 return ((string)(this["CardReaderPortName"]));
             }
+            set {
+                this["CardReaderPortName"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("D:\\Terminal data")]
         public string PathToMainFolder {
             get {
                 return ((string)(this["PathToMainFolder"]));
             }
+            set {
+                this["PathToMainFolder"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("D:\\Terminal data\\Common")]
         public string CommonDocsDirectoryName {
             get {
                 return ((string)(this["CommonDocsDirectoryName"]));
+            }
+            set {
+                this["CommonDocsDirectoryName"] = value;
             }
         }
     }

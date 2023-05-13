@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using DialogBoxes;
+using StudentsHelpTerminal.ViewModels;
+using System.IO;
 using System.IO.Ports;
 
 namespace StudentsHelpTerminal.Infrastructure.Stores
@@ -28,10 +30,17 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
             try { CardReaderSerialPort.Open(); }
             catch (IOException)
             {
-                //TODO: make port is not connected alert
-                #if !DEBUG
-                
-                #endif
+                string message = $"Порт {_COMName} не доступен."; 
+                if (SerialPort.GetPortNames().Length > 0)
+                    message += $"\nОбнаружены порты: {string.Join(", ", SerialPort.GetPortNames())}";
+                message += "\nОткрыть панель администратора?";
+                if (new YesNoBox(message).ShowDialog())
+                {
+                    //TODO: make admin autorization
+                    NavigationStore.CurrentViewModel = new AdminPageViewModel();
+                    return;
+                }
+                App.Current.Shutdown();
             }
         }
     }

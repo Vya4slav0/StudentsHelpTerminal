@@ -1,4 +1,6 @@
-﻿namespace StudentsHelpTerminal.Properties {
+﻿using DialogBoxes;
+
+namespace StudentsHelpTerminal.Properties {
     
     
     // Этот класс позволяет обрабатывать определенные события в классе параметров:
@@ -13,7 +15,7 @@
             //
             // this.SettingChanging += this.SettingChangingEventHandler;
             //
-            // this.SettingsSaving += this.SettingsSavingEventHandler;
+            this.SettingsSaving += this.SettingsSavingEventHandler;
             //
         }
         
@@ -23,6 +25,8 @@
         
         private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
             // Добавьте здесь код для обработки события SettingsSaving.
+            e.Cancel = !new ConfirmBox("Применить изменение настроек?").ShowDialog();
+            new AlertBox("Настройки изменены").ShowDialog();
         }
     }
 }
