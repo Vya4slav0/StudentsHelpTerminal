@@ -173,7 +173,7 @@
                         <Button Content="Открыть лог пользователей" Command="{Binding OpenUsersLogCommand}"/>
                         <Button Content="Очистить лог пользователей" Command="{Binding ClearUsersLogCommand}"/>
                         <Button Content="Завершить работу" Command="{Binding CloseAppCommand}"/>
-                        <Button Content="Назад" Command="{StaticResource NavigateBackCommand}"/>
+                        <Button Content="Назад" Command="{Binding NavigateBackFromAdminCommand}"/>
                     </StackPanel>
                 </ScrollViewer>
             </GroupBox>

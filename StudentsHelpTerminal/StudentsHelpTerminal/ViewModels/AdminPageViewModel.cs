@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +29,7 @@ namespace StudentsHelpTerminal.ViewModels
             OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
             ClearUsersLogCommand = new RelayCommand(ClearUsersLogCommandExecute, ClearUsersLogCommandCanExecute);
             OpenSettingsPageCommnd = new RelayCommand(OpenSettingsPageCommandExecute);
+            NavigateBackFromAdminCommand = new NavigateBackCommand(NavigateBackFromAdminCommandCanExecute);
 
             AddTableCommand = new RelayCommand(AddTableCommandExecute, AddTableCommandCanExecute);
             RenameTableCommand = new RelayCommand(RenameTableCommandExecute, RenameTableCommandCanExecute);
@@ -60,12 +60,6 @@ namespace StudentsHelpTerminal.ViewModels
         }
 
         #region Sort and search
-
-        public string SearchBy { get; set; }
-        public string SearchQuery { get; set; }
-        public string SortBy { get; set; }
-        public bool IsDescending { get; set; }
-        public bool SortEnabled { get; set; }
 
         public Models.Other.SearchDescription CurrentSearchDescription { get; set; }
         public Models.Other.SortDescription CurrentSortDescription { get; set; }
@@ -103,6 +97,17 @@ namespace StudentsHelpTerminal.ViewModels
         #endregion
 
         #region Commands
+
+        #region NavigateBackFromAdminCommand
+
+        public ICommand NavigateBackFromAdminCommand { get; }
+
+        private bool NavigateBackFromAdminCommandCanExecute(object p)
+        {
+            return !(NavigationStore.PrevViewModel is IdlePageViewModel);
+        }
+
+        #endregion
 
         #region ApplySearchSortCommand
 
