@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingConverters", "Bindin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentViewers", "DocumentViewers\DocumentViewers.csproj", "{C3609CC9-F437-4DC3-B37D-5F4BB2669758}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogBoxes", "DialogBoxes\DialogBoxes.csproj", "{DCC31699-25E6-4A0B-86B2-F3B05B3C3C10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C3609CC9-F437-4DC3-B37D-5F4BB2669758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3609CC9-F437-4DC3-B37D-5F4BB2669758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3609CC9-F437-4DC3-B37D-5F4BB2669758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC31699-25E6-4A0B-86B2-F3B05B3C3C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC31699-25E6-4A0B-86B2-F3B05B3C3C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC31699-25E6-4A0B-86B2-F3B05B3C3C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC31699-25E6-4A0B-86B2-F3B05B3C3C10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
