@@ -5,10 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DialogBoxes"
         mc:Ignorable="d"
-        Title="Подтверждение" 
-        Height="auto" Width="auto"
-        MaxHeight="300" MaxWidth="700"    
-        WindowStyle="ToolWindow">
+        Title="Подтверждение">
     
     <Grid Margin="10">
 
@@ -39,4 +36,5 @@
             
         </StackPanel>
     </Grid>
+    
 </Window>
