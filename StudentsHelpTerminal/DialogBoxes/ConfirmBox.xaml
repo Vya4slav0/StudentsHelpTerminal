@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DialogBoxes"
         mc:Ignorable="d"
-        Title="Подтверждение">
-    
-    <Grid Margin="10">
+        Title="Подтверждение"
+        WindowStartupLocation="CenterScreen"
+        Style="{DynamicResource DialogWindowStyle}">
+
+    <Window.Resources>
+        <ResourceDictionary Source="./Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Margin="15">
 
         <Grid.RowDefinitions>
             <RowDefinition/>

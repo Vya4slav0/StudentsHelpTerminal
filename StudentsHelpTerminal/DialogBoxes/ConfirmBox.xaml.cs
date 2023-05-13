@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace DialogBoxes
 {
@@ -7,15 +8,15 @@ namespace DialogBoxes
     /// </summary>
     public partial class ConfirmBox : Window
     {
-        public ConfirmBox()
+        public ConfirmBox(string text)
         {
             InitializeComponent();
-            DialogResult = false;
+            TextBlockText.Text = text;
         }
 
         public new bool ShowDialog()
         {
-            return DialogResult.HasValue ? DialogResult.Value : false;
+            return base.ShowDialog().HasValue ? DialogResult.Value : false;
         }
 
         private void BtnConfirm_Click(object sender, RoutedEventArgs e)

@@ -19,9 +19,10 @@ namespace DialogBoxes
     /// </summary>
     public partial class AlertBox : Window
     {
-        public AlertBox()
+        public AlertBox(string text)
         {
             InitializeComponent();
+            TextBlockText.Text = text;
         }
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
