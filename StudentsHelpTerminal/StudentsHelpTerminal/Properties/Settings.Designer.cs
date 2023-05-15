@@ -68,5 +68,29 @@ namespace StudentsHelpTerminal.Properties {
                 this["CommonDocsDirectoryName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\Users.log")]
+        public string PathToLogFile {
+            get {
+                return ((string)(this["PathToLogFile"]));
+            }
+            set {
+                this["PathToLogFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int MaxLogSizeMB {
+            get {
+                return ((int)(this["MaxLogSizeMB"]));
+            }
+            set {
+                this["MaxLogSizeMB"] = value;
+            }
+        }
     }
 }

@@ -88,12 +88,30 @@ namespace StudentsHelpTerminal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Максимальный размер лога в мегабайтах. При достижении файлом лога размера больше указанного, размер файла лога сократится вдвое за счёт удаления старых записей..
+        /// </summary>
+        internal static string MaxLogSizeMB {
+            get {
+                return ResourceManager.GetString("MaxLogSizeMB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap no_photo {
             get {
                 object obj = ResourceManager.GetObject("no_photo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь к файлу, содержащему лог пользователей..
+        /// </summary>
+        internal static string PathToLogFile {
+            get {
+                return ResourceManager.GetString("PathToLogFile", resourceCulture);
             }
         }
         

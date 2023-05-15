@@ -15,6 +15,7 @@ using System.Windows.Threading;
 using System.Windows.Controls;
 using StudentsHelpTerminal.Infrastructure.Services;
 using System.Collections.ObjectModel;
+using DialogBoxes;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -26,7 +27,7 @@ namespace StudentsHelpTerminal.ViewModels
 
             CloseAppCommand = new RelayCommand(CloseAppCommandExecute);
             OpenConfigFileCommand = new RelayCommand(OpenConfigFileCommandExecute);
-            OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute);
+            OpenUsersLogCommand = new RelayCommand(OpenUsersLogCommandExecute, OpenUsersLogCommandCanExecute);
             ClearUsersLogCommand = new RelayCommand(ClearUsersLogCommandExecute, ClearUsersLogCommandCanExecute);
             OpenSettingsPageCommnd = new RelayCommand(OpenSettingsPageCommandExecute);
             NavigateBackFromAdminCommand = new NavigateBackCommand(NavigateBackFromAdminCommandCanExecute);
@@ -183,26 +184,25 @@ namespace StudentsHelpTerminal.ViewModels
         #region ClearUsersLogCommand
 
         public ICommand ClearUsersLogCommand { get; }
-        // TODO: add ability to set path to log in config
+        
         private void ClearUsersLogCommandExecute(object p)
         {
-            StreamWriter usersLogFile = new StreamWriter(@".\users.log");
+            if (!new ConfirmBox("Очистить лог пользователей?").ShowDialog()) return;
+            StreamWriter usersLogFile = new StreamWriter(Properties.Settings.Default.PathToLogFile);
             usersLogFile.Write(string.Empty);
             usersLogFile.Close();
-            // TODO: add confirmation
         }
-        private bool ClearUsersLogCommandCanExecute(object p)
-        {
-            return File.Exists(@".\users.log");
-        }
+        private bool ClearUsersLogCommandCanExecute(object p) => File.Exists(Properties.Settings.Default.PathToLogFile);
 
         #endregion
 
         #region OpenUsersLogCommand
 
         public ICommand OpenUsersLogCommand { get; }
-        // TODO: add ability to set path to log in config and check log file exist
-        private void OpenUsersLogCommandExecute(object p) => Process.Start(@".\users.log");
+        
+        private void OpenUsersLogCommandExecute(object p) => Process.Start(Properties.Settings.Default.PathToLogFile);
+
+        private bool OpenUsersLogCommandCanExecute(object p) => File.Exists(Properties.Settings.Default.PathToLogFile);
 
         #endregion
 

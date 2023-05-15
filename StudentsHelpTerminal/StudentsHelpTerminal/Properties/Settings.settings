@@ -14,5 +14,11 @@
     <Setting Name="CommonDocsDirectoryName" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\Terminal data\Common</Value>
     </Setting>
+    <Setting Name="PathToLogFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.\Users.log</Value>
+    </Setting>
+    <Setting Name="MaxLogSizeMB" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
