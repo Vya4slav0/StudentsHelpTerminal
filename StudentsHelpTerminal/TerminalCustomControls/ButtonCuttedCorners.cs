@@ -47,7 +47,7 @@ namespace TerminalCustomControls
     public class ButtonCuttedCorners : Button
     {
         #region ClickColorProperty
-        public static readonly DependencyProperty ClickColorProperty;
+        public static readonly DependencyProperty ClickColorProperty = DependencyProperty.Register(nameof(ClickColor), typeof(Color), typeof(ButtonCuttedCorners));
 
         public Color ClickColor
         {
@@ -56,22 +56,19 @@ namespace TerminalCustomControls
         }
         #endregion
 
-        #region ShadowColorProperty
-        public static readonly DependencyProperty ShadowColorProperty;
+        #region TextColorProperty
+        public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(nameof(TextColor), typeof(Brush), typeof(ButtonCuttedCorners));
 
-        public Color ShadowColor
+        public Brush TextColor
         {
-            get { return (Color)GetValue(ShadowColorProperty); }
-            set { SetValue(ShadowColorProperty, value); }
+            get { return (Brush)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
         }
         #endregion
 
         static ButtonCuttedCorners()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ButtonCuttedCorners), new FrameworkPropertyMetadata(typeof(ButtonCuttedCorners))); 
-
-            ClickColorProperty = DependencyProperty.Register("ClickColor", typeof(Color), typeof(ButtonCuttedCorners));
-            ShadowColorProperty = DependencyProperty.Register("ShadowColor", typeof(Color), typeof(ButtonCuttedCorners));
         }
     }
 }

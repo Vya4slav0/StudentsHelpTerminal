@@ -14,7 +14,13 @@
       Title="MainScreenPage">
 
     <Page.Resources>
+        
         <conv:DivideByConverter x:Key="DivideByConverter"/>
+
+        <LinearGradientBrush x:Key="BlueLinearGradient" StartPoint="0 0" EndPoint="1 1">
+            <GradientStop Color="DeepSkyBlue" Offset="0"/>
+            <GradientStop Color="DarkBlue" Offset="1"/>
+        </LinearGradientBrush>
 
         <Style x:Key="TextBlocks" TargetType="TextBlock">
             <Setter Property="Foreground" Value="DarkBlue"/>
@@ -25,10 +31,37 @@
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-
+        
         <Style x:Key="TextBlockMedium" BasedOn="{StaticResource ResourceKey=TextBlocks}" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
         </Style>
+
+        <Style x:Key="TextBlockSmall" BasedOn="{StaticResource ResourceKey=TextBlocks}" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style x:Key="SemiOpacityBorder" TargetType="Border">
+            <Setter Property="BorderBrush" Value="{StaticResource BlueLinearGradient}"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="AliceBlue" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="5"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="BorderBrush.RenderTransform">
+                                
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
     </Page.Resources>
 
     <Page.Background>
@@ -36,9 +69,10 @@
             <VisualBrush.Visual>
                 <Grid Background="White">
                     <Path Fill="#00B0FC" Data="M16256 7982l0 -142 -14217 0c-25,-4 -333,-312 -337,-338l0 -3113c11,-38 132,-145 166,-180 35,-33 143,-155 180,-166l5189 0c-274,330 -269,126 -269,537 0,273 0,545 0,818 0,545 2,1090 0,1634 0,125 23,127 151,251 71,69 134,135 204,204 48,48 62,51 151,51l2252 0c2176,-1 4354,-5 6530,0l0 -142 -8808 0c-40,-12 -140,-128 -175,-162 -34,-33 -151,-139 -163,-176l0 -2669c4,-27 321,-342 346,-346l4632 0 -244 247c-46,54 -33,128 -33,212l3 2364c9,45 143,162 177,196l187 187c27,28 37,40 87,44 127,11 804,1 991,1l3000 1 0 -142 -3965 -1c-23,-4 -334,-314 -338,-337 -1,-591 0,-1183 0,-1774 0,-59 -7,-635 5,-664l330 -330c35,-15 3660,-5 3968,-4l0 -142c-2787,-12 -5577,-2 -8365,0l-5226 0c-173,0 -347,0 -521,0 -194,0 -157,-20 -346,177 -44,46 -85,86 -131,130 -35,34 -104,84 -107,154 -8,166 0,355 0,523l0 2617c0,99 46,118 94,168l261 261c71,68 91,51 211,51l5757 0c2791,-1 5582,4 8373,0z" />
+                    
                     <Path Fill="#00B0FC" Data="M15771 179c65,-26 107,80 35,108 -63,25 -120,-73 -35,-108zm-15768 9175l142 0 0 -8704c12,-38 133,-144 167,-179 33,-34 143,-156 180,-167l15094 0c26,6 21,45 88,94 124,90 313,-2 314,-165 0,-173 -227,-284 -359,-123 -19,24 -15,40 -43,52 -4127,-4 -8254,0 -12381,0l-2705 0c-114,-1 -127,46 -237,155 -66,65 -126,125 -191,191 -95,96 -69,119 -69,325l0 8521z" />
+
                     <Path Fill="#00B0FC" Data="M16110 2736c66,-27 107,80 35,108 -63,24 -121,-74 -35,-108zm-15420 6618l142 0 0 -6156c3,-10 318,-333 347,-338l14747 0c20,5 84,161 238,125 48,-11 58,-25 92,-41l0 -310c-31,-15 -42,-28 -84,-39 -83,-22 -170,17 -215,87 -17,27 -5,25 -31,36l-14678 0c-183,0 -150,11 -246,103l-257 257c-33,33 -54,52 -55,120 -2,228 0,458 0,687 0,1823 -1,3646 0,5469z" />
-                    <Path Fill="#00B0FC" Data="M13380 518c65,-26 107,80 35,109 -63,24 -121,-74 -35,-109zm-13038 8836l142 0 0 -8365c12,-39 132,-143 167,-179 32,-33 145,-156 180,-167l12364 0c26,6 21,46 87,94 125,89 314,-1 314,-165 0,-172 -225,-284 -358,-123 -19,24 -15,40 -43,52 -75,15 -10467,-14 -12373,0 -71,0 -84,20 -120,55l-337 342c-43,55 -22,234 -23,317l0 8139z" />
                     <Path Fill="#00B0FC" Data="M2285 4474c65,-26 107,81 35,109 -57,22 -122,-74 -35,-109zm13971 3291l0 -142 -14036 0 -272 -273c-54,-53 -47,-35 -46,-135l0 -2200c4,-23 276,-291 303,-310 209,98 385,-145 249,-305 -99,-116 -279,-84 -335,43 -31,70 -16,87 -11,157 -93,86 -185,185 -277,277 -79,80 -71,60 -71,208l1 2243c9,61 92,126 126,161 43,43 245,261 293,273 70,17 461,3 564,3l13512 0z" />
                     <Path Fill="#00B0FC" Data="M1038 9354l142 0 0 -296c12,-37 132,-145 166,-180 33,-33 146,-155 180,-166l14730 0 0 -142c-2666,3 -5333,0 -8000,0l-5999 0c-168,0 -336,0 -505,0 -309,0 -262,-32 -398,99 -87,84 -167,166 -252,252 -67,68 -64,65 -64,190 0,81 0,162 0,243z" />
                     <Path Fill="#00B0FC" Data="M1377 9354l142 0 0 -43c12,-39 132,-145 167,-180 33,-33 144,-156 179,-167l14391 0 0 -142 -13486 0c-115,0 -922,-7 -963,4 -43,11 -211,193 -248,230 -163,162 -182,143 -182,298z" />
@@ -67,7 +101,7 @@
             </Grid.RowDefinitions>
 
             <!--PHOTO-->
-            <Border BorderBrush="DarkBlue" BorderThickness="3"
+            <Border Style="{StaticResource SemiOpacityBorder}"
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalAlignment="Left"
@@ -77,9 +111,6 @@
                                         Converter={StaticResource DivideByConverter}, 
                                         ConverterParameter='1,33'}"
                         Height="auto">
-                <Border.Background>
-                    <SolidColorBrush Color="AliceBlue" Opacity="0.7"/>
-                </Border.Background>
                 <Image Source="{Binding Path=Photo}" Stretch="UniformToFill"/>
             </Border>
 
@@ -90,7 +121,7 @@
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Margin="5 30 0 0">
+                <StackPanel Grid.Row="0" Margin="5 20 0 0">
                     <TextBlock Text="{Binding Path=Surname}" Style="{StaticResource TextBlockBig}"/>
                     <TextBlock Text="{Binding Path=Name}" Style="{StaticResource TextBlockBig}"/>
                     
@@ -104,10 +135,16 @@
                 <StackPanel.Resources>
                     <Style TargetType="custom:ButtonCuttedCorners">
                         <Setter Property="Height" Value="45"/>
-                        <Setter Property="Background" Value="{StaticResource BrushLight}"/>
-                        <Setter Property="Foreground" Value="{StaticResource BrushDark}"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Color="AliceBlue" Opacity="0.7"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="{StaticResource BlueLinearGradient}"/>
                         <Setter Property="ClickColor" Value="{StaticResource ColorClick}"/>
+                        <Setter Property="TextColor" Value="{StaticResource BrushDark}"/>
                         <Setter Property="FontFamily" Value="Cascadia"/>
+                        <Setter Property="BorderThickness" Value="5"/>
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DivideByConverter}, ConverterParameter=2}"/>
                         <Setter Property="Margin" Value="0 0 0 10"/>
@@ -117,9 +154,11 @@
                 </StackPanel.Resources>
 
                 <custom:ButtonCuttedCorners Content="Карта колледжа"/>
-                <custom:ButtonCuttedCorners Content="Очитстить информацию" Command="{StaticResource NavigateToIdlePageCommand}"/>
+
                 <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}"
                 />
+                <custom:ButtonCuttedCorners Content="Частые вопросы"/>
+                <custom:ButtonCuttedCorners Content="Выйти" Command="{StaticResource NavigateToIdlePageCommand}"/>
             </StackPanel>
         </Grid>
 
@@ -131,13 +170,16 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="DarkBlue" BorderThickness="3" Grid.Row="0" Background="White">
+            <Border Grid.Row="0" Style="{StaticResource SemiOpacityBorder}">
                 <ListBox Name="ListBoxDocs" ItemsSource="{Binding AvailableDocs}">
+                    <ListBox.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </ListBox.Background>
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type m:DocumentsListItem}">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding DocIcon}" Height="20" Stretch="UniformToFill"/>
-                                <TextBlock Text="{Binding VisibleName}" Margin="5 0 0 0"/>
+                                <TextBlock Text="{Binding VisibleName}" Margin="5 0 0 0" Style="{StaticResource TextBlockSmall}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -145,7 +187,7 @@
             </Border>
             
 
-            <Border Grid.Row="1" Margin="0 10 0 0" BorderBrush="DarkBlue" BorderThickness="3">
+            <Border Grid.Row="1" Margin="0 10 0 0" Style="{StaticResource SemiOpacityBorder}">
                 <dv:DocumentViewerWPFHost FilePath="{Binding ElementName=ListBoxDocs, Path=SelectedItem}"/>
             </Border>
             

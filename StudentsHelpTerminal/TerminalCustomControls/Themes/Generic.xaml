@@ -1,40 +1,16 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TerminalCustomControls"
-    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:b="clr-namespace:TerminalCustomControls.Behaviours"
-    xmlns:conv="clr-namespace:TerminalCustomControls.Converters">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TerminalCustomControls"
+                    xmlns:conv="clr-namespace:TerminalCustomControls.Converters">
 
     <conv:DivideByConverter x:Key="DivideByConverter"/>
-
 
     <Style TargetType="{x:Type local:ButtonCuttedCorners}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ButtonCuttedCorners}">
 
-                    <Grid x:Name="GridButtonContainer">
-
-                        <Grid.Effect>
-                            <DropShadowEffect x:Name="ButtonShadow" 
-                                              Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ShadowColor}" 
-                                              BlurRadius="5" 
-                                              Direction="0" 
-                                              ShadowDepth="0" 
-                                              Opacity="0.5"/>
-                        </Grid.Effect>
-
-                        <i:Interaction.Behaviors>
-                            <b:ResizeBehaviour AspectRatioYX="{Binding ElementName=ButtonClickGradient, 
-                                                               Path=RadiusX, 
-                                                               Mode=OneWayToSource, 
-                                                               Converter={StaticResource DivideByConverter}, 
-                                                               ConverterParameter=2}"/>
-                            <b:MouseBehaviour MousePositionRelative="{Binding ElementName=ButtonClickGradient, 
-                                                                      Path=GradientOrigin, 
-                                                                      Mode=OneWayToSource}"/>
-                        </i:Interaction.Behaviors>
+                    <Grid x:Name="GridButtonContainer" Background="{TemplateBinding Background}">
 
                         <Grid.OpacityMask>
                             <VisualBrush>
@@ -107,7 +83,7 @@
                                           VerticalAlignment="Center">
                             <ContentPresenter.Content>
                                 <TextBlock x:Name="ContentText" Text="{TemplateBinding Content}" 
-                                           Foreground="{TemplateBinding Foreground}" 
+                                           Foreground="{TemplateBinding TextColor}" 
                                            FontSize="{TemplateBinding FontSize}"/>
                             </ContentPresenter.Content>
                         </ContentPresenter>
@@ -115,7 +91,7 @@
                         <Border x:Name="BorderUp"
                                 Background="Transparent"
                                 BorderBrush="{TemplateBinding Foreground}"
-                                BorderThickness="4,4,0,0"
+                                BorderThickness="5,5,0,0"
                                 Margin="-1 0 0 0">
                             <Border.RenderTransform>
                                 <SkewTransform AngleX="-45" CenterY="{Binding ElementName=GridButtonContainer, 
@@ -126,14 +102,14 @@
                         <Border x:Name="BorderCenter"
                                 Background="Transparent" 
                                 BorderBrush="{TemplateBinding Foreground}"
-                                BorderThickness="3,0,0,3" 
+                                BorderThickness="4,0,0,4" 
                                 Grid.Row="1">
                         </Border>
 
                         <Border x:Name="BorderRight"
                                 Background="Transparent" 
                                 BorderBrush="{TemplateBinding Foreground}"
-                                BorderThickness="0,0,4,4" 
+                                BorderThickness="0,0,5,5" 
                                 Grid.Row="1" Grid.Column="1"
                                 Margin="0 0 0 -1">
                             <Border.RenderTransform>
@@ -141,37 +117,9 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid.Background>
-                            <RadialGradientBrush x:Name="ButtonClickGradient"
-                                                Center="{Binding RelativeSource={RelativeSource Mode=Self}, Path=GradientOrigin}">
-                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ClickColor}" 
-                                              Offset="0"/>
-                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background.Color}" 
-                                              Offset="0"/>
-                            </RadialGradientBrush>
-                        </Grid.Background>
-
                     </Grid>
 
                     <ControlTemplate.Triggers>
-
-                        <!--CLICK-->
-                        <EventTrigger RoutedEvent="Button.Click">
-                            <BeginStoryboard>
-                                <Storyboard TargetName="GridButtonContainer" FillBehavior="Stop">
-                                    <DoubleAnimation Storyboard.TargetProperty="Background.GradientStops[1].Offset" To="5" Duration="0:0:0.5"/>
-                                    <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[0].Color" 
-                                                    By="#EEEEEE"  
-                                                    Duration="0:0:0.5"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                            <BeginStoryboard>
-                                <Storyboard TargetName="ButtonShadow" FillBehavior="Stop">
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.25" AutoReverse="True"/>
-                                    <DoubleAnimation Storyboard.TargetProperty="BlurRadius" To="10" Duration="0:0:0.25" AutoReverse="True"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
 
                         <!--MOUSE ENTER-->
                         <EventTrigger RoutedEvent="Button.MouseEnter">
@@ -211,4 +159,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 </ResourceDictionary>
