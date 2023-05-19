@@ -41,7 +41,7 @@ namespace DocumentViewers
 
         private void LoadFile(string fileName)
         {
-            if (fileName is null) return;
+            if (string.IsNullOrEmpty(fileName)) return;
             if (!File.Exists(fileName)) throw new FileNotFoundException();
 
             FileInfo docInfo = new FileInfo(fileName);

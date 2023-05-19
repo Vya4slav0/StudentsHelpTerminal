@@ -9,10 +9,16 @@
       xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
       xmlns:dv="clr-namespace:DocumentViewers;assembly=DocumentViewers"
+      xmlns:locconv="clr-namespace:StudentsHelpTerminal.BindingConverters"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainScreenPage">
 
+    <d:Page.DataContext>
+        <vm:MainPageViewModel/>
+    </d:Page.DataContext>
+    
     <Page.Resources>
         
         <conv:DivideByConverter x:Key="DivideByConverter"/>
@@ -90,45 +96,21 @@
 
         <!--LEFT SIDE-->
         <Grid Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!--PHOTO-->
-            <Border Style="{StaticResource SemiOpacityBorder}"
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 0"
-                        Width="{Binding RelativeSource={RelativeSource Mode=Self}, 
-                                        Path=ActualHeight, 
-                                        Converter={StaticResource DivideByConverter}, 
-                                        ConverterParameter='1,33'}"
-                        Height="auto">
-                <Image Source="{Binding Path=Photo}" Stretch="UniformToFill"/>
-            </Border>
-
-            <!--TEXT INFO-->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="7*"/>
-                    <RowDefinition Height="5"/>
-                    <RowDefinition Height="5*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Margin="5 20 0 0">
-                    <TextBlock Text="{Binding Path=Surname}" Style="{StaticResource TextBlockBig}"/>
-                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource TextBlockBig}"/>
-                    
-                    <TextBlock Text="{Binding Path=Group}" Style="{StaticResource TextBlockMedium}"/>
-                    <TextBlock Text="{Binding Path=CardNum}" Style="{StaticResource TextBlockMedium}"/>
-                </StackPanel>
-            </Grid>
+            <custom:PersonalInfoControl FirstName="{Binding Name}"
+                                        Surname="{Binding Surname}"
+                                        Group="{Binding GroupWithPrefix}"
+                                        CardNum="{Binding CardNumWithPrefix}"
+                                        Photo="{Binding Photo}"
+                                        FrameStyle="{StaticResource SemiOpacityBorder}"
+                                        MainTextStyle="{StaticResource TextBlockBig}"
+                                        OtherTextStyle="{StaticResource TextBlockMedium}"/>
 
             <!--BUTTONS-->
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
@@ -170,22 +152,67 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" Style="{StaticResource SemiOpacityBorder}">
-                <ListBox Name="ListBoxDocs" ItemsSource="{Binding AvailableDocs}">
-                    <ListBox.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </ListBox.Background>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type m:DocumentsListItem}">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding DocIcon}" Height="20" Stretch="UniformToFill"/>
-                                <TextBlock Text="{Binding VisibleName}" Margin="5 0 0 0" Style="{StaticResource TextBlockSmall}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
+            <Border Grid.Row="0" 
+                    Style="{StaticResource SemiOpacityBorder}" 
+                    MaxHeight="150">
+
+                <Border.Resources>
+
+                    <Style TargetType="ListBox">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Opacity="0"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="ItemTemplate">
+                            <Setter.Value>
+                                <DataTemplate DataType="{x:Type m:DocumentsListItem}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding DocIcon}" Height="20" Stretch="UniformToFill"/>
+                                        <TextBlock Text="{Binding VisibleName}" Margin="5 0 0 0" Style="{StaticResource TextBlockSmall}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <CollectionViewSource Source="{Binding AvailableDocs}" x:Key="cvs">
+                        <CollectionViewSource.GroupDescriptions>
+                            <PropertyGroupDescription PropertyName="DocType"/>
+                        </CollectionViewSource.GroupDescriptions>
+                    </CollectionViewSource>
+
+                    <locconv:DocTypeToTextConverter x:Key="DocTypeToTextConverter"/>
+
+                </Border.Resources>
+
+                <ListBox x:Name="ListBoxDocs"
+                         ItemsSource="{Binding Source={StaticResource cvs}}">
+                    <ListBox.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Expander IsExpanded="False">
+                                                    <Expander.Header>
+                                                        <TextBlock Text="{Binding Name, Converter={StaticResource DocTypeToTextConverter}}" 
+                                                                   Style="{StaticResource TextBlockSmall}"/>
+
+                                                    </Expander.Header>
+                                                    <ItemsPresenter />
+                                                </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </ListBox.GroupStyle>
                 </ListBox>
+
             </Border>
-            
 
             <Border Grid.Row="1" Margin="0 10 0 0" Style="{StaticResource SemiOpacityBorder}">
                 <dv:DocumentViewerWPFHost FilePath="{Binding ElementName=ListBoxDocs, Path=SelectedItem}"/>

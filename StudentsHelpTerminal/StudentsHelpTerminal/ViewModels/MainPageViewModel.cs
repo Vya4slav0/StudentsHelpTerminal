@@ -4,8 +4,10 @@ using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Models.Other;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -13,6 +15,8 @@ namespace StudentsHelpTerminal.ViewModels
 {
     internal class MainPageViewModel : Base.ViewModelBase
     {
+        public MainPageViewModel() { }
+
         public MainPageViewModel(int cardId)
         {
             #region Commands definition
@@ -36,8 +40,8 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Name, value);
             }
         }
-#endregion
-#region Surname
+        #endregion
+        #region Surname
         private string _Surname;
         public string Surname
         {
@@ -47,30 +51,39 @@ namespace StudentsHelpTerminal.ViewModels
                 Set(ref _Surname, value);
             }
         }
-#endregion
-#region Group
+        #endregion
+        #region Group
         private string _Group;
         public string Group
         {
-            get { return "Группа: " + _Group; }
-            set
-            {
-                Set(ref _Group, value);
-            }
+            get { return _Group; }
+            set { Set(ref _Group, value); }
         }
-#endregion
-#region CardNum
+        public string GroupWithPrefix
+        {
+            get { return "Группа: " + _Group; }
+        }
+        public string DocsForGroup
+        {
+            get { return "Документы для группы " + _Group; }
+        }
+        #endregion
+        #region CardNum
         private string _CardNum;
         public string CardNum
         {
-            get { return "Номер карты: " + _CardNum; }
+            get { return _CardNum; }
             set
             {
                 Set(ref _CardNum, value);
             }
         }
-#endregion
-#region Photo
+        public string CardNumWithPrefix
+        {
+            get { return "Номер карты: " + _CardNum; }
+        }
+        #endregion
+        #region Photo
         private BitmapImage _Photo;
         public BitmapImage Photo
         {
@@ -93,6 +106,7 @@ namespace StudentsHelpTerminal.ViewModels
             }
         }
         #endregion
+
         #endregion
 
         #region Commands

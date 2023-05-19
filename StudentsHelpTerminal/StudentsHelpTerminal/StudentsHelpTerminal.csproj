@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ImageViewingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +128,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BindingConverters\DocTypeToTextConverter.cs" />
     <Compile Include="Infrastructure\Commands\Base\CommandBase.cs" />
     <Compile Include="Infrastructure\Commands\NavigateBackCommand.cs" />
     <Compile Include="Infrastructure\Commands\NavigateToIdlePageCommand.cs" />
@@ -181,6 +186,9 @@
     </Compile>
     <Compile Include="Views\IdlePage.xaml.cs">
       <DependentUpon>IdlePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageViewingPage.xaml.cs">
+      <DependentUpon>ImageViewingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainScreenPage.xaml.cs">
       <DependentUpon>MainScreenPage.xaml</DependentUpon>
