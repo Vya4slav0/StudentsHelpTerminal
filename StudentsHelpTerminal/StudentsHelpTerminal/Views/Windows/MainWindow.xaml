@@ -12,8 +12,8 @@
         Title="MainWindow" Height="450" Width="800" Foreground="{x:Null}"
         Content="{Binding CurrentViewModel}"
         WindowStyle="None"
-        WindowState="Maximized"
-        >
+        WindowState="Maximized">
+    
     <Window.Resources>
         
         <DataTemplate DataType="{x:Type vm:AdminPageViewModel}">
@@ -30,6 +30,10 @@
 
         <DataTemplate DataType="{x:Type vm:SettingsPageViewModel}">
             <views:SettingsPage/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ImageViewindPageViewModel}">
+            <views:ImageViewingPage/>
         </DataTemplate>
         
     </Window.Resources>

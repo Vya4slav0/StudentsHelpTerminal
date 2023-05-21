@@ -20,5 +20,8 @@
     <Setting Name="MaxLogSizeMB" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="PathToCollegeMapsFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.\Maps</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

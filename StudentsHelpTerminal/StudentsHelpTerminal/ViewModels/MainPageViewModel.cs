@@ -22,6 +22,7 @@ namespace StudentsHelpTerminal.ViewModels
             #region Commands definition
 
             AdminWindowOpenCommand = new NavigationCommand(new AdminPageViewModel());
+            CollegeMapOpenCommand = new NavigationCommand(new ImageViewindPageViewModel(Properties.Settings.Default.PathToCollegeMapsFolder));
 
             #endregion
 
@@ -112,6 +113,8 @@ namespace StudentsHelpTerminal.ViewModels
         #region Commands
 
         public ICommand AdminWindowOpenCommand { get; }
+
+        public ICommand CollegeMapOpenCommand { get; }
 
         #endregion
 

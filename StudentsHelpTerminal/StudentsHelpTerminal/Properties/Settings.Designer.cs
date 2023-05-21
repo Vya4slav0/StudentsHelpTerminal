@@ -92,5 +92,17 @@ namespace StudentsHelpTerminal.Properties {
                 this["MaxLogSizeMB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\Maps")]
+        public string PathToCollegeMapsFolder {
+            get {
+                return ((string)(this["PathToCollegeMapsFolder"]));
+            }
+            set {
+                this["PathToCollegeMapsFolder"] = value;
+            }
+        }
     }
 }

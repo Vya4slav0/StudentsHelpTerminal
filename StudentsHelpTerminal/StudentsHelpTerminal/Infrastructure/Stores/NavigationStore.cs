@@ -17,7 +17,7 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
 
         public static ViewModelBase PrevViewModel 
         {
-            get { return _NavigationStack.Peek(); }
+            get { return PrevViewModelAvailable ? _NavigationStack.Peek() : null; }
         }
 
         #endregion

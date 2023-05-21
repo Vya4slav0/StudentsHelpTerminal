@@ -107,6 +107,15 @@ namespace StudentsHelpTerminal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь к папке, содержащей изображения с картами колледжа.
+        /// </summary>
+        internal static string PathToCollegeMapsFolder {
+            get {
+                return ResourceManager.GetString("PathToCollegeMapsFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Путь к файлу, содержащему лог пользователей..
         /// </summary>
         internal static string PathToLogFile {
@@ -116,7 +125,7 @@ namespace StudentsHelpTerminal.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Путь к папке содержащей папки групп с документами. Принимает строковые значения..
+        ///   Ищет локализованную строку, похожую на Путь к папке, содержащей папки групп с документами. Принимает строковые значения..
         /// </summary>
         internal static string PathToMainFolder {
             get {

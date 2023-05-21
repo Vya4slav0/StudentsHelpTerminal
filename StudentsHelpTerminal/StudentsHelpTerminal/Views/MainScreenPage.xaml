@@ -20,54 +20,9 @@
     </d:Page.DataContext>
     
     <Page.Resources>
-        
-        <conv:DivideByConverter x:Key="DivideByConverter"/>
 
-        <LinearGradientBrush x:Key="BlueLinearGradient" StartPoint="0 0" EndPoint="1 1">
-            <GradientStop Color="DeepSkyBlue" Offset="0"/>
-            <GradientStop Color="DarkBlue" Offset="1"/>
-        </LinearGradientBrush>
+        <ResourceDictionary Source="\Resources\MainTheme.xaml"/>
 
-        <Style x:Key="TextBlocks" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="DarkBlue"/>
-            <Setter Property="FontFamily" Value="Cascadia"/>
-        </Style>
-
-        <Style x:Key="TextBlockBig" BasedOn="{StaticResource ResourceKey=TextBlocks}" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="40"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-        
-        <Style x:Key="TextBlockMedium" BasedOn="{StaticResource ResourceKey=TextBlocks}" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-        </Style>
-
-        <Style x:Key="TextBlockSmall" BasedOn="{StaticResource ResourceKey=TextBlocks}" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-
-        <Style x:Key="SemiOpacityBorder" TargetType="Border">
-            <Setter Property="BorderBrush" Value="{StaticResource BlueLinearGradient}"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <SolidColorBrush Color="AliceBlue" Opacity="0.7"/>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="BorderThickness" Value="5"/>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard TargetProperty="BorderBrush.RenderTransform">
-                                
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        
     </Page.Resources>
 
     <Page.Background>
@@ -114,31 +69,13 @@
 
             <!--BUTTONS-->
             <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+                
                 <StackPanel.Resources>
-                    <Style TargetType="custom:ButtonCuttedCorners">
-                        <Setter Property="Height" Value="45"/>
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <SolidColorBrush Color="AliceBlue" Opacity="0.7"/>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Property="Foreground" Value="{StaticResource BlueLinearGradient}"/>
-                        <Setter Property="ClickColor" Value="{StaticResource ColorClick}"/>
-                        <Setter Property="TextColor" Value="{StaticResource BrushDark}"/>
-                        <Setter Property="FontFamily" Value="Cascadia"/>
-                        <Setter Property="BorderThickness" Value="5"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={StaticResource DivideByConverter}, ConverterParameter=2}"/>
-                        <Setter Property="Margin" Value="0 0 0 10"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    </Style>
+                    
                 </StackPanel.Resources>
-
-                <custom:ButtonCuttedCorners Content="Карта колледжа"/>
-
-                <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}"
-                />
+                
+                <custom:ButtonCuttedCorners Content="Карта колледжа" Command="{Binding CollegeMapOpenCommand}"/>
+                <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}"/>
                 <custom:ButtonCuttedCorners Content="Частые вопросы"/>
                 <custom:ButtonCuttedCorners Content="Выйти" Command="{StaticResource NavigateToIdlePageCommand}"/>
             </StackPanel>

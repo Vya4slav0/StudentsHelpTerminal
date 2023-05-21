@@ -4,16 +4,22 @@
              xmlns:local="clr-namespace:StudentsHelpTerminal"
              xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
              xmlns:cmd="clr-namespace:StudentsHelpTerminal.Infrastructure.Commands"
+             xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
+             xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
              xmlns:views="clr-namespace:StudentsHelpTerminal.Views">
     <Application.Resources>
         
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="Theme" Source="Resources\Themes\BlueTheme.xaml"/>
                 
                 <ResourceDictionary>
+                    
+                    <!--#region COMMANDS-->
                     <cmd:NavigateBackCommand x:Key="NavigateBackCommand"/>
                     <cmd:NavigateToIdlePageCommand x:Key="NavigateToIdlePageCommand"/>
+                    <!--#endregion-->
 
                     <Style x:Key="DockAndStackStyle">
                         <Style.Resources>
@@ -26,6 +32,7 @@
                         </Style.Resources>
                     </Style>
 
+                    <!--#region Default textBlock and GroupBox styles-->
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="Black"/>
                     </Style>
@@ -33,10 +40,12 @@
                     <Style TargetType="GroupBox">
                         <Setter Property="Foreground" Value="Black"/>
                     </Style>
+                    <!--#endregion-->
 
                 </ResourceDictionary>
 
             </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
            
     </Application.Resources>
