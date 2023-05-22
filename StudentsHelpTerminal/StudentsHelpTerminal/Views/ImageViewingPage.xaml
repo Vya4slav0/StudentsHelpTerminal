@@ -32,9 +32,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Column="0" 
+        <ScrollViewer Grid.Column="0"
                       VerticalScrollBarVisibility="Auto" 
-                      HorizontalScrollBarVisibility="Auto">
+                      HorizontalScrollBarVisibility="Auto"
+                      Margin="10 10 5 5">
 
             <Image Source="{Binding ElementName=ListBoxImages, Path=SelectedItem.FullName}">
                 <Image.LayoutTransform>
@@ -48,7 +49,7 @@
 
         <Border Grid.Column="0" Grid.Row="1"
                 Style="{DynamicResource SemiOpacityBorder}">
-            <DockPanel VerticalAlignment="Center">
+            <DockPanel VerticalAlignment="Center" Margin="5">
                 <TextBlock Text="Maсштаб: " Style="{StaticResource TextBlockMedium}"/>
                 <Slider x:Name="SliderScaleImage"
                     Minimum="1" Maximum="10"/>
