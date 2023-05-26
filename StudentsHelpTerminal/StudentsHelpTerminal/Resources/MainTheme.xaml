@@ -76,53 +76,10 @@
     </Style>
     <!--#endregion-->
 
-
-
-
-    <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
-    <SolidColorBrush x:Key="StandardBackgroundBrush" Color="#FFF" />
-    <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
-    <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="Gray" />
-    <SolidColorBrush x:Key="SelectedForegroundBrush" Color="White" />
-    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
-    <SolidColorBrush x:Key="NormalBrush" Color="#888" />
-    <SolidColorBrush x:Key="NormalBorderBrush" Color="#888" />
-    <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#888" />
-    <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#888" />
-    <LinearGradientBrush x:Key="ListBoxBackgroundBrush" 
-			StartPoint="0,0" EndPoint="1,0.001">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="White" Offset="0.0" />
-                <GradientStop Color="White" Offset="0.6" />
-                <GradientStop Color="#DDDDDD" Offset="1.2"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="StandardBrush" 
-			StartPoint="0,0" EndPoint="0,1">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#FFF" Offset="0.0"/>
-                <GradientStop Color="#CCC" Offset="1.0"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-    <SolidColorBrush x:Key="GlyphBrush" Color="#444" />
-    <LinearGradientBrush x:Key="PressedBrush" 
-			StartPoint="0,0" EndPoint="0,1">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#BBB" Offset="0.0"/>
-                <GradientStop Color="#EEE" Offset="0.1"/>
-                <GradientStop Color="#EEE" Offset="0.9"/>
-                <GradientStop Color="#FFF" Offset="1.0"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-
+    <!--Skew angle for all elements-->
     <sys:Double x:Key="SkewAngle">-20</sys:Double>
-   
+
+    <!--#region Scroll bars style-->
     <!--Two buttons at the ends of bar-->
     <Style x:Key="ScrollBarEndsButtons" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -338,5 +295,231 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
+    
+    <!--#region Slider style-->
+
+    <Style x:Key="SliderButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Style="{StaticResource SemiOpacityBorder}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SliderTickBarStyle" TargetType="{x:Type TickBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Setter Property="Fill">
+            <Setter.Value>
+                <SolidColorBrush Color="{StaticResource ColorDark}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Template when the orientation of the Slider is Horizontal.-->
+    <ControlTemplate x:Key="HorizontalSlider" TargetType="{x:Type Slider}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"
+                     MinHeight="{TemplateBinding MinHeight}" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TickBar x:Name="TopTick"
+                     Grid.Row="0"
+                     Style="{StaticResource SliderTickBarStyle}"
+                     Placement="Top"
+                     Height="4"/>
+
+            <Border x:Name="TrackBackground"
+                    Margin="0"
+                    CornerRadius="2"
+                    Height="4"
+                    Grid.Row="1"
+                    Style="{StaticResource SemiOpacityBorder}"
+                    BorderThickness="1"/>
+            
+            <Track Grid.Row="1"
+                   x:Name="PART_Track">
+                
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource SliderButtonStyle}"
+                                  Command="Slider.DecreaseLarge" />
+                </Track.DecreaseRepeatButton>
+                
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource SliderThumbStyle}" >
+                        <Thumb.RenderTransform>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"
+                                           AngleY="{StaticResource SkewAngle}"/>
+                        </Thumb.RenderTransform>
+                    </Thumb>
+                </Track.Thumb>
+                
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource SliderButtonStyle}"
+                      Command="Slider.IncreaseLarge" />
+                </Track.IncreaseRepeatButton>
+                
+            </Track>
+            
+            <TickBar x:Name="BottomTick"  
+                     Grid.Row="2"
+                     Style="{StaticResource SliderTickBarStyle}"
+                     Placement="Bottom"
+                     Height="4"/>
+            
+        </Grid>
+        
+        <ControlTemplate.Triggers>
+            
+            <Trigger Property="TickPlacement" Value="TopLeft">
+                <Setter TargetName="TopTick"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            
+            <Trigger Property="TickPlacement"
+             Value="BottomRight">
+                <Setter TargetName="BottomTick"
+              Property="Visibility"
+              Value="Visible" />
+            </Trigger>
+            
+            <Trigger Property="TickPlacement" Value="Both">
+                <Setter TargetName="TopTick"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="BottomTick"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--Template when the orientation of the Slider is Vertical.-->
+    <ControlTemplate x:Key="VerticalSlider" TargetType="{x:Type Slider}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto"
+                        MinWidth="{TemplateBinding MinWidth}" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <TickBar x:Name="LeftTick"
+                     Grid.Column="0"
+                     Style="{StaticResource SliderTickBarStyle}"
+                     Placement="Left"
+                     Width="4"/>
+
+            <Border x:Name="TrackBackground"
+                    Margin="0"
+                    CornerRadius="2"
+                    Width="4"
+                    Grid.Column="1"
+                    Style="{StaticResource SemiOpacityBorder}"
+                    BorderThickness="1"/>
+            
+            <Track Grid.Column="1"
+                   x:Name="PART_Track">
+                
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource SliderButtonStyle}"
+                                  Command="Slider.DecreaseLarge" />
+                </Track.DecreaseRepeatButton>
+                
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource SliderThumbStyle}">
+                        <Thumb.RenderTransform>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"
+                                           AngleX="{StaticResource SkewAngle}"/>
+                        </Thumb.RenderTransform>
+                    </Thumb>
+                </Track.Thumb>
+                
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource SliderButtonStyle}"
+                                  Command="Slider.IncreaseLarge" />
+                </Track.IncreaseRepeatButton>
+                
+            </Track>
+
+            <TickBar x:Name="RightTick"
+                     Grid.Column="2"
+                     Style="{StaticResource SliderTickBarStyle}"
+                     Placement="Right"
+                     Width="4"/>
+            
+        </Grid>
+        
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement" Value="TopLeft">
+                <Setter TargetName="LeftTick"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            
+            <Trigger Property="TickPlacement" Value="BottomRight">
+                <Setter TargetName="RightTick"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            
+            <Trigger Property="TickPlacement" Value="Both">
+                <Setter TargetName="LeftTick"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="RightTick"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type Slider}">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Style.Triggers>
+            
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="MinWidth" Value="104" />
+                <Setter Property="MinHeight" Value="21" />
+                <Setter Property="Template" Value="{StaticResource HorizontalSlider}" />
+            </Trigger>
+            
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="MinWidth" Value="21" />
+                <Setter Property="MinHeight" Value="104" />
+                <Setter Property="Template" Value="{StaticResource VerticalSlider}" />
+            </Trigger>
+            
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
     
 </ResourceDictionary>

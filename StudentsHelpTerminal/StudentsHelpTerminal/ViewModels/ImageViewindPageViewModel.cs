@@ -26,6 +26,7 @@ namespace StudentsHelpTerminal.ViewModels
             {
                 directoryWithImages.Create();
                 //new AlertBox(alertNoImagesMessage).ShowDialog();
+                
                 return;
             }
 
