@@ -24,5 +24,32 @@ namespace StudentsHelpTerminal.Views
         {
             InitializeComponent();
         }
+
+        private void Image_TouchMove(object sender, TouchEventArgs e)
+        {
+            
+        }
+
+        Point previousMousePos;
+
+        private void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!(sender is ScrollViewer)) return;
+            ScrollViewer scrollViewer = sender as ScrollViewer;
+            
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                if (previousMousePos == new Point()) previousMousePos = e.GetPosition(scrollViewer);
+                if (previousMousePos == e.GetPosition(scrollViewer)) return;
+
+                Point delta = new Point(e.GetPosition(scrollViewer).X - previousMousePos.X,
+                    e.GetPosition(scrollViewer).Y - previousMousePos.Y);
+                
+                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - delta.X);
+                scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - delta.Y);
+                previousMousePos = e.GetPosition(scrollViewer);
+            }
+            else { previousMousePos = new Point(); }
+        }
     }
 }

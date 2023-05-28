@@ -35,9 +35,11 @@
         <ScrollViewer Grid.Column="0"
                       VerticalScrollBarVisibility="Auto" 
                       HorizontalScrollBarVisibility="Auto"
-                      Margin="10 10 5 5">
+                      Margin="10 10 5 5"
+                      MouseMove="Image_MouseMove"
+                      TouchMove="Image_TouchMove">
 
-            <Image Source="{Binding ElementName=ListBoxImages, Path=SelectedItem.FullName}">
+            <Image Source="{Binding ElementName=ListBoxImages, Path=SelectedItem.FullName}" TouchMove="Image_TouchMove" MouseMove="Image_MouseMove">
                 <Image.LayoutTransform>
                     <ScaleTransform ScaleX="{Binding ElementName=SliderScaleImage, Path=Value}"
                                     ScaleY="{Binding ElementName=SliderScaleImage, Path=Value}"
