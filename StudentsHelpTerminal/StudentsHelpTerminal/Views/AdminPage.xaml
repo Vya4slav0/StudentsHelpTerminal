@@ -9,9 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Page.DataContext>
+    <d:Page.DataContext>
         <vm:AdminPageViewModel/>
-    </Page.DataContext>
+    </d:Page.DataContext>
 
     <Grid Background="White">
         
