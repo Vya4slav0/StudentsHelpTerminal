@@ -266,10 +266,6 @@
       <Project>{dcc31699-25e6-4a0b-86b2-f3b05b3c3c10}</Project>
       <Name>DialogBoxes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DocumentViewers\DocumentViewers.csproj">
-      <Project>{c3609cc9-f437-4dc3-b37d-5f4bb2669758}</Project>
-      <Name>DocumentViewers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TerminalCustomControls\TerminalCustomControls.csproj">
       <Project>{3c0b7b2e-dbb6-4ea3-af0d-ec5f36b58827}</Project>
       <Name>TerminalCustomControls</Name>

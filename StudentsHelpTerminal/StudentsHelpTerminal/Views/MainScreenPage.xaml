@@ -8,7 +8,6 @@
       xmlns:m="clr-namespace:StudentsHelpTerminal.Models.Other"
       xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
-      xmlns:dv="clr-namespace:DocumentViewers;assembly=DocumentViewers"
       xmlns:locconv="clr-namespace:StudentsHelpTerminal.BindingConverters"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
@@ -152,7 +151,7 @@
             </Border>
 
             <Border Grid.Row="1" Margin="0 10 0 0" Style="{StaticResource SemiOpacityBorder}">
-                <dv:DocumentViewerWPFHost FilePath="{Binding ElementName=ListBoxDocs, Path=SelectedItem}"/>
+                <custom:XpsDocumentViewer FilePath="{Binding ElementName=ListBoxDocs, Path=SelectedItem}" />
             </Border>
             
         </Grid>

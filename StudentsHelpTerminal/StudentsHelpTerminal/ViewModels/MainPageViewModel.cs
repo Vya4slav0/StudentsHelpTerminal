@@ -144,7 +144,7 @@ namespace StudentsHelpTerminal.ViewModels
             foreach (string filePath in Directory.GetFiles(commonDocs))
             {
                 DocumentsListItem file = new DocumentsListItem(filePath, DocumentsListItem.Type.Common);
-                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.FileInfo.Extension))
+                if (file.FileInfo.Extension == ".xps")
                     AvailableDocs.Add(file);
             }
             
@@ -152,7 +152,7 @@ namespace StudentsHelpTerminal.ViewModels
             foreach(string filePath in Directory.GetFiles(groupDocs))
             {
                 DocumentsListItem file = new DocumentsListItem(filePath, DocumentsListItem.Type.Group);
-                if (DocumentViewers.DocumentViewerWPFHost.AvailableExtensions.Contains(file.FileInfo.Extension))
+                if (file.FileInfo.Extension == ".xps")
                     AvailableDocs.Add(file);
             }
         }
