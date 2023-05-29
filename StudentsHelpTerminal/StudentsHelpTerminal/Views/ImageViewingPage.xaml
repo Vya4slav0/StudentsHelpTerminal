@@ -32,14 +32,12 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Column="0"
-                      VerticalScrollBarVisibility="Auto" 
-                      HorizontalScrollBarVisibility="Auto"
-                      Margin="10 10 5 5"
-                      MouseMove="Image_MouseMove"
-                      TouchMove="Image_TouchMove">
+        <custom:SensorScrollViewer Grid.Column="0"
+                                      VerticalScrollBarVisibility="Auto" 
+                                      HorizontalScrollBarVisibility="Auto"
+                                      Margin="10 10 5 5">
 
-            <Image Source="{Binding ElementName=ListBoxImages, Path=SelectedItem.FullName}" TouchMove="Image_TouchMove" MouseMove="Image_MouseMove">
+            <Image Source="{Binding ElementName=ListBoxImages, Path=SelectedItem.FullName}">
                 <Image.LayoutTransform>
                     <ScaleTransform ScaleX="{Binding ElementName=SliderScaleImage, Path=Value}"
                                     ScaleY="{Binding ElementName=SliderScaleImage, Path=Value}"
@@ -47,7 +45,7 @@
                 </Image.LayoutTransform>
             </Image>
 
-        </ScrollViewer>
+        </custom:SensorScrollViewer>
 
         <Border Grid.Column="0" Grid.Row="1"
                 Style="{DynamicResource SemiOpacityBorder}">
