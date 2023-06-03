@@ -138,7 +138,7 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
-                                                <Expander IsExpanded="False">
+                                                <Expander IsExpanded="True">
                                                     <Expander.Header>
                                                         <TextBlock Text="{Binding Name, Converter={StaticResource DocTypeToTextConverter}}" 
                                                                    Style="{StaticResource TextBlockSmall}"/>
