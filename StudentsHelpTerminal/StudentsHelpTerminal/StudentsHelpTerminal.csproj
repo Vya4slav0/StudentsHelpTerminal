@@ -138,6 +138,7 @@
     <Compile Include="Infrastructure\Commands\NavigateToIdlePageCommand.cs" />
     <Compile Include="Infrastructure\Commands\NavigationCommand.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
+    <Compile Include="Infrastructure\Services\AdminAutorizer.cs" />
     <Compile Include="Infrastructure\Services\DBHelper.cs" />
     <Compile Include="Infrastructure\Stores\IOPortsStore.cs" />
     <Compile Include="Infrastructure\Stores\NavigationStore.cs" />
@@ -242,6 +243,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Administrators.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Models\Database\StudentsDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StudentsDBModel.Context.cs</LastGenOutput>
