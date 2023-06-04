@@ -10,6 +10,7 @@ using System.Linq;
 using System.Resources;
 using System.Windows.Media.Imaging;
 using System.Text.RegularExpressions;
+using System.Data.Entity;
 
 namespace StudentsHelpTerminal.Infrastructure.Services
 {
@@ -155,6 +156,70 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                     CardID = cardId.ToString(),
                     Photo = BitmapImageFromBlob(student.PORTRET)
                 };
+            }
+        }
+        public static bool ChangeCardIdByStuffId(int stuffId, long newCardId, string reasonOfChangement, out string errorText)
+        {
+            errorText = string.Empty;
+            using (StudentsDBContext db = new StudentsDBContext())
+            {
+                using (DbContextTransaction transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        STAFF_CARDS currentCard = db.STAFF_CARDS.FirstOrDefault(sc => sc.STAFF_ID == stuffId);
+                        if (currentCard is null)
+                        {
+                            errorText = "Изменить идентификатор карты невозможно, т.к. отсутствует запись в таблице карт-пропусков, ";
+                            return false;
+                        }
+
+                        //Create new card by template, but with different identifier and key
+                        STAFF_CARDS newCard = new STAFF_CARDS()
+                        {
+                            SYSTEM_TYPE = currentCard.SYSTEM_TYPE,
+                            STAFF_ID = stuffId,
+                            DATE_BEGIN = currentCard.DATE_BEGIN,
+                            DATE_END = currentCard.DATE_END,
+                            VALID = currentCard.VALID,
+                            VALID_TRANSFER = currentCard.VALID_TRANSFER,
+                            TEMPORARY_ACC = currentCard.TEMPORARY_ACC,
+                            DOCUMENTS_ID = currentCard.DOCUMENTS_ID,
+                            HISTORY_DATE = currentCard.HISTORY_DATE,
+                            PROHIBIT = currentCard.PROHIBIT,
+                            IDENTIFIER = newCardId,
+                            TYPE_IDENTIFIER = currentCard.TYPE_IDENTIFIER,
+                            IDENTIFIER_TRANSFORMED = newCardId,
+                            WITHDRAW_TO_STOP_LIST = currentCard.WITHDRAW_TO_STOP_LIST,
+                            LAST_TIMESTAMP = currentCard.LAST_TIMESTAMP,
+                            USER_ID = currentCard.USER_ID
+                        };
+
+                        //Add new card to db
+                        db.STAFF_CARDS.Add(newCard);
+
+                        //Zero old card's stuff id
+                        currentCard.STAFF_ID = 0;
+                        db.SaveChanges();
+
+                        //Add old card to stop cards
+                        db.STOP_CARDS_DESCRIPTION.Add(new STOP_CARDS_DESCRIPTION() 
+                        { 
+                            CARD_ID = currentCard.ID_CARD,
+                            DESCRIPTION = reasonOfChangement,
+                            POSSIBLE_RECALL = 1
+                        });
+                        db.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        errorText = ex.Message;
+                        transaction.Rollback();
+                        return false;
+                    }
+                    return true;
+                }
             }
         }
     }

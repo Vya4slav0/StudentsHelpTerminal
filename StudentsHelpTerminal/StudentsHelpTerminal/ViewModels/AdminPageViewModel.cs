@@ -35,9 +35,10 @@ namespace StudentsHelpTerminal.ViewModels
             AddTableCommand = new RelayCommand(AddTableCommandExecute, AddTableCommandCanExecute);
             RenameTableCommand = new RelayCommand(RenameTableCommandExecute, RenameTableCommandCanExecute);
             RemoveTableCommand = new RelayCommand(RemoveTableCommandExecute, RemoveTableCommandCanExecute);
+            ChangeCardIdCommand = new RelayCommand(ChangeCardIdCommandExecute, ChangeCardIdCommandCanExecute);
 
-            CurrentSearchDescription = new SearchDescription();
-            CurrentSortDescription = new SortDescription();
+            CurrentSearchDescription = new SearchDescription(AvailableColumns[0], "", false);
+            CurrentSortDescription = new SortDescription(AvailableColumns[0], false, false);
 
             _DBTables.CollectionChanged += (s, a) => { this.OnPropertyChanged(nameof(DBTables)); }; 
         }
@@ -91,6 +92,18 @@ namespace StudentsHelpTerminal.ViewModels
                 if (Set(ref _selectedTable, value))
                     NewTableName = _selectedTable?.Name ?? string.Empty;
             }
+        }
+
+        #endregion
+
+        #region SelectedStudent
+
+        private Student _SelectedStudent;
+
+        public Student SelectedStudent
+        {
+            get => _SelectedStudent; 
+            set => Set(ref _SelectedStudent, value);
         }
 
         #endregion
@@ -224,6 +237,19 @@ namespace StudentsHelpTerminal.ViewModels
         #region CloseAppCommand
         public ICommand CloseAppCommand { get; }
         private void CloseAppCommandExecute(object p) => App.Current.Shutdown();
+        #endregion
+
+        #region ChangeCardIDCommand
+
+        public ICommand ChangeCardIdCommand { get; }
+
+        private void ChangeCardIdCommandExecute(object p)
+        {
+            ShowInToolWindowService.ShowViewByViewModel(new ChangeCardIdPageViewModel(SelectedStudent));
+        }
+
+        private bool ChangeCardIdCommandCanExecute(object p) => SelectedStudent != null;
+
         #endregion
 
         #endregion
