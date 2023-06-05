@@ -278,6 +278,9 @@
       <DependentUpon>StudentsDBModel.edmx</DependentUpon>
       <LastGenOutput>StudentsDBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Questions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\no_photo.png" />
   </ItemGroup>
   <ItemGroup>
