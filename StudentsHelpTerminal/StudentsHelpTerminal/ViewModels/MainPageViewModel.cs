@@ -26,6 +26,7 @@ namespace StudentsHelpTerminal.ViewModels
 
             AdminWindowOpenCommand = new RelayCommand(AdminWindowOpenCommandExecute);
             CollegeMapOpenCommand = new NavigationCommand(new ImageViewindPageViewModel(Properties.Settings.Default.PathToCollegeMapsFolder));
+            QuestionAnswerOpenCommand = new NavigationCommand(new QuestionAnswerPageViewModel());
 
             #endregion
 
@@ -142,6 +143,8 @@ namespace StudentsHelpTerminal.ViewModels
         }
 
         public ICommand CollegeMapOpenCommand { get; }
+
+        public ICommand QuestionAnswerOpenCommand { get; }
 
         #endregion
 

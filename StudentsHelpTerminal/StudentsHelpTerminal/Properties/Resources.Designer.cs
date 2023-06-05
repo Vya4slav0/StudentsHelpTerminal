@@ -132,5 +132,15 @@ namespace StudentsHelpTerminal.Properties {
                 return ResourceManager.GetString("PathToMainFolder", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QAPageBackground {
+            get {
+                object obj = ResourceManager.GetObject("QAPageBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

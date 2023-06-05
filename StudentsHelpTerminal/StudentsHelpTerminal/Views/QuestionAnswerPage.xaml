@@ -1,0 +1,93 @@
+﻿<Page x:Class="StudentsHelpTerminal.Views.QuestionAnswerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
+      xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
+      xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
+      xmlns:mo="clr-namespace:StudentsHelpTerminal.Models.Other"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="QuestionAnswerPage"
+      Background="White">
+
+    <Page.DataContext>
+        <vm:QuestionAnswerPageViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary Source="\Resources\MainTheme.xaml"/>
+    </Page.Resources>
+
+    <Grid Margin="10">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <custom:SensorScrollViewer Grid.Column="0"
+                                      VerticalScrollBarVisibility="Auto" 
+                                      HorizontalScrollBarVisibility="Auto"
+                                      Margin="0">
+
+            <GroupBox BorderBrush="{StaticResource BlueLinearGradient}" 
+                      BorderThickness="3">
+
+                <GroupBox.Header>
+                    <TextBlock Text="Ответ" Style="{StaticResource TextBlockBig}" Margin="0 0 0 -40"/>
+                </GroupBox.Header>
+                
+                <ContentControl Content="{Binding ElementName=ListBoxImages, Path=SelectedItem}" Margin="5 40 5 5">
+                    <ContentControl.ContentTemplate>
+                        <DataTemplate DataType="{x:Type mo:QuestionAnswer}">
+                            <TextBlock Text="{Binding Answer}"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource TextBlockMedium}"/>
+                        </DataTemplate>
+                    </ContentControl.ContentTemplate>
+                </ContentControl>
+            </GroupBox>
+           
+
+        </custom:SensorScrollViewer>
+
+        <Border Grid.Column="1" 
+                Margin="5 10 5 5"
+                Style="{DynamicResource SemiOpacityBorder}">
+            <ListBox x:Name="ListBoxImages" 
+                     ItemsSource="{Binding QACollection}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type mo:QuestionAnswer}">
+                        <TextBlock Text="{Binding Question}" Style="{StaticResource TextBlockMedium}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.Style>
+                    <Style TargetType="ListBox">
+                        <Style.Triggers>
+                            <Trigger Property="HasItems" Value="True">
+                                <Setter Property="SelectedIndex" Value="0"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Style>
+            </ListBox>
+        </Border>
+
+        <custom:ButtonCuttedCorners Grid.Column="1" Grid.Row="1"
+                                    VerticalAlignment="Center" HorizontalAlignment="Right"
+                                    Margin="5"
+                                    Content="Назад" 
+                                    Height="40"
+                                    Width="150"
+                                    Command="{StaticResource NavigateBackCommand}"/>
+
+    </Grid>
+</Page>

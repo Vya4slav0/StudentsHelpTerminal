@@ -15,6 +15,10 @@
         WindowState="Maximized">
     
     <Window.Resources>
+
+        <DataTemplate DataType="{x:Type vm:QuestionAnswerPageViewModel}">
+            <views:QuestionAnswerPage/>
+        </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:AdminPageViewModel}">
             <views:AdminWindow/>

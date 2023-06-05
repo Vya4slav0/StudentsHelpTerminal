@@ -79,7 +79,7 @@
                     <custom:ButtonCuttedCorners Content="Карта колледжа" Command="{Binding CollegeMapOpenCommand}"/>
                     <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}" 
                                             Visibility="{Binding IsAdministrator, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                    <custom:ButtonCuttedCorners Content="Частые вопросы"/>
+                    <custom:ButtonCuttedCorners Content="Частые вопросы" Command="{Binding QuestionAnswerOpenCommand}"/>
                     <custom:ButtonCuttedCorners Content="Выйти" Command="{StaticResource NavigateToIdlePageCommand}"/>
                     <custom:ButtonCuttedCorners Content="О программе" Click="ButtonAbout_Click"/>
                 </StackPanel>

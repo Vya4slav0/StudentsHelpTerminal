@@ -89,12 +89,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Services\ShowInToolWindowService.cs" />
+    <Compile Include="Models\Other\QuestionAnswer.cs" />
     <Compile Include="ViewModels\ChangeCardIdPageViewModel.cs" />
+    <Compile Include="ViewModels\QuestionAnswerPageViewModel.cs" />
     <Compile Include="Views\DialogPages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DialogPages\ChangeCardIdPage.xaml.cs">
       <DependentUpon>ChangeCardIdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuestionAnswerPage.xaml.cs">
+      <DependentUpon>QuestionAnswerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\ToolWindow.xaml.cs">
       <DependentUpon>ToolWindow.xaml</DependentUpon>
@@ -136,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuestionAnswerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,6 +290,7 @@
     <Content Include="Questions.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\QAPageBackground.jpg" />
     <None Include="Resources\no_photo.png" />
   </ItemGroup>
   <ItemGroup>
