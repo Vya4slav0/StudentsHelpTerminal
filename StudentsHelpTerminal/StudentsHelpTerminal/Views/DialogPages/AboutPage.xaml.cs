@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StudentsHelpTerminal.Views
+namespace StudentsHelpTerminal.Views.DialogPages
 {
     /// <summary>
-    /// Логика взаимодействия для MainScreenPage.xaml
+    /// Логика взаимодействия для AboutPage.xaml
     /// </summary>
-    public partial class MainScreenPage : Page
+    public partial class AboutPage : Page
     {
-        public MainScreenPage()
+        public AboutPage()
         {
             InitializeComponent();
-        }
-
-        private void ButtonAbout_Click(object sender, RoutedEventArgs e)
-        {
-            new Windows.ToolWindow() { Content = new DialogPages.AboutPage() }.ShowDialog();
         }
     }
 }

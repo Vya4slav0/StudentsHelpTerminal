@@ -1,0 +1,82 @@
+﻿<Page x:Class="StudentsHelpTerminal.Views.DialogPages.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudentsHelpTerminal.Views.DialogPages"
+      xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      Height="500" Width="700"
+      Title="AboutPage"
+      Background="White">
+
+    <Page.Resources>
+        <ResourceDictionary Source="\Resources\MainTheme.xaml"/>
+    </Page.Resources>
+    
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Справочный терминал для студентов" 
+                       Style="{StaticResource TextBlockBig}" 
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"/>
+                <Separator Background="{StaticResource BlueLinearGradient}" Margin="5"/>
+            </StackPanel>
+
+            <custom:SensorScrollViewer Margin="5" Grid.Row="1">
+                <StackPanel>
+
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockMedium}">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+
+                        <sys:Double x:Key="EllipseSize">8</sys:Double>
+
+                        <Style TargetType="{x:Type Ellipse}">
+                            <Setter Property="Width" Value="{StaticResource EllipseSize}"/>
+                            <Setter Property="Height" Value="{StaticResource EllipseSize}"/>
+                            <Setter Property="Fill" Value="{StaticResource BlueLinearGradient}"/>
+                            <Setter Property="Margin" Value="0 0 5 2"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <TextBlock>
+                Программа и сам терминал были созданы студентом 4 курса этого колледжа группы ТП-24 Костыревом Вячеславом в качестве дипломной работы
+                    </TextBlock>
+                    <TextBlock>
+                        Особую благодарность хотелось бы объявить:
+                    </TextBlock>
+
+                    <TextBlock><Ellipse/>Костанайскому политехническому высшему колледжу и всем кто причастен к его постройке и функционированию - за преоставленные возмодности в реализации проекта</TextBlock>
+                    <TextBlock><Ellipse/>Комарову Денису Николаевичу - за предоставление идеи проекта, материалов, инструментов, полезных советов</TextBlock>
+                    <TextBlock><Ellipse/>Всем своим родственникам, без которых появление гения, способного реализовать данный проект было бы невозможно</TextBlock>
+                    <TextBlock><Ellipse/>Своему любимому себе - за реализацию всего проекта, а именно: дизайн программы и робота, нарезка полигонов для создания корпуса робота на станке лазерной резки, склейка полигонов в детали корпуса, покрытие корпуса стеклопластиком, очистка труб для каркаса от ржавчины, распиловка и сварка труб в каркас, сборка робота и параллельно со всем этим написание программы для функционирования робота</TextBlock>
+                    <TextBlock><Ellipse/>Карпуть Андрею Валерьевичу - за помощь в рассуждениях над конструкцией корпуса</TextBlock>
+                    <TextBlock><Ellipse/>Соколенко Александру Михайловичу и студенту, который был у него на допке, имя которого мне неизвестно - за помощь в распиловке труб для каркаса</TextBlock>
+                    <TextBlock><Ellipse/>Преподавателям, сидящим в 126-ом за предоставление возможности использовать кабинет для слесарно-сварочных работ и материалы из него (профильная труба)</TextBlock>
+                    <TextBlock><Ellipse/>Кусаиновой Динаре Бериковне - за помощь в оформлении бумаг для участия в конференциях с этим проектом</TextBlock>
+                    <TextBlock><Ellipse/>Кстубаеву Амиру Сериковичу и охранникам - за заинтересованность в проекте, веру в меня и пожелания, чтобы у меня всё получилось</TextBlock>
+
+                </StackPanel>
+            </custom:SensorScrollViewer>
+
+        </Grid>
+
+    </Grid>
+    
+</Page>

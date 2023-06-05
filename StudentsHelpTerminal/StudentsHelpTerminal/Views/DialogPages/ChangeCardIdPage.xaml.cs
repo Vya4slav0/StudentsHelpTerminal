@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StudentsHelpTerminal.Views
+namespace StudentsHelpTerminal.Views.DialogPages
 {
     /// <summary>
     /// Логика взаимодействия для ChangeCardIdPage.xaml

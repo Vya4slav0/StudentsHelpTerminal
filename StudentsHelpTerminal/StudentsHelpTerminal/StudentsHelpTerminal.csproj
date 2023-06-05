@@ -90,7 +90,10 @@
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Services\ShowInToolWindowService.cs" />
     <Compile Include="ViewModels\ChangeCardIdPageViewModel.cs" />
-    <Compile Include="Views\ChangeCardIdPage.xaml.cs">
+    <Compile Include="Views\DialogPages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogPages\ChangeCardIdPage.xaml.cs">
       <DependentUpon>ChangeCardIdPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\ToolWindow.xaml.cs">
@@ -116,7 +119,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ChangeCardIdPage.xaml">
+    <Page Include="Views\DialogPages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogPages\ChangeCardIdPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

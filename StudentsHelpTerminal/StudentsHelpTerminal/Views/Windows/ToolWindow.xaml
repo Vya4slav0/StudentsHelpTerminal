@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentsHelpTerminal.Views.Windows"
-        xmlns:views="clr-namespace:StudentsHelpTerminal.Views"
+        xmlns:views="clr-namespace:StudentsHelpTerminal.Views.DialogPages"
         xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
         mc:Ignorable="d" 
         ShowInTaskbar="False" 
