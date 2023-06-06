@@ -23,6 +23,7 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
         static IOPortsStore()
         {
             IOPortsOpen();
+            CardReaderSerialPort.DiscardInBuffer();
         }
 
         private static void IOPortsOpen()

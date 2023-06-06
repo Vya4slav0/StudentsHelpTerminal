@@ -137,7 +137,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                 };
             }
         }
-        public static Student GetStudentByCardId(int cardId)
+        public static Student GetStudentByCardId(long cardId)
         {
             using (StudentsDBContext db = new StudentsDBContext())
             {
@@ -220,6 +220,14 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                     }
                     return true;
                 }
+            }
+        }
+        public static bool HasStudent(long cardId)
+        {
+            using(StudentsDBContext db = new StudentsDBContext())
+            {
+                int? stuffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId).STAFF_ID;
+                return stuffId.HasValue && stuffId.Value != 0;
             }
         }
     }

@@ -20,7 +20,7 @@ namespace StudentsHelpTerminal.ViewModels
     {
         public MainPageViewModel() { }
 
-        public MainPageViewModel(int cardId)
+        public MainPageViewModel(long cardId)
         {
             #region Commands definition
 
@@ -148,7 +148,7 @@ namespace StudentsHelpTerminal.ViewModels
 
         #endregion
 
-        private void FillPropertiesByCardId(int cardId)
+        private void FillPropertiesByCardId(long cardId)
         {
             Student student = DBHelper.GetStudentByCardId(cardId);
 

@@ -1,4 +1,5 @@
 ﻿using StudentsHelpTerminal.Infrastructure.Commands;
+using StudentsHelpTerminal.Infrastructure.Services;
 using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.ViewModels;
 using StudentsHelpTerminal.Views.Windows;
@@ -29,11 +30,10 @@ namespace StudentsHelpTerminal
             NavigationStore.CurrentViewModel = new IdlePageViewModel();
             IOPortsStore.CardReaderSerialPort.DataReceived += (s, a) =>
             {
-                if (!(NavigationStore.CurrentViewModel is IdlePageViewModel)) return;
-                NavigationStore.CurrentViewModel = new MainPageViewModel
-                    (
-                        Convert.ToInt32(IOPortsStore.CardReaderSerialPort.ReadLine())
-                    );
+                long cardId = Convert.ToInt64(IOPortsStore.CardReaderSerialPort.ReadLine());
+
+                if (!(NavigationStore.CurrentViewModel is IdlePageViewModel) && DBHelper.HasStudent(cardId)) return;
+                NavigationStore.CurrentViewModel = new MainPageViewModel(cardId);
                 IOPortsStore.CardReaderSerialPort.DiscardInBuffer();
             };
             base.OnStartup(e);
