@@ -11,8 +11,15 @@
 
     <Page.Resources>
 
-        <conv:SubtractValueConverter x:Key="SubtractValueConverter"/>
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Resources\MainTheme.xaml"/>
+                <ResourceDictionary>
+                    <conv:SubtractValueConverter x:Key="SubtractValueConverter"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
     </Page.Resources>
     
     <Page.Triggers>
@@ -109,20 +116,6 @@
                         </Style.Resources>
                     </Style>
 
-                    <Style x:Key="LogoText">
-                        <Style.Resources>
-                            <Style TargetType="TextBlock">
-                                <Style.Setters>
-                                    <Setter Property="FontFamily" Value="Candara"/>
-                                    <Setter Property="FontSize" Value="70"/>
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                    <Setter Property="Foreground" Value="#1F3B6A"/>
-                                    <Setter Property="HorizontalAlignment" Value="Left"/>
-                                </Style.Setters>
-                            </Style>
-                        </Style.Resources>
-                    </Style>
-
                 </Grid.Resources>
 
                 <!--Hole-->
@@ -146,51 +139,7 @@
                     </StackPanel>
 
                     <!--Logo-->
-                    <Viewbox Margin="10 15">
-                        <Viewbox.RenderTransform>
-                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="0.85" ScaleY="0.85"/>
-                        </Viewbox.RenderTransform>
-                        <Canvas Height="951" Width="1435">
-                            
-                            <!--Logo text-->
-                            <StackPanel Canvas.Top="40"
-                                        Style="{StaticResource LogoText}">
-                                <TextBlock Text="КОСТАНАЙСКИЙ"/>
-                                <TextBlock Text="ПОЛИТЕХНИЧЕСКИЙ" Margin="70 0 0 0"/>
-                                <TextBlock Text="ВЫСШИЙ КОЛЛЕДЖ" Margin="140 0 0 0"/>
-                            </StackPanel>
-                            <StackPanel Canvas.Top="320" Canvas.Left="250"
-                                        Style="{StaticResource LogoText}">
-                                <TextBlock Text="ПУТЬ" FontSize="240"/>
-                                <TextBlock Text="К УСПЕХУ!" FontSize="120" Margin="0 -40 0 0"/>
-                            </StackPanel>
-
-                            <Path Fill="#203B68" Data="M794 176l122 31 -43 -101c-1,-2 81,-57 88,-60 -2,-4 -108,-33 -123,-27 -12,-1 -74,148 -44,157z" />
-                            <Path Fill="#203B68" Data="M1210 285l74 -47 -84 -48c-11,-2 -86,-31 -111,-37 -28,-6 -102,-23 -128,-22 1,1 116,55 136,67 49,30 73,52 113,87z" />
-                            <Path Fill="#203B68" Data="M1340 138l-40 78c11,21 28,41 41,68 5,11 27,80 29,81l30 -20c-14,-11 -36,-58 -35,-75 4,-70 11,-122 35,-188 10,-26 28,-56 35,-78l-5 -4 -90 138z" />
-                            <Path Fill="#203B68" Data="M1181 374l-24 2 0 2 43 15c7,5 51,18 61,20 27,3 37,-12 47,-34 15,-30 25,-106 -7,-126 -6,2 -46,54 -57,64 -32,30 10,46 -63,57z" />
-                            <Path Fill="#203B68" Data="M1131 576l-129 105 -15 13c65,-19 138,-56 192,-98 93,-73 121,-149 132,-157l3 1 -38 84c40,-31 80,-92 84,-144 -56,25 -38,55 -126,38 -6,42 -70,141 -103,158z" />
-                            <Path Fill="#1E3A66" Data="M1140 559l27 -32 -156 30 0 -3c15,15 111,17 129,5z" />
-                            <Path Fill="#EA9717" Data="M1210 285l-72 20 -92 7c0,0 10,33 53,36 42,3 74,-11 80,-13 6,-3 39,-15 44,-18 77,-60 68,-80 61,-79l-74 47z" />
-                            <Path Data="M266 318c-79,76 -289,327 -25,479 54,31 159,37 249,34 254,-10 293,-41 583,-158 -144,103 -346,194 -683,212 430,10 757,-220 879,-337 -75,109 -207,213 -353,287 -130,66 -276,96 -418,111 -249,25 -446,-56 -486,-176 -42,-123 24,-331 254,-452z" >
-                                <Path.Fill>
-                                    <LinearGradientBrush EndPoint="1,-1" StartPoint="0,0.5">
-                                        <GradientStop Color="#FFE13726"/>
-                                        <GradientStop Color="#FFF4E20F" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Path.Fill>
-                            </Path>
-                            <Path Fill="#203B68" Data="M1221 177c16,11 30,44 65,25 24,-14 25,-49 11,-71 -15,-18 -37,-39 -63,-23 -31,20 -16,46 -13,69z" />
-                            <Path Data="M883 109l77 -52 -37 133 -40 -81z" >
-                                <Path.Fill>
-                                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                                        <GradientStop Color="#FFDB5527"/>
-                                        <GradientStop Color="#FFF4D514" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Path.Fill>
-                            </Path>
-                        </Canvas>
-                    </Viewbox>
+                    <ContentControl Content="{StaticResource CollegeLogo}" Margin="10 15"/>
 
                 </StackPanel>
 

@@ -521,5 +521,273 @@
         </Style.Triggers>
     </Style>
     <!--#endregion-->
-    
+
+    <!--My logo-->
+    <Viewbox x:Key="MyLogo">
+
+        <Viewbox.Resources>
+
+            <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0.5, 0" EndPoint="0.5, 1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#E6E6E6"/>
+                        <GradientStop Offset="0.2" Color="#FEFEFE"/>
+                    </GradientStopCollection>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+            <SolidColorBrush x:Key="AnonimousRed" Color="#C33300"/>
+
+            <SolidColorBrush x:Key="FaceBackground" Color="#333333"/>
+
+            <SolidColorBrush x:Key="FaceStroke" Color="#1A1A1A"/>
+
+            <SolidColorBrush x:Key="MainStroke" Color="#1A1A1A"/>
+
+            <SolidColorBrush x:Key="CircuitBackground" Color="#676767"/>
+
+            <SolidColorBrush x:Key="DotsColor" Color="Black"/>
+
+            <sys:Double x:Key="FaceStrokeThickness">2000</sys:Double>
+
+            <sys:Double x:Key="CircuitStrokeThickness">90000</sys:Double>
+
+            <sys:Double x:Key="GearStrokeThickness">200000</sys:Double>
+
+            <LinearGradientBrush x:Key="GearBackgroundGradient" StartPoint="0.2 0" EndPoint="1, 1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#FEFEFE"/>
+                        <GradientStop Offset="0.6" Color="#CCCCCC"/>
+                    </GradientStopCollection>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+        </Viewbox.Resources>
+
+        <StackPanel Orientation="Vertical">
+
+            <StackPanel Orientation="Horizontal" Height="4191135">
+
+                <StackPanel.Resources>
+
+                    <Style TargetType="{x:Type Rectangle}">
+                        <Setter Property="Width" Value="200000"/>
+                        <Setter Property="Height" Value="200000"/>
+                        <Setter Property="VerticalAlignment" Value="Bottom"/>
+                        <Setter Property="Margin" Value="200000 0 250000 0"/>
+                        <Setter Property="Fill" Value="{StaticResource DotsColor}"/>
+                    </Style>
+
+                </StackPanel.Resources>
+
+                <!--ANONIMOUS-->
+                <Viewbox>
+
+                    <Canvas Height="657698" Width="543003">
+                        <Path Fill="{StaticResource BackgroundGradient}" Data="M271852 597443c77235,-36238 209774,-159981 215496,-277906 18662,-117925 1505,-269665 -6823,-276814 -67118,-56964 -350348,-56964 -417465,0 -8455,7149 -25484,158889 -6823,276814 5722,117925 138261,241667 215615,277906z" />
+                        <Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M290174 564505l-18625 9125 0 121 -120 0 -121 0 0 -121 -18624 -9125 -11775 -112512c-95168,-9606 -108145,-59797 -108145,-59797 30041,43226 135301,43587 138544,43587 3365,0 108626,-361 138546,-43587 0,0 -12977,50191 -108144,59797l-11536 112512z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M202216 294334c0,0 -9854,28937 11297,43226 -24754,-7324 -21992,-27738 -21992,-27738 -12015,11169 -40133,24256 -58636,24256 -843,0 -1563,0 -2285,0 1682,9126 8652,29900 35929,34342 35326,5764 74017,-32540 74017,-32540 6370,9246 17905,15489 31122,15489 13218,0 24753,-6243 31122,-15489 0,0 38572,38304 73899,32540 27276,-4442 34245,-25216 35927,-34342 -721,0 -1562,0 -2283,0 -18503,0 -46743,-13088 -58639,-24256 0,0 2645,20414 -21989,27738 21269,-14289 11296,-43226 11296,-43226 105981,81050 141188,-37465 141188,-37465 0,0 -6129,55477 -46502,72286 -12496,40105 -26315,49471 -42297,59558 -13937,8765 -33643,12488 -50467,13929 -15382,4562 -38572,9245 -71134,10087l0 0c0,0 0,0 -121,0 0,0 0,0 -120,0l0 0c-32565,-962 -55755,-5525 -71135,-10087 -16823,-1441 -36408,-5044 -50468,-13929 -15981,-10087 -29678,-19453 -42296,-59558 -40373,-16930 -46501,-72286 -46501,-72286 0,0 35088,118395 141068,37465z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}" 
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M98998 202593c-28957,-9005 -28357,-31579 -28357,-31579 13819,27979 48424,21253 58157,18732 12737,-8045 28719,-12968 46262,-12968 22831,0 43137,8165 56836,21134 -13699,12969 -34005,21134 -56836,21134 -14179,0 -27396,-3244 -38691,-8767 -57678,-7686 -77865,21735 -77865,21735 6969,-27738 40494,-29421 40494,-29421z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M247878 138833l0 52113c0,0 -48304,-55114 -85674,-75167 -37370,-20053 -78827,12008 -78827,12008 52632,-91138 164501,11046 164501,11046z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M247878 204035c16582,50311 -12016,78170 -12016,78170 20307,-37704 12016,-78170 12016,-78170z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}" 
+                                  Data="M295221 204035c0,0 -8291,40466 12016,78170 -120,0 -28600,-27859 -12016,-78170z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M295101 138833c0,0 111990,-102184 164499,-11166 0,0 -41334,-32061 -78824,-12008 -37371,20052 -85675,75167 -85675,75167l0 -51993z" />
+                            </Canvas>
+                            <Canvas>
+                                <Path Fill="{StaticResource FaceBackground}"
+                                  Stroke="{StaticResource FaceStroke}"
+                                  StrokeThickness="{StaticResource FaceStrokeThickness}"
+                                  Data="M472337 171014c0,0 601,22574 -28358,31579 0,0 33526,1683 40494,29540 0,0 -20307,-29299 -77864,-21735 -11294,5525 -24512,8766 -38691,8766 -22830,0 -43138,-8165 -56835,-21134 13697,-12967 34005,-21132 56835,-21132 17543,0 33525,4803 46261,12968 9733,2522 44339,9126 58158,-18852z" />
+                            </Canvas>
+                        </Canvas>
+                        <Canvas>
+                            <Path Fill="#F8F8F8" 
+                              Stroke="{StaticResource FaceStroke}"
+                              StrokeThickness="{StaticResource FaceStrokeThickness}"
+                              Data="M308557 402281l-37128 -42987 -37130 42987c23793,1441 50587,1441 74258,0z" />
+                        </Canvas>
+                        <Canvas>
+                            <Path Fill="{StaticResource AnonimousRed}" Stroke="{StaticResource AnonimousRed}" StrokeThickness="20000" Data="M271576 646394c-92466,-40374 -250887,-178238 -257725,-309620 -6839,-131381 1399,-312864 8876,-308402l32637 19481c3062,7082 -13670,157420 -7720,274254 5949,116833 143769,239432 224208,275336 80309,-35903 218127,-158503 224078,-275336 5949,-116834 -10907,-267172 -7721,-274254l32066 -19481c7492,-4552 15713,177021 8875,308402 -6840,131382 -165260,269249 -257574,309620z" />
+                        </Canvas>
+                    </Canvas>
+                </Viewbox>
+
+                <Rectangle Fill="{StaticResource AnonimousRed}"/>
+
+                <!--CIRCUIT-->
+                <Viewbox >
+                    <Canvas Height="4191135" Width="2700000">
+                        <Canvas>
+                            <Canvas>
+                                <Path Stroke="{StaticResource MainStroke}"
+                                  StrokeThickness="{StaticResource CircuitStrokeThickness}"
+                                  Fill="{StaticResource CircuitBackground}" Data="M130880 56608l416147 0c41134,0 74788,33654 74788,74788l0 3928343c0,41133 -33654,74788 -74788,74788l-416147 0c-41134,0 -74788,-33655 -74788,-74788l0 -3928343c0,-41134 33654,-74788 74788,-74788z" />
+                            </Canvas>
+                            <Ellipse Fill="{StaticResource MainStroke}" Canvas.Left="122912" Canvas.Top="130103" Width="126860" Height="126860" />
+                        </Canvas>
+
+                        <DockPanel Height="4191135">
+
+                            <DockPanel.Resources>
+                                <Style TargetType="{x:Type Canvas}">
+                                    <Setter Property="Margin" Value="600000 0 0 0"/>
+                                </Style>
+                            </DockPanel.Resources>
+
+                            <Canvas Height="648079" Width="2192767" 
+                                    DockPanel.Dock="Top">
+                                <Path Stroke="{StaticResource MainStroke}" StrokeThickness="170988" Data="M0 324039l1630182 0" />
+                                <Ellipse Stroke="{StaticResource MainStroke}" StrokeThickness="170988" Canvas.Left="1600000" Canvas.Top="85494" Width="477090" Height="477090" />
+                            </Canvas>
+
+                            <Canvas Height="648079" Width="2192767"
+                                    DockPanel.Dock="Bottom">
+                                <Path Stroke="{StaticResource MainStroke}" StrokeThickness="170988" Data="M0 324039l1630182 0" />
+                                <Ellipse Stroke="{StaticResource MainStroke}" StrokeThickness="170988" Canvas.Left="1600000" Canvas.Top="85494" Width="477090" Height="477090" />
+                            </Canvas>
+
+                            <Canvas Height="648079" Width="2192767"
+                                    VerticalAlignment="Center">
+                                <Path Stroke="{StaticResource MainStroke}" StrokeThickness="170988" Data="M0 324039l1630182 0" />
+                                <Ellipse Stroke="{StaticResource MainStroke}" StrokeThickness="170988" Canvas.Left="1600000" Canvas.Top="85494" Width="477090" Height="477090" />
+                            </Canvas>
+
+                        </DockPanel>
+
+                    </Canvas>
+
+                </Viewbox>
+
+                <Rectangle/>
+
+                <!--GEAR-->
+                <Viewbox Height="4191135">
+                    <Path Fill="{StaticResource GearBackgroundGradient}" 
+                              Stroke="{StaticResource MainStroke}"
+                              StrokeThickness="{StaticResource GearStrokeThickness}"
+                              Data="M1433030 6584330c-314909,-443302 -534483,-959077 -628811,-1517414l-646875 0 0 -1239811 646875 0c94312,-558337 313902,-1074112 628811,-1517399l-457605 -457620 876676 -876676 457621 457620 16 0c443286,-314925 959046,-534515 1517382,-628827l0 -646859 1239811 0 0 646859c558337,94328 1074112,313918 1517399,628827l457620 -457620 876676 876676 -1535319 1535335c-374937,-683709 -1101474,-1147230 -1936281,-1147230 -1218790,0 -2206819,988029 -2206819,2206819 0,1218806 988029,2206835 2206819,2206835 834807,0 1561344,-463521 1936281,-1147230l1535319 1535320 -876676 876676 -457620 -457621c-443287,314909 -959062,534499 -1517399,628827l0 646875 -1239811 0 0 -646875c-558336,-94312 -1074112,-313902 -1517398,-628811l-457621 457605 -876676 -876676 457605 -457605z" />
+                </Viewbox>
+
+                <Rectangle/>
+
+            </StackPanel>
+
+            <Viewbox Width="11500000" Margin="0 500000 0 0">
+                <DockPanel LastChildFill="True">
+
+                    <DockPanel.Resources>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="FontFamily" Value="Berlin Sans FB Demi"/>
+                            <Setter Property="FontWeight" Value="DemiBold"/>
+                            <Setter Property="Foreground" Value="{StaticResource DotsColor}"/>
+                        </Style>
+                    </DockPanel.Resources>
+
+                    <TextBlock Text="V" 
+                               Foreground="{StaticResource AnonimousRed}"/>
+                    <TextBlock Text="YACHESLAV's  ENGINEERING  COMPANY" />
+                </DockPanel>
+
+            </Viewbox>
+
+        </StackPanel>
+
+    </Viewbox>
+
+    <!--College logo-->
+    <Style x:Key="LogoText">
+        <Style.Resources>
+            <Style TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter Property="FontFamily" Value="Candara"/>
+                    <Setter Property="FontSize" Value="70"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Foreground" Value="#1F3B6A"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                </Style.Setters>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Viewbox x:Key="CollegeLogo">
+        <Viewbox.RenderTransform>
+            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="0.85" ScaleY="0.85"/>
+        </Viewbox.RenderTransform>
+        <Canvas Height="951" Width="1435">
+
+            <!--Logo text-->
+            <StackPanel Canvas.Top="40"
+                                        Style="{StaticResource LogoText}">
+                <TextBlock Text="КОСТАНАЙСКИЙ"/>
+                <TextBlock Text="ПОЛИТЕХНИЧЕСКИЙ" Margin="70 0 0 0"/>
+                <TextBlock Text="ВЫСШИЙ КОЛЛЕДЖ" Margin="140 0 0 0"/>
+            </StackPanel>
+            <StackPanel Canvas.Top="320" Canvas.Left="250"
+                                        Style="{StaticResource LogoText}">
+                <TextBlock Text="ПУТЬ" FontSize="240"/>
+                <TextBlock Text="К УСПЕХУ!" FontSize="120" Margin="0 -40 0 0"/>
+            </StackPanel>
+
+            <Path Fill="#203B68" Data="M794 176l122 31 -43 -101c-1,-2 81,-57 88,-60 -2,-4 -108,-33 -123,-27 -12,-1 -74,148 -44,157z" />
+            <Path Fill="#203B68" Data="M1210 285l74 -47 -84 -48c-11,-2 -86,-31 -111,-37 -28,-6 -102,-23 -128,-22 1,1 116,55 136,67 49,30 73,52 113,87z" />
+            <Path Fill="#203B68" Data="M1340 138l-40 78c11,21 28,41 41,68 5,11 27,80 29,81l30 -20c-14,-11 -36,-58 -35,-75 4,-70 11,-122 35,-188 10,-26 28,-56 35,-78l-5 -4 -90 138z" />
+            <Path Fill="#203B68" Data="M1181 374l-24 2 0 2 43 15c7,5 51,18 61,20 27,3 37,-12 47,-34 15,-30 25,-106 -7,-126 -6,2 -46,54 -57,64 -32,30 10,46 -63,57z" />
+            <Path Fill="#203B68" Data="M1131 576l-129 105 -15 13c65,-19 138,-56 192,-98 93,-73 121,-149 132,-157l3 1 -38 84c40,-31 80,-92 84,-144 -56,25 -38,55 -126,38 -6,42 -70,141 -103,158z" />
+            <Path Fill="#1E3A66" Data="M1140 559l27 -32 -156 30 0 -3c15,15 111,17 129,5z" />
+            <Path Fill="#EA9717" Data="M1210 285l-72 20 -92 7c0,0 10,33 53,36 42,3 74,-11 80,-13 6,-3 39,-15 44,-18 77,-60 68,-80 61,-79l-74 47z" />
+            <Path Data="M266 318c-79,76 -289,327 -25,479 54,31 159,37 249,34 254,-10 293,-41 583,-158 -144,103 -346,194 -683,212 430,10 757,-220 879,-337 -75,109 -207,213 -353,287 -130,66 -276,96 -418,111 -249,25 -446,-56 -486,-176 -42,-123 24,-331 254,-452z" >
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="1,-1" StartPoint="0,0.5">
+                        <GradientStop Color="#FFE13726"/>
+                        <GradientStop Color="#FFF4E20F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <Path Fill="#203B68" Data="M1221 177c16,11 30,44 65,25 24,-14 25,-49 11,-71 -15,-18 -37,-39 -63,-23 -31,20 -16,46 -13,69z" />
+            <Path Data="M883 109l77 -52 -37 133 -40 -81z" >
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                        <GradientStop Color="#FFDB5527"/>
+                        <GradientStop Color="#FFF4D514" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+        </Canvas>
+    </Viewbox>
 </ResourceDictionary>
