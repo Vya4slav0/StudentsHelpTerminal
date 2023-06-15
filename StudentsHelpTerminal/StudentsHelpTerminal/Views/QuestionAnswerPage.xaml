@@ -35,7 +35,7 @@
 
         <custom:SensorScrollViewer Grid.Column="0"
                                       VerticalScrollBarVisibility="Auto" 
-                                      HorizontalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled"
                                       Margin="0">
 
             <GroupBox BorderBrush="{StaticResource BlueLinearGradient}" 
@@ -45,7 +45,7 @@
                     <TextBlock Text="Ответ" Style="{StaticResource TextBlockBig}" Margin="0 0 0 -40"/>
                 </GroupBox.Header>
                 
-                <ContentControl Content="{Binding ElementName=ListBoxImages, Path=SelectedItem}" Margin="5 40 5 5">
+                <ContentControl Content="{Binding ElementName=ListBoxQuestions, Path=SelectedItem}" Margin="5 40 5 5">
                     <ContentControl.ContentTemplate>
                         <DataTemplate DataType="{x:Type mo:QuestionAnswer}">
                             <TextBlock Text="{Binding Answer}"
@@ -62,7 +62,7 @@
         <Border Grid.Column="1" 
                 Margin="5 10 5 5"
                 Style="{DynamicResource SemiOpacityBorder}">
-            <ListBox x:Name="ListBoxImages" 
+            <ListBox x:Name="ListBoxQuestions" 
                      ItemsSource="{Binding QACollection}">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type mo:QuestionAnswer}">
@@ -88,6 +88,10 @@
                                     Height="40"
                                     Width="150"
                                     Command="{StaticResource NavigateBackCommand}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="1" 
+                   Style="{StaticResource TextBlockSmall}" 
+                   TextWrapping="Wrap">*На вопросы, где есть ответы основанные на реальных событиях или данные от первого лица отвечал Костырев Вячеслав (подробнее в "О программе")</TextBlock>
 
     </Grid>
 </Page>

@@ -29,9 +29,9 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
         private static void IOPortsOpen()
         {
             try { CardReaderSerialPort.Open(); }
-            catch (IOException)
+            catch (IOException ex)
             {
-                string message = $"Порт {_COMName} не доступен."; 
+                string message = $"Порт {_COMName} не доступен. Причина: {ex.Message}"; 
                 if (SerialPort.GetPortNames().Length > 0)
                     message += $"\nОбнаружены порты: {string.Join(", ", SerialPort.GetPortNames())}";
                 message += "\nОткрыть панель администратора?";

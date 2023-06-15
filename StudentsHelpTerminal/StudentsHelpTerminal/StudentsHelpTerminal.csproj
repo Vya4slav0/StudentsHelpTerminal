@@ -275,7 +275,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Administrators.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Models\Database\StudentsDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -288,7 +288,7 @@
       <LastGenOutput>StudentsDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Questions.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\QAPageBackground.jpg" />
     <None Include="Resources\no_photo.png" />
