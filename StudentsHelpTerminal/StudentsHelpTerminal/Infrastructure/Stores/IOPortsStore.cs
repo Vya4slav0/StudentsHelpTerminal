@@ -42,6 +42,7 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
                     return;
                 }
                 App.Current.Shutdown();
+                return;
             }
         }
     }

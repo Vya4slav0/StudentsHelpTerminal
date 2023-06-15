@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
+      xmlns:res="clr-namespace:StudentsHelpTerminal.Properties"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
@@ -16,145 +17,49 @@
                 <ResourceDictionary Source="\Resources\MainTheme.xaml"/>
                 <ResourceDictionary>
                     <conv:SubtractValueConverter x:Key="SubtractValueConverter"/>
+                    <conv:BitmapToImageSourceConverter x:Key="BitmapToImageConverter"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
+
     </Page.Resources>
-    
-    <Page.Triggers>
-
-        <EventTrigger RoutedEvent="Loaded">
-            <EventTrigger.Actions>
-                
-                <BeginStoryboard>
-                    <Storyboard TargetName="BorderCard">
-                        <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
-                                         AutoReverse="True"
-                                         From="0" To="{Binding ElementName=CanvasMain, Path=ActualWidth, Converter={StaticResource SubtractValueConverter}, ConverterParameter=400}" 
-                                         Duration="0:0:7"
-                                         RepeatBehavior="Forever"/>
-                    </Storyboard>
-                </BeginStoryboard>
-                
-                <BeginStoryboard>
-                    <Storyboard TargetName="BorderCard">
-                        <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" 
-                                         AutoReverse="True"
-                                         From="0" To="{Binding ElementName=CanvasMain, Path=ActualHeight, Converter={StaticResource SubtractValueConverter}, ConverterParameter=250}"
-                                         Duration="0:0:9"
-                                         RepeatBehavior="Forever"/>
-                    </Storyboard>
-                </BeginStoryboard>
-
-                <!--
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimationUsingKeyFrames
-                            Storyboard.TargetProperty="(Page.Background).(SolidColorBrush.Color)"
-                            AutoReverse="True"
-                            Duration="0:0:5"
-                            RepeatBehavior="Forever">
-                            <LinearColorKeyFrame Value="Red"/>
-                            <LinearColorKeyFrame Value="Orange"/>
-                            <LinearColorKeyFrame Value="Yellow"/>
-                            <LinearColorKeyFrame Value="Green"/>
-                            <LinearColorKeyFrame Value="AliceBlue"/>
-                            <LinearColorKeyFrame Value="Blue"/>
-                            <LinearColorKeyFrame Value="Violet"/>
-                        </ColorAnimationUsingKeyFrames>
-
-                    </Storyboard>
-                </BeginStoryboard>
-                -->
-            </EventTrigger.Actions>
-        </EventTrigger>
-
-    </Page.Triggers>
 
     <Canvas x:Name="CanvasMain">
-        <Border Width="400" Height="250"
-                CornerRadius="10"
-                Background="White" BorderBrush="#CCCCCC"
-                BorderThickness="3"
-                x:Name="BorderCard">
 
-            <Grid>
+        <Image x:Name="ImagePassCard" 
+               Source="{Binding Source={x:Static res:Resources.PassCard}, Converter={StaticResource BitmapToImageConverter}}"
+               Height="250"
+               Width="400">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform x:Name="AnimatedTranslateTransform" X="0" Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard Timeline.DesiredFrameRate="30">
+                            <DoubleAnimation Storyboard.TargetProperty="X"
+                                             Storyboard.TargetName="AnimatedTranslateTransform"
+                                             AutoReverse="True"
+                                             From="0" To="{Binding ElementName=CanvasMain, Path=ActualWidth, Converter={StaticResource SubtractValueConverter}, ConverterParameter=400}" 
+                                             Duration="0:0:15"
+                                             RepeatBehavior="Forever"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Y"
+                                             Storyboard.TargetName="AnimatedTranslateTransform"
+                                             AutoReverse="True"
+                                             From="0" To="{Binding ElementName=CanvasMain, Path=ActualHeight, Converter={StaticResource SubtractValueConverter}, ConverterParameter=250}" 
+                                             Duration="0:0:10"
+                                             RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
 
-                <Grid.Resources>
+        </Image>
 
-                    <Style x:Key="HeaderText">
-                        <Style.Resources>
-                            <Style TargetType="TextBlock">
-                                <Style.Setters>
-                                    <Setter Property="FontFamily" Value="Candara"/>
-                                    <Setter Property="FontSize" Value="20"/>
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                    <Setter Property="Foreground" Value="#1F3B6A"/>
-                                    <Setter Property="HorizontalAlignment" Value="Right"/>
-                                </Style.Setters>
-                            </Style>
-                        </Style.Resources>
-                    </Style>
-
-                    <Style x:Key="NameText">
-                        <Style.Resources>
-                            <Style TargetType="TextBlock">
-                                <Style.Setters>
-                                    <Setter Property="FontFamily" Value="Times New Roman"/>
-                                    <Setter Property="FontSize" Value="18"/>
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                    <Setter Property="Foreground" Value="Black"/>
-                                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                                </Style.Setters>
-                            </Style>
-                        </Style.Resources>
-                    </Style>
-
-                </Grid.Resources>
-
-                <!--Hole-->
-                <Border Grid.RowSpan="2"
-                        VerticalAlignment="Center" HorizontalAlignment="Left"
-                        Height="60" Width="8"
-                        Margin="5 0 0 0"
-                        BorderBrush="Black" BorderThickness="0.5"
-                        CornerRadius="3"/>
-
-                <!--HEADER-->
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    
-                    <!--Header text-->
-                    <StackPanel Width="auto" Height="auto"
-                                Margin="10 15 0 0"
-                                Style="{StaticResource HeaderText}">
-                        <TextBlock Text="КОСТАНАЙСКИЙ ВЫСШИЙ"/>
-                        <TextBlock Text="ПОЛИТЕХНИЧЕСКИЙ"/>
-                        <TextBlock Text="КОЛЛЕДЖ"/>
-                    </StackPanel>
-
-                    <!--Logo-->
-                    <ContentControl Content="{StaticResource CollegeLogo}" Margin="10 15"/>
-
-                </StackPanel>
-
-                <!--Name, group-->
-                <StackPanel Grid.Row="1"
-                            HorizontalAlignment="Center"
-                            Style="{StaticResource NameText}">
-                    <TextBlock Text="Костырев Вячеслав"/>
-                    <TextBlock Text=""/>
-                    <TextBlock Text="ТП-24"/>
-                </StackPanel>
-
-            </Grid>
-
-        </Border>
     </Canvas>
     
+
 </Page>

@@ -22,7 +22,7 @@ namespace StudentsHelpTerminal.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace StudentsHelpTerminal.Properties {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StudentsHelpTerminal.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace StudentsHelpTerminal.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Задаёт скорость последовательного порта, к которому подключено устройство чтения RFID карт. Принимает целочисленные значения..
         /// </summary>
-        internal static string CardReaderPortBaudRate {
+        public static string CardReaderPortBaudRate {
             get {
                 return ResourceManager.GetString("CardReaderPortBaudRate", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Задаёт имя последовательного порта, к которому подключено устройство чтения RFID карт. Принимает строковые значения..
         /// </summary>
-        internal static string CardReaderPortName {
+        public static string CardReaderPortName {
             get {
                 return ResourceManager.GetString("CardReaderPortName", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Путь к папке содержащей общие документы для всех студентов. Принимает строковые значения..
         /// </summary>
-        internal static string CommonDocsDirectoryName {
+        public static string CommonDocsDirectoryName {
             get {
                 return ResourceManager.GetString("CommonDocsDirectoryName", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Максимальный размер лога в мегабайтах. При достижении файлом лога размера больше указанного, размер файла лога сократится вдвое за счёт удаления старых записей..
         /// </summary>
-        internal static string MaxLogSizeMB {
+        public static string MaxLogSizeMB {
             get {
                 return ResourceManager.GetString("MaxLogSizeMB", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap no_photo {
+        public static System.Drawing.Bitmap no_photo {
             get {
                 object obj = ResourceManager.GetObject("no_photo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -107,9 +107,19 @@ namespace StudentsHelpTerminal.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap PassCard {
+            get {
+                object obj = ResourceManager.GetObject("PassCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Путь к папке, содержащей изображения с картами колледжа.
         /// </summary>
-        internal static string PathToCollegeMapsFolder {
+        public static string PathToCollegeMapsFolder {
             get {
                 return ResourceManager.GetString("PathToCollegeMapsFolder", resourceCulture);
             }
@@ -118,7 +128,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Путь к файлу, содержащему лог пользователей..
         /// </summary>
-        internal static string PathToLogFile {
+        public static string PathToLogFile {
             get {
                 return ResourceManager.GetString("PathToLogFile", resourceCulture);
             }
@@ -127,7 +137,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Путь к папке, содержащей папки групп с документами. Принимает строковые значения..
         /// </summary>
-        internal static string PathToMainFolder {
+        public static string PathToMainFolder {
             get {
                 return ResourceManager.GetString("PathToMainFolder", resourceCulture);
             }
@@ -136,7 +146,7 @@ namespace StudentsHelpTerminal.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap QAPageBackground {
+        public static System.Drawing.Bitmap QAPageBackground {
             get {
                 object obj = ResourceManager.GetObject("QAPageBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
