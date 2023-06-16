@@ -11,7 +11,6 @@
       xmlns:locconv="clr-namespace:StudentsHelpTerminal.BindingConverters"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-      Width="1168"
       Title="MainScreenPage">
 
     <d:Page.DataContext>
