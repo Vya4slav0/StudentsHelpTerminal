@@ -11,7 +11,7 @@
       xmlns:locconv="clr-namespace:StudentsHelpTerminal.BindingConverters"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      Width="1168"
       Title="MainScreenPage">
 
     <d:Page.DataContext>
@@ -25,7 +25,7 @@
     </Page.Resources>
 
     <Page.Background>
-        <VisualBrush>
+        <VisualBrush Stretch="UniformToFill">
             <VisualBrush.Visual>
                 <Grid Background="White">
                     <Path Fill="#00B0FC" Data="M16256 7982l0 -142 -14217 0c-25,-4 -333,-312 -337,-338l0 -3113c11,-38 132,-145 166,-180 35,-33 143,-155 180,-166l5189 0c-274,330 -269,126 -269,537 0,273 0,545 0,818 0,545 2,1090 0,1634 0,125 23,127 151,251 71,69 134,135 204,204 48,48 62,51 151,51l2252 0c2176,-1 4354,-5 6530,0l0 -142 -8808 0c-40,-12 -140,-128 -175,-162 -34,-33 -151,-139 -163,-176l0 -2669c4,-27 321,-342 346,-346l4632 0 -244 247c-46,54 -33,128 -33,212l3 2364c9,45 143,162 177,196l187 187c27,28 37,40 87,44 127,11 804,1 991,1l3000 1 0 -142 -3965 -1c-23,-4 -334,-314 -338,-337 -1,-591 0,-1183 0,-1774 0,-59 -7,-635 5,-664l330 -330c35,-15 3660,-5 3968,-4l0 -142c-2787,-12 -5577,-2 -8365,0l-5226 0c-173,0 -347,0 -521,0 -194,0 -157,-20 -346,177 -44,46 -85,86 -131,130 -35,34 -104,84 -107,154 -8,166 0,355 0,523l0 2617c0,99 46,118 94,168l261 261c71,68 91,51 211,51l5757 0c2791,-1 5582,4 8373,0z" />
@@ -49,14 +49,9 @@
         </Grid.ColumnDefinitions>
 
         <!--LEFT SIDE-->
-        <Grid Grid.Column="0">
+        <DockPanel Grid.Column="0"
+                   LastChildFill="False">
             
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
             <custom:PersonalInfoControl FirstName="{Binding Name}"
                                         Surname="{Binding Surname}"
                                         Group="{Binding GroupWithPrefix}"
@@ -64,18 +59,21 @@
                                         Photo="{Binding Photo}"
                                         FrameStyle="{StaticResource SemiOpacityBorder}"
                                         MainTextStyle="{StaticResource TextBlockBig}"
-                                        OtherTextStyle="{StaticResource TextBlockMedium}"/>
+                                        OtherTextStyle="{StaticResource TextBlockMedium}"
+                                        DockPanel.Dock="Top"/>
 
             <!--BUTTONS-->
-            <custom:SensorScrollViewer Grid.Column="0" Grid.Row="2"
-                                       Grid.ColumnSpan="2" 
-                                       VerticalScrollBarVisibility="Auto">
+            <custom:SensorScrollViewer DockPanel.Dock="Bottom"
+                                       VerticalScrollBarVisibility="Auto"
+                                       MaxHeight="300"
+                                       Margin="0 0 0 170">
 
-                <custom:SensorScrollViewer.Resources>
-                    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-                </custom:SensorScrollViewer.Resources>
-                
                 <StackPanel>
+
+                    <StackPanel.Resources>
+                        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+                    </StackPanel.Resources>
+                    
                     <custom:ButtonCuttedCorners Content="Карта колледжа" Command="{Binding CollegeMapOpenCommand}"/>
                     <custom:ButtonCuttedCorners Content="Панель администратора" Command="{Binding AdminWindowOpenCommand}" 
                                             Visibility="{Binding IsAdministrator, Converter={StaticResource BoolToVisibilityConverter}}"/>
@@ -85,7 +83,7 @@
                 </StackPanel>
                 
             </custom:SensorScrollViewer>
-        </Grid>
+        </DockPanel>
 
         <!--RIGHT SIDE-->
         <Grid Grid.Column="1" Margin="30 0 0 0">
@@ -158,7 +156,9 @@
             </Border>
 
             <Border Grid.Row="1" Margin="0 10 0 0" Style="{StaticResource SemiOpacityBorder}">
-                <custom:XpsDocumentViewer FilePath="{Binding ElementName=ListBoxDocs, Path=SelectedItem}" />
+                <custom:XpsDocumentViewer FilePath="{Binding ElementName=ListBoxDocs, Path=SelectedItem}" 
+                                          Focusable="False"
+                                          Margin="2"/>
             </Border>
             
         </Grid>

@@ -135,7 +135,7 @@
 
     <!--Templates for vertical and horizontal bars-->
     <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Grid Width="20" Background="Transparent">
+        <Grid Margin="0 7 0 7" Width="20" Background="Transparent">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
@@ -187,7 +187,7 @@
     </ControlTemplate>
     
     <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Grid Height="20" Background="Transparent">
+        <Grid Margin="7 0 7 0" Height="20" Background="Transparent">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>

@@ -47,7 +47,7 @@
                         </ToolBar>
 
                         <local:SensorScrollViewer Grid.Row="1" 
-                                                  x:Name="PART_ContentHost" 
+                                                  x:Name="PART_ContentHost"
                                                   CanContentScroll="true"
                                                   VerticalScrollBarVisibility="Auto"
                                                   HorizontalScrollBarVisibility="Auto"/>

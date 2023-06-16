@@ -6,10 +6,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TerminalCustomControls"
              xmlns:conv="clr-namespace:TerminalCustomControls.Converters"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             Height="320" Width="650">
 
-    <Grid>
+    <Grid Height="320">
 
         <Grid.Resources>
 
@@ -18,33 +18,27 @@
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Style="{Binding ElementName=ThisControl, Path=FrameStyle}"
-                Grid.Column="0"
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                Width="{Binding RelativeSource={RelativeSource Mode=Self}, 
-                                Path=ActualHeight, 
-                                Converter={StaticResource DivideByConverter}, 
-                                ConverterParameter='1,33'}"
-                Height="auto">
+        <Border Style="{Binding ElementName=ThisControl, Path=FrameStyle}">
             <Image Source="{Binding ElementName=ThisControl, Path=Photo}" Stretch="UniformToFill"/>
         </Border>
 
-        <StackPanel Grid.Column="1"  Margin="5 20 0 0">
+        <StackPanel Grid.Column="1" Margin="5 20 0 0">
             <TextBlock Text="{Binding ElementName=ThisControl, Path=FirstName}" 
-                       Style="{Binding ElementName=ThisControl, Path=MainTextStyle}"/>
+                        Style="{Binding ElementName=ThisControl, Path=MainTextStyle}"/>
             <TextBlock Text="{Binding ElementName=ThisControl, Path=Surname}"
-                       Style="{Binding ElementName=ThisControl, Path=MainTextStyle}"/>
+                        Style="{Binding ElementName=ThisControl, Path=MainTextStyle}"/>
 
             <TextBlock Text="{Binding ElementName=ThisControl, Path=Group}" 
-                       Style="{Binding ElementName=ThisControl, Path=OtherTextStyle}"/>
+                        Style="{Binding ElementName=ThisControl, Path=OtherTextStyle}"/>
             <TextBlock Text="{Binding ElementName=ThisControl, Path=CardNum}" 
-                       Style="{Binding ElementName=ThisControl, Path=OtherTextStyle}"/>
+                        Style="{Binding ElementName=ThisControl, Path=OtherTextStyle}"/>
         </StackPanel>
 
     </Grid>
+
+
 </UserControl>

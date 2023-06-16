@@ -47,7 +47,12 @@ namespace TerminalCustomControls
 
         static XpsDocumentViewer()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(XpsDocumentViewer), new FrameworkPropertyMetadata(typeof(XpsDocumentViewer)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(XpsDocumentViewer), new FrameworkPropertyMetadata(typeof(XpsDocumentViewer))); 
+        }
+
+        public XpsDocumentViewer()
+        {
+            FitToWidth();
         }
     }
 }
