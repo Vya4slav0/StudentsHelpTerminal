@@ -7,11 +7,11 @@ namespace StudentsHelpTerminal.Infrastructure.Services
 {
     internal static class AdminAutorizer
     {
-        private static string _AdminPasswordHash = string.Empty;
+        private static string adminPasswordHash = string.Empty;
+        private static string pathToAdminsFile = @"./Administrators.xml";
 
         public static bool CheckAdminByStuffId(int id)
-        {
-            string pathToAdminsFile = @"./Administrators.xml";
+        {        
             if (!File.Exists(pathToAdminsFile)) return false;
 
             XmlDocument adminsXML = new XmlDocument();
@@ -23,26 +23,53 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                 {
                     if (node.Attributes["id"].Value == id.ToString())
                     {
-                        _AdminPasswordHash = node.ChildNodes[0].InnerText;
+                        adminPasswordHash = node.ChildNodes[0].InnerText;
                         return true;
                     }
                 }
             }
             return false;
         }
-
         public static bool CheckPassword(string password)
+        {
+            return adminPasswordHash.Equals(GetHashString(GetPasswordHash(password)));
+        }
+        public static bool AutorizeAnyAdministrator(string password)
+        {
+            byte[] hash = GetPasswordHash(password);
+
+            if (!File.Exists(pathToAdminsFile)) return false;
+
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(pathToAdminsFile);
+            XmlNode root = xmlDocument.DocumentElement;
+
+            if (root != null)
+            {
+                foreach (XmlNode node in root.ChildNodes)
+                {
+                    adminPasswordHash = node.ChildNodes[0].InnerText;
+                    if (adminPasswordHash.Equals(GetHashString(GetPasswordHash(password)))) return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static byte[] GetPasswordHash(string password)
         {
             byte[] data = Encoding.UTF8.GetBytes(password);
             SHA256 sha256 = SHA256.Create();
-            byte[] hash = sha256.ComputeHash(data);
-
+            return sha256.ComputeHash(data);
+        }
+        private static string GetHashString(byte[] hash)
+        {
             string hashString = string.Empty;
-            foreach (byte b in hash)
+            foreach(byte b in hash)
             {
                 hashString += string.Format("{0:x2}", b);
             }
-            return _AdminPasswordHash.Equals(hashString);
+            return hashString;
         }
     }
 }

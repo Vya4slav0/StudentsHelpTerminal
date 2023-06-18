@@ -1,5 +1,7 @@
 ﻿using DialogBoxes;
+using StudentsHelpTerminal.Infrastructure.Services;
 using StudentsHelpTerminal.ViewModels;
+using System;
 using System.IO;
 using System.IO.Ports;
 
@@ -23,21 +25,37 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
         static IOPortsStore()
         {
             IOPortsOpen();
-            CardReaderSerialPort.DiscardInBuffer();
+        }
+
+        public static void Initialize()
+        {
+            CardReaderSerialPort.DataReceived += (s, a) =>
+            {
+                long cardId = Convert.ToInt64(CardReaderSerialPort.ReadLine());
+
+                if (!(NavigationStore.CurrentViewModel is IdlePageViewModel) && DBHelper.HasStudent(cardId)) return;
+                NavigationStore.CurrentViewModel = new MainPageViewModel(cardId);
+                CardReaderSerialPort.DiscardInBuffer();
+            };
         }
 
         private static void IOPortsOpen()
         {
-            try { CardReaderSerialPort.Open(); }
+            try 
+            { 
+                CardReaderSerialPort.Open();
+                CardReaderSerialPort.DiscardInBuffer();  
+            }
             catch (IOException ex)
             {
                 string message = $"Порт {_COMName} не доступен. Причина: {ex.Message}"; 
                 if (SerialPort.GetPortNames().Length > 0)
                     message += $"\nОбнаружены порты: {string.Join(", ", SerialPort.GetPortNames())}";
                 message += "\nОткрыть панель администратора?";
-                if (new YesNoBox(message).ShowDialog())
+                if (new YesNoBox(message).ShowDialog() &&
+                    AdminAutorizer.AutorizeAnyAdministrator(new PromptBox("Введите ваш пароль администратора").ShowDialog()))
                 {
-                    //TODO: make admin autorization
+
                     NavigationStore.CurrentViewModel = new AdminPageViewModel();
                     return;
                 }
