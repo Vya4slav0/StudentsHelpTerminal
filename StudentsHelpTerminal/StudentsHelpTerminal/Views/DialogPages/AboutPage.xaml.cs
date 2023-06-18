@@ -24,5 +24,10 @@ namespace StudentsHelpTerminal.Views.DialogPages
         {
             InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlockVersion.Text = "Версия: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
     }
 }

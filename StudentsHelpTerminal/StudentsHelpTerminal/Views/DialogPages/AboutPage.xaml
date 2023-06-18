@@ -9,7 +9,8 @@
       mc:Ignorable="d" 
       Height="500" Width="700"
       Title="AboutPage"
-      Background="White">
+      Background="White"
+      Loaded="Page_Loaded">
 
     <Page.Resources>
         <ResourceDictionary Source="\Resources\MainTheme.xaml"/>
@@ -36,11 +37,20 @@
             <Separator Background="{StaticResource BlueLinearGradient}" Margin="5"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="0"
-                    Grid.Row="1">
-            <ContentControl Content="{StaticResource MyLogo}" Margin="10"/>
-            <ContentControl Content="{StaticResource CollegeLogo}" Margin="10"/>
-        </StackPanel>
+        <DockPanel Grid.Column="0"
+                    Grid.Row="1"
+                   LastChildFill="False">
+            <ContentControl Content="{StaticResource MyLogo}"
+                            DockPanel.Dock="Top"
+                            Margin="10"/>
+            <ContentControl Content="{StaticResource CollegeLogo}" 
+                            DockPanel.Dock="Top"
+                            Margin="10"/>
+            <TextBlock x:Name="TextBlockVersion" 
+                       DockPanel.Dock="Bottom"
+                       Style="{StaticResource TextBlockSmall}"
+                       Margin="5"/>
+        </DockPanel>
 
         <custom:SensorScrollViewer Margin="5" 
                                        Grid.Row="1"

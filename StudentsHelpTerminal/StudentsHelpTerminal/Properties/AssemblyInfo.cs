@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("StudentsHelpTerminal")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany(@"Vyacheslav's engineering company")]
 [assembly: AssemblyProduct("StudentsHelpTerminal")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright(@"Copyright © Vyacheslav's engineering company 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -50,6 +50,6 @@ using System.Windows;
 //
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
+//[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
