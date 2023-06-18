@@ -39,7 +39,7 @@
             <Image.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
                     <BeginStoryboard>
-                        <Storyboard Timeline.DesiredFrameRate="30">
+                        <Storyboard Timeline.DesiredFrameRate="1">
                             <DoubleAnimation Storyboard.TargetProperty="X"
                                              Storyboard.TargetName="AnimatedTranslateTransform"
                                              AutoReverse="True"
