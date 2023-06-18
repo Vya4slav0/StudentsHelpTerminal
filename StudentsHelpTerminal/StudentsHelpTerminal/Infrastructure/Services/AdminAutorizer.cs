@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 
@@ -8,15 +7,16 @@ namespace StudentsHelpTerminal.Infrastructure.Services
     internal static class AdminAutorizer
     {
         private static string adminPasswordHash = string.Empty;
-        private static string pathToAdminsFile = @"./Administrators.xml";
+        private static string pathToAdminsFile = Properties.Settings.Default.PathToAdminsFile;
 
         public static bool CheckAdminByStuffId(int id)
         {        
-            if (!File.Exists(pathToAdminsFile)) return false;
+            if (!SelfTestingService.AdministratorsFileCheck()) return false;
 
             XmlDocument adminsXML = new XmlDocument();
             adminsXML.Load(pathToAdminsFile);
             XmlElement root = adminsXML.DocumentElement;
+
             if (root != null)
             {
                 foreach (XmlNode node in root.ChildNodes)
@@ -36,9 +36,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
         }
         public static bool AutorizeAnyAdministrator(string password)
         {
-            byte[] hash = GetPasswordHash(password);
-
-            if (!File.Exists(pathToAdminsFile)) return false;
+            if (!SelfTestingService.AdministratorsFileCheck()) return false;
 
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(pathToAdminsFile);

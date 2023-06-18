@@ -23,5 +23,11 @@
     <Setting Name="PathToCollegeMapsFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">.\Maps</Value>
     </Setting>
+    <Setting Name="PathToAdminsFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.\Administrators.xml</Value>
+    </Setting>
+    <Setting Name="PathToQAFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.\Questions.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -104,5 +104,29 @@ namespace StudentsHelpTerminal.Properties {
                 this["PathToCollegeMapsFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\Administrators.xml")]
+        public string PathToAdminsFile {
+            get {
+                return ((string)(this["PathToAdminsFile"]));
+            }
+            set {
+                this["PathToAdminsFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\Questions.xml")]
+        public string PathToQAFile {
+            get {
+                return ((string)(this["PathToQAFile"]));
+            }
+            set {
+                this["PathToQAFile"] = value;
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using StudentsHelpTerminal.Infrastructure.Services;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -12,7 +13,9 @@ namespace StudentsHelpTerminal.ViewModels
     {
         public QuestionAnswerPageViewModel() 
         {
-            string pathToQAFile = @"./Questions.xml";
+            string pathToQAFile = Properties.Settings.Default.PathToQAFile;
+
+            if (!SelfTestingService.QAFileCheck()) return;
 
             XmlDocument QAXmlDocument = new XmlDocument();
             QAXmlDocument.Load(pathToQAFile);
