@@ -33,7 +33,8 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
             {
                 long cardId = Convert.ToInt64(CardReaderSerialPort.ReadLine());
 
-                if (!(NavigationStore.CurrentViewModel is IdlePageViewModel) && DBHelper.HasStudent(cardId)) return;
+                if (!(NavigationStore.CurrentViewModel is IdlePageViewModel && DBHelper.HasStudent(cardId)))
+                    return;
                 NavigationStore.CurrentViewModel = new MainPageViewModel(cardId);
                 CardReaderSerialPort.DiscardInBuffer();
             };

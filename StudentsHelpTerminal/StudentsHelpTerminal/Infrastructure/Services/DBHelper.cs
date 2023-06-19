@@ -226,7 +226,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
         {
             using(StudentsDBContext db = new StudentsDBContext())
             {
-                int? stuffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId).STAFF_ID;
+                int? stuffId = db.STAFF_CARDS.FirstOrDefault(sc => sc.IDENTIFIER == cardId)?.STAFF_ID;
                 return stuffId.HasValue && stuffId.Value != 0;
             }
         }
