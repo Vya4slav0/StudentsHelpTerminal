@@ -31,5 +31,11 @@ namespace StudentsHelpTerminal
 
             base.OnStartup(e);
         }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            Logger.CloseLogger();
+            base.OnExit(e);
+        }
     }
 }

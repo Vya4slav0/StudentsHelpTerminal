@@ -107,6 +107,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\Services\Logger.cs" />
     <Compile Include="Infrastructure\Services\SelfTestingService.cs" />
     <Compile Include="Infrastructure\Services\ShowInToolWindowService.cs" />
     <Compile Include="Models\Other\QuestionAnswer.cs" />
