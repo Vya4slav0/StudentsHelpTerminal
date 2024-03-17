@@ -9,10 +9,10 @@
       <Value Profile="(Default)">COM4</Value>
     </Setting>
     <Setting Name="PathToMainFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\Terminal data</Value>
+      <Value Profile="(Default)">E:\Terminal data</Value>
     </Setting>
     <Setting Name="CommonDocsDirectoryName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\Terminal data\Common</Value>
+      <Value Profile="(Default)">E:\Terminal data\Common</Value>
     </Setting>
     <Setting Name="PathToLogFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">.\Users.log</Value>

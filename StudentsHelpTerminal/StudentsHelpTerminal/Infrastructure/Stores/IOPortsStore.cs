@@ -4,6 +4,7 @@ using StudentsHelpTerminal.ViewModels;
 using System;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 
 namespace StudentsHelpTerminal.Infrastructure.Stores
 {
@@ -40,6 +41,13 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
             };
         }
 
+        public static bool CheckPorts(string portName = null)
+        {
+            if (portName == null) 
+                return SerialPort.GetPortNames().Contains(CardReaderSerialPort.PortName);
+            return SerialPort.GetPortNames().Contains(portName);
+        }
+
         private static void IOPortsOpen()
         {
             try 
@@ -56,7 +64,6 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
                 if (new YesNoBox(message).ShowDialog() &&
                     AdminAutorizer.AutorizeAnyAdministrator(new PromptBox("Введите ваш пароль администратора").ShowDialog()))
                 {
-
                     NavigationStore.CurrentViewModel = new AdminPageViewModel();
                     return;
                 }
