@@ -26,13 +26,13 @@
         </Grid.RowDefinitions>
 
         <DataGrid Grid.Row="0" Grid.Column="0" Margin="10" 
-              ItemsSource="{Binding SettingsList}"
+              ItemsSource="{Binding SettingsList, UpdateSourceTrigger=LostFocus}"
               SelectedItem="{Binding SelectedSetting}"
               AutoGenerateColumns="False"
               CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя настройки" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Тип" Binding="{Binding Type.Name}"/>
+                <DataGridTextColumn Header="Имя настройки" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type.Name}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Значение" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>

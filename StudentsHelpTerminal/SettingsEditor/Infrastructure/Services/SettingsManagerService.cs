@@ -11,12 +11,13 @@ namespace SettingsEditor.Infrastructure.Services
 {
     internal class SettingsManagerService
     {
-        private XDocument _settingsXML;
-        private string _pathToSettingsXML;
+        private readonly XDocument _settingsXML;
+        private readonly string _pathToSettingsXML;
 
         public SettingsManagerService(string pathToSettingsXML) 
         {
             _settingsXML = XDocument.Load(pathToSettingsXML);
+            _pathToSettingsXML = pathToSettingsXML;
         }
 
         public Setting LoadSettingByName(string name)
@@ -51,7 +52,7 @@ namespace SettingsEditor.Infrastructure.Services
             XElement root = _settingsXML.Root;
             foreach (XElement setting in root.Elements())
             {
-                setting.Element("value").Value = newSettings.First(s => s.Name == setting.Name).Value.ToString();
+                setting.Element("value").Value = newSettings.First(s => s.Name == setting.Attribute("name").Value).Value.ToString();
             }
             _settingsXML.Save(_pathToSettingsXML);
         }
