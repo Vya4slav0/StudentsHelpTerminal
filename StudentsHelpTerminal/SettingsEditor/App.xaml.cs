@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SettingsEditor.ViewModels;
+using SettingsEditor.Views;
 
 namespace SettingsEditor
 {
@@ -13,5 +15,14 @@ namespace SettingsEditor
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            string pathToSettingsFile = @"E:\Users\vya4s\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\Settings.xml";
+            MainWindow = new MainWindow();
+            MainWindow.DataContext = new SettingsPageViewModel(pathToSettingsFile);
+            MainWindow.Content = new SettingsPage();
+            MainWindow.Show();
+            base.OnStartup(e);
+        }
     }
 }
