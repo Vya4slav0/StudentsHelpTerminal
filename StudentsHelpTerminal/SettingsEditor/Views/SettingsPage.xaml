@@ -5,8 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SettingsEditor.Views"
       xmlns:vm="clr-namespace:SettingsEditor.ViewModels"
+      xmlns:io="clr-namespace:System.IO;assembly=mscorlib"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:m="clr-namespace:SettingsEditor.Models"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1032"
+      WindowWidth="1032"
       Title="SettingsPage">
 
     <d:Page.DataContext>
@@ -30,10 +34,13 @@
               SelectedItem="{Binding SelectedSetting}"
               AutoGenerateColumns="False"
               CanUserAddRows="False" CanUserDeleteRows="False">
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя настройки" Binding="{Binding Name}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Тип" Binding="{Binding Type.Name}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Значение" Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="Имя настройки" Binding="{Binding Name, Mode=OneWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type.Name, Mode=OneWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Значение" Binding="{Binding Value}" MaxWidth="300"/>
+                <DataGridCheckBoxColumn Header="Настройка верна" Binding="{Binding IsValid, Mode=OneWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ошибка" Binding="{Binding InvalidMessage, Mode=OneWay}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -44,6 +51,7 @@
                 <TextBlock DockPanel.Dock="Top" Text="Описание настройки:"/>
 
                 <StackPanel DockPanel.Dock="Bottom">
+                    <Button Content="Выбрать файл/папку" Command="{Binding SelectFileDirectoryCommand}"/>
                     <Button Content="Сохранить" Command="{Binding SaveSettingsCommand}"/>
                     <Button Content="Закрыть" Command="ApplicationCommands.Close"/>
                 </StackPanel>

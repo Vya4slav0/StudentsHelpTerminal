@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <setting name="CardReaderPortBaudRate">
+    <type>System.Int32</type>
+    <value>9600</value>
+    <description>
+			Скорость последовательного порта, к которому подключен считыватель карт-пропусков
+		</description>
+  </setting>
+  <setting name="CardReaderPortName">
+    <type>System.String</type>
+    <value>COM4</value>
+    <description>
+			Имя последовательного порта, к которому подключен считыватель карт-пропусков
+		</description>
+  </setting>
+  <setting name="PathToMainFolder">
+    <type>System.IO.DirectoryInfo</type>
+    <value>E:\Terminal data</value>
+    <description>
+			Путь к директории, в которой хранятся справочные документы по группам
+		</description>
+  </setting>
+  <setting name="CommonDocsDirectoryName">
+    <type>System.IO.DirectoryInfo</type>
+    <value>E:\Terminal data\Common</value>
+    <description>
+			Путь к директории, в которой хранятся общие справочные документы
+		</description>
+  </setting>
+  <setting name="PathToLogFile" serializeAs="String">
+    <type>System.IO.FileInfo</type>
+    <value>E:\Users\vya4s\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\Users.log</value>
+    <description>
+			Путь к файлу для записи лога
+		</description>
+  </setting>
+  <setting name="MaxLogSizeMB" serializeAs="String">
+    <type>System.Int32</type>
+    <value>1</value>
+    <description>
+			Максимальный размер файла лога в мегабайтах
+		</description>
+  </setting>
+  <setting name="PathToCollegeMapsFolder" serializeAs="String">
+    <type>System.IO.DirectoryInfo</type>
+    <value>.\Maps</value>
+    <description>
+			Путь к директории, в которой хранятся планы этажей колледжа
+		</description>
+  </setting>
+  <setting name="PathToAdminsFile">
+    <type>System.IO.FileInfo</type>
+    <value>.\Administrators.xml</value>
+    <description>
+			Путь к файлу с данными об администраторах
+		</description>
+  </setting>
+  <setting name="PathToQAFile">
+    <type>System.IO.FileInfo</type>
+    <value>.\Questions.xml</value>
+    <description>
+			Путь к файлу с частыми вопросами и ответами
+		</description>
+  </setting>
+</Settings>

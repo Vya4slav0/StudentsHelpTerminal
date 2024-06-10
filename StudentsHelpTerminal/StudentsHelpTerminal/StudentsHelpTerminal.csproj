@@ -310,7 +310,7 @@
     <Content Include="Administrators.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Settings.xml" />
+    <Resource Include="AppSettings.xml" />
     <Resource Include="Icon.ico" />
     <Content Include="Models\Database\StudentsDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

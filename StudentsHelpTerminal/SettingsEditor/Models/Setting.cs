@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace SettingsEditor.Models
 {
@@ -28,19 +30,25 @@ namespace SettingsEditor.Models
                     if (Type == typeof(DirectoryInfo))
                     {
                         _value = new DirectoryInfo(value.ToString());
+                        IsValid = (_value as DirectoryInfo).Exists;
+                        InvalidMessage = IsValid ? "" : "Error! Directory is not exist";
                         return;
                     }
+
                     if (Type == typeof(FileInfo))
                     {
                         _value = new FileInfo(value.ToString());
+                        IsValid = (_value as FileInfo).Exists;
+                        InvalidMessage = IsValid ? "" : "Error! File is not exist";
                         return;
                     }
+                
                     _value = Convert.ChangeType(value, Type);
                     IsValid = true;
                 }
                 catch (Exception ex)
-                {
-                    IsValid = false;  
+                { 
+                    IsValid = false;   
                     InvalidMessage = ex.Message;
                 }
             } 
@@ -55,6 +63,7 @@ namespace SettingsEditor.Models
         #region Description
 
         private string _description;
+
         public string Description 
         {
             get => _description; 
