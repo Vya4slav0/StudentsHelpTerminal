@@ -1,18 +1,10 @@
-﻿using StudentsHelpTerminal.Infrastructure.Commands;
+﻿using DialogBoxes;
+using StudentsHelpTerminal.Infrastructure.Commands;
 using StudentsHelpTerminal.Infrastructure.Services;
-using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.Models.Other;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Xml;
-using System.Security.Cryptography;
-using DialogBoxes;
 
 namespace StudentsHelpTerminal.ViewModels
 {
@@ -31,6 +23,11 @@ namespace StudentsHelpTerminal.ViewModels
             #endregion
 
             FillPropertiesByCardId(cardId);
+
+            if (CardNum == "13074357")
+                VoiceHelperService.SayHelloCreator();
+            else
+                VoiceHelperService.SayHello(Name);
         }
 
         #region Properties
