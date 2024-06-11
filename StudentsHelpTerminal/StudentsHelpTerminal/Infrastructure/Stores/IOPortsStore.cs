@@ -57,18 +57,7 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
             }
             catch (IOException ex)
             {
-                string message = $"Порт {_COMName} не доступен. Причина: {ex.Message}"; 
-                if (SerialPort.GetPortNames().Length > 0)
-                    message += $"\nОбнаружены порты: {string.Join(", ", SerialPort.GetPortNames())}";
-                message += "\nОткрыть панель администратора?";
-                if (new YesNoBox(message).ShowDialog() &&
-                    AdminAutorizer.AutorizeAnyAdministrator(new PromptBox("Введите ваш пароль администратора").ShowDialog()))
-                {
-                    NavigationStore.CurrentViewModel = new AdminPageViewModel();
-                    return;
-                }
-                App.Current.Shutdown();
-                return;
+                ErrorHandlerService.CardReaderUnableHandle(_COMName, SerialPort.GetPortNames(), ex.Message);
             }
         }
     }

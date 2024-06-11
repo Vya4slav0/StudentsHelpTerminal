@@ -17,7 +17,7 @@ namespace SettingsEditor
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            string pathToSettingsFile = @"E:\Users\vya4s\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\AppSettings.xml";
+            string pathToSettingsFile = e.Args[0];
             MainWindow = new MainWindow();
             MainWindow.DataContext = new SettingsPageViewModel(pathToSettingsFile);
             MainWindow.Content = new SettingsPage();

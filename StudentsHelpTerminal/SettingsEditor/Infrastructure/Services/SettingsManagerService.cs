@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace SettingsEditor.Infrastructure.Services
 {
-    internal class SettingsManagerService
+    public class SettingsManagerService
     {
         private readonly XDocument _settingsXML;
         private readonly string _pathToSettingsXML;

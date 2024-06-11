@@ -222,8 +222,11 @@ namespace StudentsHelpTerminal.ViewModels
         #region OpenSettingsPageCommnd
 
         public ICommand OpenSettingsPageCommnd { get; }
-        
-        private void OpenSettingsPageCommandExecute(object p) => NavigationStore.CurrentViewModel = new SettingsPageViewModel();
+
+        private void OpenSettingsPageCommandExecute(object p)
+        {
+            ProcessLauncherService.StartSettingsEditor();
+        }
 
         #endregion
 

@@ -61,42 +61,6 @@ namespace StudentsHelpTerminal.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Задаёт скорость последовательного порта, к которому подключено устройство чтения RFID карт. Принимает целочисленные значения..
-        /// </summary>
-        public static string CardReaderPortBaudRate {
-            get {
-                return ResourceManager.GetString("CardReaderPortBaudRate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Задаёт имя последовательного порта, к которому подключено устройство чтения RFID карт. Принимает строковые значения..
-        /// </summary>
-        public static string CardReaderPortName {
-            get {
-                return ResourceManager.GetString("CardReaderPortName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Путь к папке содержащей общие документы для всех студентов. Принимает строковые значения..
-        /// </summary>
-        public static string CommonDocsDirectoryName {
-            get {
-                return ResourceManager.GetString("CommonDocsDirectoryName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Максимальный размер лога в мегабайтах. При достижении файлом лога размера больше указанного, размер файла лога сократится вдвое за счёт удаления старых записей..
-        /// </summary>
-        public static string MaxLogSizeMB {
-            get {
-                return ResourceManager.GetString("MaxLogSizeMB", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap no_photo {
@@ -113,33 +77,6 @@ namespace StudentsHelpTerminal.Properties {
             get {
                 object obj = ResourceManager.GetObject("PassCard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Путь к папке, содержащей изображения с картами колледжа.
-        /// </summary>
-        public static string PathToCollegeMapsFolder {
-            get {
-                return ResourceManager.GetString("PathToCollegeMapsFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Путь к файлу, содержащему лог пользователей..
-        /// </summary>
-        public static string PathToLogFile {
-            get {
-                return ResourceManager.GetString("PathToLogFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Путь к папке, содержащей папки групп с документами. Принимает строковые значения..
-        /// </summary>
-        public static string PathToMainFolder {
-            get {
-                return ResourceManager.GetString("PathToMainFolder", resourceCulture);
             }
         }
         
