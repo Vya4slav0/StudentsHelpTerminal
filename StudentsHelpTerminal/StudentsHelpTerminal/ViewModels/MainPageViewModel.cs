@@ -25,7 +25,7 @@ namespace StudentsHelpTerminal.ViewModels
             #region Commands definition
 
             AdminWindowOpenCommand = new RelayCommand(AdminWindowOpenCommandExecute);
-            CollegeMapOpenCommand = new NavigationCommand(new ImageViewindPageViewModel(Properties.Settings.Default.PathToCollegeMapsFolder));
+            CollegeMapOpenCommand = new NavigationCommand(new ImageViewindPageViewModel(SettingsInteractor.GetSettingValueByName("PathToCollegeMapsFolder")));
             QuestionAnswerOpenCommand = new NavigationCommand(new QuestionAnswerPageViewModel());
 
             #endregion

@@ -112,6 +112,7 @@
     <Compile Include="Infrastructure\Services\Logger.cs" />
     <Compile Include="Infrastructure\Services\ProcessLauncherService.cs" />
     <Compile Include="Infrastructure\Services\SelfTestingService.cs" />
+    <Compile Include="Infrastructure\Services\SettingsInteractor.cs" />
     <Compile Include="Infrastructure\Services\ShowInToolWindowService.cs" />
     <Compile Include="Models\Other\QuestionAnswer.cs" />
     <Compile Include="ViewModels\ChangeCardIdPageViewModel.cs" />
@@ -335,6 +336,10 @@
     <ProjectReference Include="..\DialogBoxes\DialogBoxes.csproj">
       <Project>{dcc31699-25e6-4a0b-86b2-f3b05b3c3c10}</Project>
       <Name>DialogBoxes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SettingsEditor\SettingsEditor.csproj">
+      <Project>{86a107c6-1c21-4ae9-922e-6254beb99f0d}</Project>
+      <Name>SettingsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="..\TerminalCustomControls\TerminalCustomControls.csproj">
       <Project>{3c0b7b2e-dbb6-4ea3-af0d-ec5f36b58827}</Project>

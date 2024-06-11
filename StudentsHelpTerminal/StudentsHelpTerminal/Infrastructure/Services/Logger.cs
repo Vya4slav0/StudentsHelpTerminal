@@ -13,12 +13,12 @@ namespace StudentsHelpTerminal.Infrastructure.Services
         static Logger()
         {
             //Create log if doesn't exist
-            if (!File.Exists(Properties.Settings.Default.PathToLogFile))
-                swLog = new StreamWriter(File.Create(Properties.Settings.Default.PathToLogFile));
+            if (!File.Exists(SettingsInteractor.GetSettingValueByName("PathToLogFile")))
+                swLog = new StreamWriter(File.Create(SettingsInteractor.GetSettingValueByName("PathToLogFile")));
             else
-                swLog = new StreamWriter(Properties.Settings.Default.PathToLogFile, true);
+                swLog = new StreamWriter(SettingsInteractor.GetSettingValueByName("PathToLogFile"), true);
 
-            logFileInfo = new FileInfo(Properties.Settings.Default.PathToLogFile);
+            logFileInfo = new FileInfo(SettingsInteractor.GetSettingValueByName("PathToLogFile"));
         }
 
         public static void WriteLog(Student student)
@@ -33,7 +33,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
         public static void ClearLogIfFull()
         {
             //Check if log is too large
-            if (!(logFileInfo.Length > Properties.Settings.Default.MaxLogSizeMB * 1048576)) return;
+            if (!(logFileInfo.Length > SettingsInteractor.GetSettingIntValueByName("MaxLogSizeMB") * 1048576)) return;
             string[] lines = File.ReadAllLines(logFileInfo.FullName);
             File.WriteAllLines(logFileInfo.FullName, lines.Skip(lines.Length / 2).ToArray());
         }

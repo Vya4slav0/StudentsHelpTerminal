@@ -1,33 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="StudentsHelpTerminal.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="CardReaderPortBaudRate" GenerateDefaultValueInCode="false" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9600</Value>
-    </Setting>
-    <Setting Name="CardReaderPortName" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
-      <Value Profile="(Default)">COM4</Value>
-    </Setting>
-    <Setting Name="PathToMainFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">E:\Terminal data</Value>
-    </Setting>
-    <Setting Name="CommonDocsDirectoryName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">E:\Terminal data\Common</Value>
-    </Setting>
-    <Setting Name="PathToLogFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.\Users.log</Value>
-    </Setting>
-    <Setting Name="MaxLogSizeMB" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="PathToCollegeMapsFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.\Maps</Value>
-    </Setting>
-    <Setting Name="PathToAdminsFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.\Administrators.xml</Value>
-    </Setting>
-    <Setting Name="PathToQAFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.\Questions.xml</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

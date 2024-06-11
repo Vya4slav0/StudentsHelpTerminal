@@ -7,7 +7,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
     internal static class AdminAutorizer
     {
         private static string adminPasswordHash = string.Empty;
-        private static string pathToAdminsFile = Properties.Settings.Default.PathToAdminsFile;
+        private static string pathToAdminsFile = SettingsInteractor.GetSettingValueByName("PathToAdminsFile");
 
         public static bool CheckAdminByStuffId(int id)
         {        

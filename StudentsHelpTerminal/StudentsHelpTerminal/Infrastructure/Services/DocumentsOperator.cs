@@ -7,11 +7,11 @@ namespace StudentsHelpTerminal.Infrastructure.Services
     internal static class DocumentsOperator
     {
         //Searching for available documents
-        private static readonly string commonDocs = Properties.Settings.Default.CommonDocsDirectoryName;
+        private static readonly string commonDocs = SettingsInteractor.GetSettingValueByName("CommonDocsDirectoryName");
 
         public static IEnumerable<DocumentsListItem> GetGroupDocuments(string groupName)
         {
-            string groupDocs = string.Format("{0}\\{1}", Properties.Settings.Default.PathToMainFolder, groupName);
+            string groupDocs = string.Format("{0}\\{1}", SettingsInteractor.GetSettingValueByName("PathToMainFolder"), groupName);
 
             //Create documents directory if not exist
             if (!Directory.Exists(groupDocs)) Directory.CreateDirectory(groupDocs);

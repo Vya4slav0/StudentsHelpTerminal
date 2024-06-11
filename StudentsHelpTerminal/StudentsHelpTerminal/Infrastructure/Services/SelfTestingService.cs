@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using SettingsEditor.Models;
+using SettingsEditor.Infrastructure.Services;
 
 namespace StudentsHelpTerminal.Infrastructure.Services
 {
@@ -12,6 +14,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
     {
         private static string[] ErrorsMessages = 
         {
+            "Нет доступа/отсутствует файл настроек приложения",
             "Ошибка подключения к базе данных",
             "Ошибка при чтении файла с данными администраторов",
             "Ошибка при чтении файла с частыми вопросами",
@@ -26,6 +29,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
 
             bool[] checkResults =
             {
+                !AppSettingsFileCheck(),
                 !DBCheck(),
                 !(AdministratorsFileCheck(out adminsException) || adminsException != string.Empty),
                 !(QAFileCheck(out QAException) || QAException != string.Empty),
@@ -62,6 +66,10 @@ namespace StudentsHelpTerminal.Infrastructure.Services
 
             return errorCode;
         }
+        public static bool AppSettingsFileCheck()
+        {
+            return File.Exists(SettingsInteractor.PathToSettingsFile);
+        }
         public static bool DBCheck()
         {
             using (StudentsDBContext db = new StudentsDBContext())
@@ -71,27 +79,27 @@ namespace StudentsHelpTerminal.Infrastructure.Services
         }
         public static bool AdministratorsFileCheck(out string exceptionMessage)
         {
-            return XMLFileCheck(Properties.Settings.Default.PathToAdminsFile, out exceptionMessage);
+            return XMLFileCheck(SettingsInteractor.GetSettingValueByName("PathToAdminsFile"), out exceptionMessage);
         }
         public static bool AdministratorsFileCheck()
         {
-            return XMLFileCheck(Properties.Settings.Default.PathToAdminsFile, out _);
+            return XMLFileCheck(SettingsInteractor.GetSettingValueByName("PathToAdminsFile"), out _);
         }
         public static bool QAFileCheck(out string exceptionMessage)
         {
-            return XMLFileCheck(Properties.Settings.Default.PathToQAFile, out exceptionMessage);
+            return XMLFileCheck(SettingsInteractor.GetSettingValueByName("PathToQAFile"), out exceptionMessage);
         }
         public static bool QAFileCheck()
         {
-            return XMLFileCheck(Properties.Settings.Default.PathToQAFile, out _);
+            return XMLFileCheck(SettingsInteractor.GetSettingValueByName("PathToQAFile"), out _);
         }
         public static bool MapsDirectoryCheck()
         {
-            return Directory.Exists(Properties.Settings.Default.PathToCollegeMapsFolder);
+            return Directory.Exists(SettingsInteractor.GetSettingValueByName("PathToCollegeMapsFolder"));
         }
         public static bool MainInfoDirectoryCheck()
         {
-            return Directory.Exists(Properties.Settings.Default.PathToMainFolder);
+            return Directory.Exists(SettingsInteractor.GetSettingValueByName("PathToMainFolder"));
         }
 
         private static bool XMLFileCheck(string path, out string exceptionMessage)

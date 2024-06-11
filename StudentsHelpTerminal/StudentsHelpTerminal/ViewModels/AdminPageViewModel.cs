@@ -201,11 +201,11 @@ namespace StudentsHelpTerminal.ViewModels
         private void ClearUsersLogCommandExecute(object p)
         {
             if (!new ConfirmBox("Очистить лог пользователей?").ShowDialog()) return;
-            StreamWriter usersLogFile = new StreamWriter(Properties.Settings.Default.PathToLogFile);
+            StreamWriter usersLogFile = new StreamWriter(SettingsInteractor.GetSettingValueByName("PathToLogFile"));
             usersLogFile.Write(string.Empty);
             usersLogFile.Close();
         }
-        private bool ClearUsersLogCommandCanExecute(object p) => File.Exists(Properties.Settings.Default.PathToLogFile);
+        private bool ClearUsersLogCommandCanExecute(object p) => File.Exists(SettingsInteractor.GetSettingValueByName("PathToLogFile"));
 
         #endregion
 
@@ -213,9 +213,9 @@ namespace StudentsHelpTerminal.ViewModels
 
         public ICommand OpenUsersLogCommand { get; }
         
-        private void OpenUsersLogCommandExecute(object p) => Process.Start(Properties.Settings.Default.PathToLogFile);
+        private void OpenUsersLogCommandExecute(object p) => Process.Start(SettingsInteractor.GetSettingValueByName("PathToLogFile"));
 
-        private bool OpenUsersLogCommandCanExecute(object p) => File.Exists(Properties.Settings.Default.PathToLogFile);
+        private bool OpenUsersLogCommandCanExecute(object p) => File.Exists(SettingsInteractor.GetSettingValueByName("PathToLogFile"));
 
         #endregion
 

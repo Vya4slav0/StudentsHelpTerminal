@@ -13,7 +13,7 @@ namespace StudentsHelpTerminal.ViewModels
     {
         public QuestionAnswerPageViewModel() 
         {
-            string pathToQAFile = Properties.Settings.Default.PathToQAFile;
+            string pathToQAFile = SettingsInteractor.GetSettingValueByName("PathToQAFile");
 
             if (!SelfTestingService.QAFileCheck()) return;
 

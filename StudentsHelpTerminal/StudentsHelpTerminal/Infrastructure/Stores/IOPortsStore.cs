@@ -12,8 +12,8 @@ namespace StudentsHelpTerminal.Infrastructure.Stores
     {
         #region Card reader COM port
 
-        private static readonly string _COMName = StudentsHelpTerminal.Properties.Settings.Default.CardReaderPortName;
-        private static readonly int _COMSpeed = StudentsHelpTerminal.Properties.Settings.Default.CardReaderPortBaudRate;
+        private static readonly string _COMName = SettingsInteractor.GetSettingValueByName("CardReaderPortName");
+        private static readonly int _COMSpeed = SettingsInteractor.GetSettingIntValueByName("CardReaderPortBaudRate");
         private static readonly SerialPort _cardReaderSerialPort = new SerialPort(_COMName, _COMSpeed);
 
         public static SerialPort CardReaderSerialPort
