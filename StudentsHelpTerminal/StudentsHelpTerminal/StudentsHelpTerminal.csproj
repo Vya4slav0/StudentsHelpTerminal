@@ -108,6 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\Extensions\Extensions.cs" />
     <Compile Include="Infrastructure\Services\DocumentsOperator.cs" />
     <Compile Include="Infrastructure\Services\ErrorHandlerService.cs" />
     <Compile Include="Infrastructure\Services\Logger.cs" />

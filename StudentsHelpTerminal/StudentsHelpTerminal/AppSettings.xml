@@ -73,11 +73,11 @@
 			    Имя установленного голоса для голосового помощника. Если голос не установлен - буден использован стандартный голос
 		    </description>
       </setting>
-	<setting name="VoiceSpeed">
+	<setting name="VoiceRate">
         <type>System.Int32</type>
         <value>0</value>
         <description>
-			    Скорость речи голосового помощника. 0 для стандартной скорости
+			    Скорость речи голосового помощника от -10 до 10. 0 для стандартной скорости
 		    </description>
       </setting>
 	<setting name="Volume">
