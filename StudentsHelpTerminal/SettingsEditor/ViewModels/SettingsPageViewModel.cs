@@ -1,14 +1,9 @@
 ﻿using SettingsEditor.Infrastructure.Commands;
 using SettingsEditor.Infrastructure.Services;
 using SettingsEditor.Models;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -29,10 +24,6 @@ namespace SettingsEditor.ViewModels
             {
                 SettingsList.Add(new SettingViewModel(setting));
             }
-            SettingsList.CollectionChanged += (s, a) =>
-            {
-                OnPropertyChanged(nameof(SettingsList));
-            };
         }
 
         public SettingsPageViewModel()

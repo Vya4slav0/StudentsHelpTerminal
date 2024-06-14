@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SettingsEditor.Models;
+﻿using SettingsEditor.Models;
+using System;
 
 namespace SettingsEditor.ViewModels
 {
@@ -51,6 +46,14 @@ namespace SettingsEditor.ViewModels
         public string Description
         {
             get => _setting.Description;
+        }
+
+        #endregion
+        #region Section
+
+        public string Section
+        {
+            get => _setting.Section;
         }
 
         #endregion

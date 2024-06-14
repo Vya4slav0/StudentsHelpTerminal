@@ -71,6 +71,17 @@ namespace SettingsEditor.Models
         }
 
         #endregion
+        #region Section
+
+        private string _section;
+
+        public string Section
+        {
+            get => _section;
+            set => _section = value.Trim();
+        }
+
+        #endregion
         #region Validation parameters
 
         public bool IsValid { get; private set; }
