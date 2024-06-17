@@ -24,7 +24,7 @@ namespace StudentsHelpTerminal.ViewModels
 
             FillPropertiesByCardId(cardId);
 
-            if (CardNum == "13074357")
+            if (/*CardNum == "13074357"*/ CardNum == "3203279")
                 VoiceHelperService.SayHelloCreator();
             else
                 VoiceHelperService.SayHello(Name);

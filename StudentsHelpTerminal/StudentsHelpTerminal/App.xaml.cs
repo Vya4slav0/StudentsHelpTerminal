@@ -33,11 +33,18 @@ namespace StudentsHelpTerminal
                 IOPortsStore.Initialize();
             else
             {
-                long cardId = Convert.ToInt64(e.Args[e.Args.ToList().IndexOf("debugWithoutCard") + 1]);
-                NavigationStore.CurrentViewModel = new MainPageViewModel(cardId);
+                try
+                {
+                    long cardId = Convert.ToInt64(e.Args[e.Args.ToList().IndexOf("debugWithoutCard") + 1]);
+                    NavigationStore.CurrentViewModel = new MainPageViewModel(cardId);
+                }
+                catch (Exception ex)
+                {
+                    new DialogBoxes.AlertBox("Похоже, господа Вы обосрались в аргументах: \n" + ex.Message) { Topmost = true }.ShowDialog();
+                    App.Current.Shutdown();
+                }
             }
                 
-
             base.OnStartup(e);
         }
 
