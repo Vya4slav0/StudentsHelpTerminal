@@ -2,6 +2,7 @@
 using StudentsHelpTerminal.Infrastructure.Stores;
 using StudentsHelpTerminal.ViewModels;
 using StudentsHelpTerminal.Views.Windows;
+using System;
 using System.Linq;
 using System.Windows;
 
@@ -29,9 +30,13 @@ namespace StudentsHelpTerminal
             MainWindow.Show();
             NavigationStore.CurrentViewModel = new IdlePageViewModel();
             if (!e.Args.Contains("debugWithoutCard"))
-                IOPortsStore.Initialize(); 
+                IOPortsStore.Initialize();
             else
-                NavigationStore.CurrentViewModel = new MainPageViewModel(13074357);
+            {
+                long cardId = Convert.ToInt64(e.Args[e.Args.ToList().IndexOf("debugWithoutCard") + 1]);
+                NavigationStore.CurrentViewModel = new MainPageViewModel(cardId);
+            }
+                
 
             base.OnStartup(e);
         }
