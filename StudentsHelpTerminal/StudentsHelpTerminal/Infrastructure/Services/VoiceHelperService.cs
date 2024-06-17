@@ -5,40 +5,37 @@ namespace StudentsHelpTerminal.Infrastructure.Services
 {
     internal static class VoiceHelperService
     {
-        private static SpeechSynthesizer _synthesizer;
-
-        static VoiceHelperService()
-        {
-            _synthesizer = new SpeechSynthesizer();
-            string voiceName = SettingsInteractor.GetSettingValueByName("VoiceName");
-            if (IsVoiceInstalled(voiceName))
-            {
-                _synthesizer.SelectVoice(voiceName);
-            }
-            _synthesizer.Volume = SettingsInteractor.GetSettingIntValueByName("Volume").Clamp(0, 100);
-            _synthesizer.Rate = SettingsInteractor.GetSettingIntValueByName("VoiceRate").Clamp(-10, 10);
-        }
-
         public static void SayHello(string name)
         {
-            _synthesizer.SetOutputToDefaultAudioDevice();
-            _synthesizer.SpeakAsync("Приветствую, " +  name);
+            CreateSynthesier().SpeakAsync("Приветствую, " + name);
         }
 
         public static void SayHelloCreator()
         {
-            _synthesizer.SetOutputToDefaultAudioDevice();
-            _synthesizer.SpeakAsync("Приветствую, о величайший создатель-повелитель");
+            CreateSynthesier().SpeakAsync("Приветствую, о величайший создатель-повелитель");           
         }
 
         private static bool IsVoiceInstalled(string voiceName)
         {
             bool isVoiceInstalled = false;
-            foreach (InstalledVoice voice in _synthesizer.GetInstalledVoices())
+            foreach (InstalledVoice voice in new SpeechSynthesizer().GetInstalledVoices())
             {
                 isVoiceInstalled |= voice.VoiceInfo.Name == voiceName;
             }
             return isVoiceInstalled;
+        }
+        private static SpeechSynthesizer CreateSynthesier()
+        {
+            SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+            string voiceName = SettingsInteractor.GetSettingValueByName("VoiceName");
+            if (IsVoiceInstalled(voiceName))
+            {
+                synthesizer.SelectVoice(voiceName);
+            }
+            synthesizer.Volume = SettingsInteractor.GetSettingIntValueByName("Volume").Clamp(0, 100);
+            synthesizer.Rate = SettingsInteractor.GetSettingIntValueByName("VoiceRate").Clamp(-10, 10);
+            synthesizer.SetOutputToDefaultAudioDevice();
+            return synthesizer;
         }
     }
 }
