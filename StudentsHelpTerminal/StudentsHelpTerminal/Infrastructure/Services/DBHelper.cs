@@ -11,6 +11,8 @@ using System.Resources;
 using System.Windows.Media.Imaging;
 using System.Text.RegularExpressions;
 using System.Data.Entity;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace StudentsHelpTerminal.Infrastructure.Services
 {
@@ -97,6 +99,19 @@ namespace StudentsHelpTerminal.Infrastructure.Services
             }
             return Convert.ToInt32(value);
         }
+        private static BitmapImage GetPortret(STAFF student)
+        {
+            using (StudentsDBContext db = new StudentsDBContext())
+            {
+                if (student.PORTRET != null)
+                    return BitmapImageFromBlob(student.PORTRET);
+
+                STAFF_FACE_PORTRETS portret = db.STAFF_FACE_PORTRETS.FirstOrDefault(sf => sf.STAFF_ID == student.ID_STAFF);
+                if (portret?.PORTRET is null)
+                    return BitmapToBitmapImage(Properties.Resources.no_photo);
+                return BitmapImageFromBlob(portret.PORTRET);
+            }
+        }
         private static IEnumerable<Student> GetStudentsFromStuffList(List<STAFF> stuff)
         {
             using (StudentsDBContext db = new StudentsDBContext())
@@ -110,13 +125,17 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                         Name = s.FIRST_NAME.Trim(),
                         Surname = s.LAST_NAME.Trim(),
                         Patronymic = s.MIDDLE_NAME.Trim(),
-                        Photo = s.PORTRET is null ? BitmapToBitmapImage(Properties.Resources.no_photo) : BitmapImageFromBlob(s.PORTRET),
+                        Photo = GetPortret(s),
                         Group = db.SUBDIV_REF.FirstOrDefault(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == s.ID_STAFF).SUBDIV_ID)?.DISPLAY_NAME.Trim() ?? "NO",
                         CardID = db.STAFF_CARDS.FirstOrDefault(sc => sc.STAFF_ID == s.ID_STAFF)?.IDENTIFIER.ToString() ?? "NO"
                     });
                 }
                 return students;
             }   
+        }
+        private static BitmapImage GetPortret(int stuffId)
+        {
+            return new BitmapImage();
         }
         public static Student GetStudentByStaffId(int stuffId)
         {
@@ -154,7 +173,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                     Patronymic = student.MIDDLE_NAME.Trim(), 
                     Group = db.SUBDIV_REF.First(sdr => sdr.ID_REF == db.STAFF_REF.FirstOrDefault(sr => sr.STAFF_ID == stuffId).SUBDIV_ID).DISPLAY_NAME.Trim(),
                     CardID = cardId.ToString(),
-                    Photo = BitmapImageFromBlob(student.PORTRET)
+                    Photo = GetPortret(student)
                 };
             }
         }

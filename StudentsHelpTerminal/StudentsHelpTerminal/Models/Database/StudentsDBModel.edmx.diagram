@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="StudentsDBModel.STAFF_REF" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="StudentsDBModel.SUBDIV_REF" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="StudentsDBModel.STOP_CARDS_DESCRIPTION" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentsDBModel.STAFF_FACE_PORTRETS" Width="1.5" PointX="10.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

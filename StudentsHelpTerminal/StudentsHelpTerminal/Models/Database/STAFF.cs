@@ -37,5 +37,9 @@ namespace StudentsHelpTerminal.Models.Database
         public string PATH_ACTDIR_DOMAIN { get; set; }
         public string SHORT_FIO { get; set; }
         public string FULL_FIO { get; set; }
+        public Nullable<System.DateTime> ACCESS_BEGIN_DATE { get; set; }
+        public Nullable<System.DateTime> ACCESS_END_DATE { get; set; }
+        public int ACCESS_PROHIBIT { get; set; }
+        public int DEL_GUEST_AFTER_PASS { get; set; }
     }
 }

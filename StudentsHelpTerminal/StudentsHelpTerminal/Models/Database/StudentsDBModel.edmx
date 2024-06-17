@@ -14,13 +14,17 @@
           <Property Name="FIRST_NAME" Type="varchar" MaxLength="100" Unicode="true" />
           <Property Name="MIDDLE_NAME" Type="varchar" MaxLength="100" Unicode="true" />
           <Property Name="TABEL_ID" Type="varchar" MaxLength="20" Unicode="true" />
-          <Property Name="PORTRET" Type="blob" />
-          <Property Name="DATE_BEGIN" Type="date" Nullable="false" />
-          <Property Name="DATE_DISMISS" Type="date" />
-          <Property Name="VALID" Type="int" Nullable="false" />
           <Property Name="TEMPORARY_ACC" Type="int" Nullable="false" />
-          <Property Name="ID_FROM_1C" Type="varchar" MaxLength="38" Unicode="true" />
+          <Property Name="VALID" Type="int" Nullable="false" />
+          <Property Name="ACCESS_BEGIN_DATE" Type="timestamp" />
+          <Property Name="ACCESS_END_DATE" Type="timestamp" />
+          <Property Name="ACCESS_PROHIBIT" Type="int" Nullable="false" />
+          <Property Name="DEL_GUEST_AFTER_PASS" Type="int" Nullable="false" />
+          <Property Name="DATE_BEGIN" Type="date" Nullable="false" />
+          <Property Name="PORTRET" Type="blob" />
+          <Property Name="DATE_DISMISS" Type="date" />
           <Property Name="DELETED" Type="int" Nullable="false" />
+          <Property Name="ID_FROM_1C" Type="varchar" MaxLength="38" Unicode="true" />
           <Property Name="STAFF_STATE" Type="int" Nullable="false" />
           <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
           <Property Name="DIN_PAY_SCHEMES_ID" Type="int" Nullable="false" />
@@ -38,22 +42,34 @@
             <PropertyRef Name="ID_CARD" />
           </Key>
           <Property Name="ID_CARD" Type="int" Nullable="false" />
-          <Property Name="SYSTEM_TYPE" Type="int" Nullable="false" />
           <Property Name="STAFF_ID" Type="int" />
-          <Property Name="DATE_BEGIN" Type="timestamp" Nullable="false" />
-          <Property Name="DATE_END" Type="timestamp" Nullable="false" />
-          <Property Name="VALID" Type="int" Nullable="false" />
-          <Property Name="VALID_TRANSFER" Type="int" Nullable="false" />
+          <Property Name="NPP_NUMBER" Type="int" Nullable="false" />
           <Property Name="TEMPORARY_ACC" Type="int" Nullable="false" />
-          <Property Name="DOCUMENTS_ID" Type="int" />
-          <Property Name="HISTORY_DATE" Type="timestamp" Nullable="false" />
-          <Property Name="PROHIBIT" Type="int" Nullable="false" />
           <Property Name="IDENTIFIER" Type="bigint" />
           <Property Name="TYPE_IDENTIFIER" Type="int" Nullable="false" />
           <Property Name="IDENTIFIER_TRANSFORMED" Type="bigint" />
+          <Property Name="VALID" Type="int" Nullable="false" />
+          <Property Name="VALID_TRANSFER" Type="int" Nullable="false" />
+          <Property Name="DOCUMENTS_ID" Type="int" />
+          <Property Name="HISTORY_DATE" Type="timestamp" Nullable="false" />
           <Property Name="WITHDRAW_TO_STOP_LIST" Type="int" Nullable="false" />
           <Property Name="LAST_TIMESTAMP" Type="timestamp" Nullable="false" />
           <Property Name="USER_ID" Type="int" />
+          <Property Name="DATE_BEGIN" Type="timestamp" Nullable="false" />
+          <Property Name="DATE_END" Type="timestamp" Nullable="false" />
+          <Property Name="PROHIBIT" Type="int" Nullable="false" />
+          <Property Name="SYSTEM_TYPE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STAFF_FACE_PORTRETS">
+          <Key>
+            <PropertyRef Name="ID_STAFF_FACE_PORTRETS" />
+          </Key>
+          <Property Name="ID_STAFF_FACE_PORTRETS" Type="int" Nullable="false" />
+          <Property Name="STAFF_ID" Type="int" />
+          <Property Name="TRASSIR_FACE_ID" Type="varchar" MaxLength="12" Unicode="true" />
+          <Property Name="PORTRET" Type="blob" />
+          <Property Name="USE_IN_RECOGNITION" Type="int" />
+          <Property Name="DELETED" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="STAFF_REF">
           <Key>
@@ -85,7 +101,7 @@
           <Property Name="N_LEFT" Type="int" Nullable="false" />
           <Property Name="N_RIGHT" Type="int" Nullable="false" />
           <Property Name="N_LEVEL" Type="int" />
-          <Property Name="DISPLAY_NAME" Type="varchar" MaxLength="100" Unicode="true" />
+          <Property Name="DISPLAY_NAME" Type="varchar" MaxLength="150" Unicode="true" />
           <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" Unicode="true" />
           <Property Name="VISIBLE" Type="int" Nullable="false" />
           <Property Name="ID_FROM_1C" Type="varchar" MaxLength="38" Unicode="true" />
@@ -101,6 +117,7 @@
         <EntityContainer Name="Хранилище StudentsDBModelContainer">
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STAFF_CARDS" EntityType="Self.STAFF_CARDS" Schema="Firebird" store:Type="Tables" />
+          <EntitySet Name="STAFF_FACE_PORTRETS" EntityType="Self.STAFF_FACE_PORTRETS" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="STOP_CARDS_DESCRIPTION" EntityType="Self.STOP_CARDS_DESCRIPTION" Schema="Firebird" store:Type="Tables" />
           <EntitySet Name="SUBDIV_REF" EntityType="Self.SUBDIV_REF" Schema="Firebird" store:Type="Tables" />
@@ -136,6 +153,10 @@
           <Property Name="PATH_ACTDIR_DOMAIN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SHORT_FIO" Type="String" MaxLength="32765" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="FULL_FIO" Type="String" MaxLength="32765" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ACCESS_BEGIN_DATE" Type="DateTime" />
+          <Property Name="ACCESS_END_DATE" Type="DateTime" />
+          <Property Name="ACCESS_PROHIBIT" Type="Int32" Nullable="false" />
+          <Property Name="DEL_GUEST_AFTER_PASS" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="STAFF_CARDS">
           <Key>
@@ -158,6 +179,7 @@
           <Property Name="WITHDRAW_TO_STOP_LIST" Type="Int32" Nullable="false" />
           <Property Name="LAST_TIMESTAMP" Type="DateTime" Nullable="false" />
           <Property Name="USER_ID" Type="Int32" />
+          <Property Name="NPP_NUMBER" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="STAFF_REF">
           <Key>
@@ -178,6 +200,7 @@
           <EntitySet Name="STAFF_REF" EntityType="Self.STAFF_REF" />
           <EntitySet Name="SUBDIV_REF" EntityType="StudentsDBModel.SUBDIV_REF" />
           <EntitySet Name="STOP_CARDS_DESCRIPTION" EntityType="StudentsDBModel.STOP_CARDS_DESCRIPTION" />
+          <EntitySet Name="STAFF_FACE_PORTRETS" EntityType="StudentsDBModel.STAFF_FACE_PORTRETS" />
         </EntityContainer>
         <EntityType Name="SUBDIV_REF">
           <Key>
@@ -209,6 +232,17 @@
           <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="POSSIBLE_RECALL" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="STAFF_FACE_PORTRETS">
+          <Key>
+            <PropertyRef Name="ID_STAFF_FACE_PORTRETS" />
+          </Key>
+          <Property Name="ID_STAFF_FACE_PORTRETS" Type="Int32" Nullable="false" />
+          <Property Name="STAFF_ID" Type="Int32" />
+          <Property Name="TRASSIR_FACE_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="PORTRET" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="USE_IN_RECOGNITION" Type="Int32" />
+          <Property Name="DELETED" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -218,6 +252,10 @@
           <EntitySetMapping Name="STAFFs">
             <EntityTypeMapping TypeName="StudentsDBModel.STAFF">
               <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="DEL_GUEST_AFTER_PASS" ColumnName="DEL_GUEST_AFTER_PASS" />
+                <ScalarProperty Name="ACCESS_PROHIBIT" ColumnName="ACCESS_PROHIBIT" />
+                <ScalarProperty Name="ACCESS_END_DATE" ColumnName="ACCESS_END_DATE" />
+                <ScalarProperty Name="ACCESS_BEGIN_DATE" ColumnName="ACCESS_BEGIN_DATE" />
                 <ScalarProperty Name="ID_STAFF" ColumnName="ID_STAFF" />
                 <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
                 <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
@@ -247,6 +285,7 @@
           <EntitySetMapping Name="STAFF_CARDS">
             <EntityTypeMapping TypeName="StudentsDBModel.STAFF_CARDS">
               <MappingFragment StoreEntitySet="STAFF_CARDS">
+                <ScalarProperty Name="NPP_NUMBER" ColumnName="NPP_NUMBER" />
                 <ScalarProperty Name="ID_CARD" ColumnName="ID_CARD" />
                 <ScalarProperty Name="SYSTEM_TYPE" ColumnName="SYSTEM_TYPE" />
                 <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
@@ -310,6 +349,18 @@
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="CARD_ID" ColumnName="CARD_ID" />
                 <ScalarProperty Name="ID_STOP_CARDS" ColumnName="ID_STOP_CARDS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF_FACE_PORTRETS">
+            <EntityTypeMapping TypeName="StudentsDBModel.STAFF_FACE_PORTRETS">
+              <MappingFragment StoreEntitySet="STAFF_FACE_PORTRETS">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="USE_IN_RECOGNITION" ColumnName="USE_IN_RECOGNITION" />
+                <ScalarProperty Name="PORTRET" ColumnName="PORTRET" />
+                <ScalarProperty Name="TRASSIR_FACE_ID" ColumnName="TRASSIR_FACE_ID" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="ID_STAFF_FACE_PORTRETS" ColumnName="ID_STAFF_FACE_PORTRETS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -31,5 +31,6 @@ namespace StudentsHelpTerminal.Models.Database
         public int WITHDRAW_TO_STOP_LIST { get; set; }
         public System.DateTime LAST_TIMESTAMP { get; set; }
         public Nullable<int> USER_ID { get; set; }
+        public int NPP_NUMBER { get; set; }
     }
 }
