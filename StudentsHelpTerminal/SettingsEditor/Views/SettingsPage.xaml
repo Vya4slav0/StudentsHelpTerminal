@@ -11,7 +11,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="1032"
       WindowWidth="1032"
-      Title="SettingsPage">
+      Title="{Binding Title}">
 
     <d:Page.DataContext>
         <vm:SettingsPageViewModel/>
@@ -25,6 +25,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -36,8 +37,15 @@
                 </CollectionViewSource.GroupDescriptions>
             </CollectionViewSource>
         </Grid.Resources>
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Command="{Binding OpenSettingsFileCommand}"/>
+                <MenuItem Header="Сохранить" Command="{Binding SaveSettingsCommand}"/>
+            </MenuItem>
+        </Menu>
         
-        <DataGrid Grid.Row="0" Grid.Column="0" Margin="10" 
+        <DataGrid Grid.Row="1" Grid.Column="0" Margin="10" 
               ItemsSource="{Binding Source={StaticResource SettingsList}}"
               SelectedItem="{Binding SelectedSetting}"
               AutoGenerateColumns="False"
@@ -76,16 +84,24 @@
             </DataGrid.GroupStyle>
         </DataGrid>
 
-        <Grid Grid.Column="1" Margin="5">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
 
             <DockPanel LastChildFill="True">
 
                 <TextBlock DockPanel.Dock="Top" Text="Описание настройки:"/>
 
                 <StackPanel DockPanel.Dock="Bottom">
+
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="0 2"/>
+                            <Setter Property="Height" Value="30"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    
                     <Button Content="Выбрать файл/папку" Command="{Binding SelectFileDirectoryCommand}"/>
                     <Button Content="Сохранить" Command="{Binding SaveSettingsCommand}"/>
-                    <Button Content="Закрыть" Command="ApplicationCommands.Close"/>
+                    <Button Content="Закрыть" Command="{Binding AppCloseCommand}"/>
                 </StackPanel>
 
                 <TextBox IsReadOnly="True"

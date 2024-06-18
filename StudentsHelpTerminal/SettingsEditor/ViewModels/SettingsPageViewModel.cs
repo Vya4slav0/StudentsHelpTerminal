@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Input;
+using DialogBoxes;
 
 namespace SettingsEditor.ViewModels
 {
@@ -17,19 +18,30 @@ namespace SettingsEditor.ViewModels
         {
             SaveSettingsCommand = new RelayCommand(SaveSettingsCommandExecute);
             SelectFileDirectoryCommand = new RelayCommand(SelectFileDirectoryCommandExecute, SelectFileDirectoryCommandCanExecute);
-            _settingsManager = new SettingsManagerService(pathToSettingsXML);
+            OpenSettingsFileCommand = new RelayCommand(OpenSettingsFileExecute);
+            AppCloseCommand = new RelayCommand(AppCloseCommandExecute);
 
-            SettingsList = new ObservableCollection<SettingViewModel>();
-            foreach (Setting setting in _settingsManager.LoadAllSettings())
-            {
-                SettingsList.Add(new SettingViewModel(setting));
-            }
+            FillSettingsGrid(pathToSettingsXML);
         }
 
         public SettingsPageViewModel()
         {
             SaveSettingsCommand = new RelayCommand(SaveSettingsCommandExecute);
             SelectFileDirectoryCommand = new RelayCommand(SelectFileDirectoryCommandExecute, SelectFileDirectoryCommandCanExecute);
+            OpenSettingsFileCommand = new RelayCommand(OpenSettingsFileExecute);
+            AppCloseCommand = new RelayCommand(AppCloseCommandExecute);
+        }
+
+        private void FillSettingsGrid(string pathToSettingsXML)
+        {
+            _settingsManager = new SettingsManagerService(pathToSettingsXML);
+            SettingsList = new ObservableCollection<SettingViewModel>();
+            SettingsList.Clear();
+            foreach (Setting setting in _settingsManager.LoadAllSettings())
+            {
+                SettingsList.Add(new SettingViewModel(setting));
+            }
+            OnPropertyChanged(nameof(Title));
         }
 
         #region Properties
@@ -58,6 +70,12 @@ namespace SettingsEditor.ViewModels
 
         #endregion
 
+        #region Title
+
+        public string Title => _settingsManager?.PathToSettingsXML;
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -74,6 +92,7 @@ namespace SettingsEditor.ViewModels
                 settings.Add(settingVM.GetSetting());
             }
             _settingsManager.SaveSettings(settings);
+            new AlertBox("Сохранено").ShowDialog();
         }
 
         #endregion
@@ -117,6 +136,36 @@ namespace SettingsEditor.ViewModels
             if (SelectedSetting is null) return false;
             return (SelectedSetting.Type == typeof(DirectoryInfo)) || 
                 (SelectedSetting.Type == typeof(FileInfo));
+        }
+
+        #endregion
+
+        #region OpenSettingsFileCommand
+
+        public ICommand OpenSettingsFileCommand { get; }
+
+        private void OpenSettingsFileExecute(object p)
+        {
+            using (OpenFileDialog openSettingsFileDialog = new OpenFileDialog())
+            {
+                openSettingsFileDialog.Filter = "Settings XML file|*.xml";
+                openSettingsFileDialog.InitialDirectory = "\\.";
+                if (openSettingsFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FillSettingsGrid(openSettingsFileDialog.FileName);
+                }
+            }
+        }
+
+        #endregion
+
+        #region AppCloseCommand
+
+        public ICommand AppCloseCommand { get; }
+
+        private void AppCloseCommandExecute(object p)
+        {
+            App.Current.Shutdown();
         }
 
         #endregion

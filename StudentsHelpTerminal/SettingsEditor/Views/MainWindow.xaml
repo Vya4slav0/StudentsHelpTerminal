@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SettingsEditor.Views"
+        xmlns:vm="clr-namespace:SettingsEditor.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}"
+        Title="{Binding Title}" Height="450" Width="auto">
+
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type vm:SettingsPageViewModel}">
+            <local:SettingsPage/>
+        </DataTemplate>
         
-    </Grid>
+    </Window.Resources>
+    
 </Window>

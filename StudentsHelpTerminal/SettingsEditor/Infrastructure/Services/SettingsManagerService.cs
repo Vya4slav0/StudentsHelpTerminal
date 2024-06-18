@@ -11,6 +11,8 @@ namespace SettingsEditor.Infrastructure.Services
         private readonly XDocument _settingsXML;
         private readonly string _pathToSettingsXML;
 
+        public string PathToSettingsXML => _pathToSettingsXML;
+
         /// <summary>
         /// Creates new SettingsManagerService object that operates with .xml settings file 
         /// </summary>
@@ -58,7 +60,7 @@ namespace SettingsEditor.Infrastructure.Services
             XElement root = _settingsXML.Root;
             foreach (XElement setting in root.Elements("section").Elements())
             {
-                setting.Element("value").Value = newSettings.First(s => s.Name == setting.Attribute("name").Value).Value.ToString();
+                setting.Element("value").Value = newSettings.First(s => s.Name == setting.Attribute("name").Value).Value?.ToString() ?? "";
             }
             _settingsXML.Save(_pathToSettingsXML);
         }

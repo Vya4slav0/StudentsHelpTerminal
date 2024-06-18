@@ -17,10 +17,18 @@ namespace SettingsEditor
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            string pathToSettingsFile = e.Args[0];
             MainWindow = new MainWindow();
-            MainWindow.DataContext = new SettingsPageViewModel(pathToSettingsFile);
-            MainWindow.Content = new SettingsPage();
+            if (e.Args.Length > 0)
+            {
+                string pathToSettingsFile = e.Args[0];
+                MainWindow.DataContext = new SettingsPageViewModel(pathToSettingsFile);
+            }
+            else
+            {
+                MainWindow.DataContext = new SettingsPageViewModel();
+            }
+            
+            //MainWindow.Content = new SettingsPage();
             MainWindow.Show();
             base.OnStartup(e);
         }

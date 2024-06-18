@@ -108,6 +108,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DialogBoxes\DialogBoxes.csproj">
+      <Project>{dcc31699-25e6-4a0b-86b2-f3b05b3c3c10}</Project>
+      <Name>DialogBoxes</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
