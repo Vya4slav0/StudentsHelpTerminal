@@ -64,6 +64,13 @@
 			    Путь к файлу с частыми вопросами и ответами
 		    </description>
       </setting>
+		<setting name="PathToApplicantGuide">
+			<type>System.IO.FileInfo</type>
+			<value></value>
+			<description>
+				Путь к приложению "Путеводитель абитуриента"
+			</description>
+		</setting>
     </section>
 	<section visibleName="Настройки голосового помощника">
 		<setting name="VoiceName">

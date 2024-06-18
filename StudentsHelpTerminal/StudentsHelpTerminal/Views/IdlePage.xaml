@@ -6,10 +6,16 @@
       xmlns:local="clr-namespace:StudentsHelpTerminal.Views"
       xmlns:res="clr-namespace:StudentsHelpTerminal.Properties"
       xmlns:conv="clr-namespace:BindingConverters;assembly=BindingConverters"
+      xmlns:custom="clr-namespace:TerminalCustomControls;assembly=TerminalCustomControls"
+      xmlns:vm="clr-namespace:StudentsHelpTerminal.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Background="DarkBlue">
 
+    <Page.DataContext>
+        <vm:IdlePageViewModel/>
+    </Page.DataContext>
+    
     <Page.Resources>
 
         <ResourceDictionary>
@@ -23,43 +29,55 @@
         </ResourceDictionary>
 
     </Page.Resources>
+    <DockPanel LastChildFill="True">
 
-    <Canvas x:Name="CanvasMain">
+        <DockPanel.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        </DockPanel.Resources>
 
-        <Image x:Name="ImagePassCard" 
-               Source="{Binding Source={x:Static res:Resources.PassCard}, Converter={StaticResource BitmapToImageConverter}}"
-               Height="250"
-               Width="400">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <TranslateTransform x:Name="AnimatedTranslateTransform" X="0" Y="0" />
-                </TransformGroup>
-            </Image.RenderTransform>
+        <custom:ButtonCuttedCorners Content="Путеводитель абитуриента" 
+                                    Margin="10 5"
+                                    DockPanel.Dock="Bottom"
+                                    Command="{Binding OpenApplicantGuideCommand}"
+                                    Visibility="{Binding OpenApplicantGuideVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
-            <Image.Triggers>
-                <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard Timeline.DesiredFrameRate="1">
-                            <DoubleAnimation Storyboard.TargetProperty="X"
-                                             Storyboard.TargetName="AnimatedTranslateTransform"
-                                             AutoReverse="True"
-                                             From="0" To="{Binding ElementName=CanvasMain, Path=ActualWidth, Converter={StaticResource SubtractValueConverter}, ConverterParameter=400}" 
-                                             Duration="0:0:15"
-                                             RepeatBehavior="Forever"/>
-                            <DoubleAnimation Storyboard.TargetProperty="Y"
-                                             Storyboard.TargetName="AnimatedTranslateTransform"
-                                             AutoReverse="True"
-                                             From="0" To="{Binding ElementName=CanvasMain, Path=ActualHeight, Converter={StaticResource SubtractValueConverter}, ConverterParameter=250}" 
-                                             Duration="0:0:10"
-                                             RepeatBehavior="Forever"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Image.Triggers>
+        <Canvas x:Name="CanvasMain">
 
-        </Image>
+            <Image x:Name="ImagePassCard" 
+                   Source="{Binding Source={x:Static res:Resources.PassCard}, Converter={StaticResource BitmapToImageConverter}}"
+                   Height="250"
+                   Width="400">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="AnimatedTranslateTransform" X="0" Y="0" />
+                    </TransformGroup>
+                </Image.RenderTransform>
 
-    </Canvas>
-    
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard Timeline.DesiredFrameRate="1">
+                                <DoubleAnimation Storyboard.TargetProperty="X"
+                                                 Storyboard.TargetName="AnimatedTranslateTransform"
+                                                 AutoReverse="True"
+                                                 From="0" To="{Binding ElementName=CanvasMain, Path=ActualWidth, Converter={StaticResource SubtractValueConverter}, ConverterParameter=400}" 
+                                                 Duration="0:0:15"
+                                                 RepeatBehavior="Forever"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Y"
+                                                 Storyboard.TargetName="AnimatedTranslateTransform"
+                                                 AutoReverse="True"
+                                                 From="0" To="{Binding ElementName=CanvasMain, Path=ActualHeight, Converter={StaticResource SubtractValueConverter}, ConverterParameter=250}" 
+                                                 Duration="0:0:10"
+                                                 RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+
+            </Image>
+
+        </Canvas>
+
+    </DockPanel>
 
 </Page>

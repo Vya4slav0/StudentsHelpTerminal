@@ -20,5 +20,12 @@ namespace StudentsHelpTerminal.Infrastructure.Services
             App.Current.Shutdown();
             return;
         }
+
+        public static void FileNotExist(string fileName, bool shutdownApp = false)
+        {
+            new AlertBox("Вы пытаетесь открыть то, чего нет:\n" +  fileName).ShowDialog();
+            if (shutdownApp) 
+                App.Current.Shutdown();
+        }
     }
 }
