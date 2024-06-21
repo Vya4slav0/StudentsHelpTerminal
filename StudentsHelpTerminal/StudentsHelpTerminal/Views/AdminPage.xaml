@@ -154,6 +154,7 @@
                     <Button Grid.Row="1" Grid.ColumnSpan="2" 
                             Content="Применить поиск и сортировку" 
                             Margin="5 2"
+                            Height="25"
                             Command="{Binding ApplySearchSortCommand}"/>
 
                 </Grid>

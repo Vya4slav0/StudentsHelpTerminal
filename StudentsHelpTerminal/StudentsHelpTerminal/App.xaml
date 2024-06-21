@@ -25,6 +25,7 @@
                         <Style.Resources>
                             <Style TargetType="Button">
                                 <Setter Property="Margin" Value="5 2"/>
+                                <Setter Property="Height" Value="25"/>
                             </Style>
                             <Style TargetType="DockPanel">
                                 <Setter Property="Margin" Value="5 2"/>
