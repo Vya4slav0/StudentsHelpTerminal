@@ -115,6 +115,7 @@
     <Compile Include="Infrastructure\Services\SelfTestingService.cs" />
     <Compile Include="Infrastructure\Services\SettingsInteractor.cs" />
     <Compile Include="Infrastructure\Services\ShowInToolWindowService.cs" />
+    <Compile Include="Infrastructure\Services\TaskbarService.cs" />
     <Compile Include="Infrastructure\Services\VoiceHelperService.cs" />
     <Compile Include="Models\Database\STAFF_FACE_PORTRETS.cs">
       <DependentUpon>StudentsDBModel.tt</DependentUpon>

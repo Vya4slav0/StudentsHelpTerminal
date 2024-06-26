@@ -44,12 +44,13 @@ namespace StudentsHelpTerminal
                     App.Current.Shutdown();
                 }
             }
-                
+            TaskbarService.Hide();
             base.OnStartup(e);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
+            TaskbarService.Show();
             Logger.CloseLogger();
             base.OnExit(e);
         }
