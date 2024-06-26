@@ -31,7 +31,7 @@
       </setting>
       <setting name="PathToLogFile" serializeAs="String">
         <type>System.IO.FileInfo</type>
-        <value>E:\Users\vya4s\Documents\Visual Studio projects\StudentsHelpTerminal\StudentsHelpTerminal\StudentsHelpTerminal\bin\Debug\Users.log</value>
+        <value>.\Users.log</value>
         <description>
 			    Путь к файлу для записи лога
 		    </description>

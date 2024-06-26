@@ -17,7 +17,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
         public static string GetSettingValueByName(string settingName)
         {
             Setting setting = _settingsManager.LoadSettingByName(settingName);
-            return setting.Value?.ToString();
+            return setting.Value?.ToString() ?? string.Empty;
         }
 
         public static int GetSettingIntValueByName(string settingName)
