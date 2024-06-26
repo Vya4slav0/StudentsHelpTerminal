@@ -24,5 +24,10 @@ namespace StudentsHelpTerminal.Views
         {
             InitializeComponent();
         }
+
+        private void ButtonCuttedCorners_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

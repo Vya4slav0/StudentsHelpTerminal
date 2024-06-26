@@ -17,7 +17,7 @@ namespace StudentsHelpTerminal.ViewModels
             get => File.Exists(SettingsInteractor.GetSettingValueByName("PathToApplicantGuide"));
         }
 
-        public ICommand OpenApplicantGuideCommand;
+        public ICommand OpenApplicantGuideCommand { get; }
 
         private void OpenApplicantGuideCommandExecute(object p)
         {

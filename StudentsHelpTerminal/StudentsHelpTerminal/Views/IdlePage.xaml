@@ -39,7 +39,7 @@
                                     Margin="10 5"
                                     DockPanel.Dock="Bottom"
                                     Command="{Binding OpenApplicantGuideCommand}"
-                                    Visibility="{Binding OpenApplicantGuideVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                    Visibility="{Binding OpenApplicantGuideVisible, Converter={StaticResource BoolToVisibilityConverter}}" Click="ButtonCuttedCorners_Click"/>
 
         <Canvas x:Name="CanvasMain">
 

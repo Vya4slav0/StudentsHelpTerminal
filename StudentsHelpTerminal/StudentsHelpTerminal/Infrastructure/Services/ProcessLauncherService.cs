@@ -31,7 +31,7 @@ namespace StudentsHelpTerminal.Infrastructure.Services
                 ErrorHandlerService.FileNotExist(applicantGuideApp.FullName);
                 return;
             }
-            Process.Start(applicantGuideApp.FullName);
+            Process.Start(applicantGuideApp.FullName).WaitForExit();
         }
     }
 }
